@@ -1,5 +1,7 @@
 """Tests for gatekeeper throttling, queue overflow, and retry-after behavior."""
 
+from queue import Full
+
 from debate_sdk.shared.gatekeeper import ApiGatekeeper
 
 
@@ -34,7 +36,7 @@ def test_retry_after_seconds_is_positive_when_rate_limit_is_exhausted(tmp_path):
     gatekeeper = ApiGatekeeper(cfg_path, time_fn=clock.now, sleeper=clock.sleep)
 
     assert gatekeeper.execute(lambda: "first") == "first"
-    assert gatekeeper._retry_after_seconds() >= 59.0
+    assert gatekeeper._traffic.retry_after_seconds() >= 59.0
 
 
 def test_rate_limited_call_gets_queued_and_dispatched_after_window(tmp_path):
@@ -75,8 +77,8 @@ def test_queue_overflow_raises_runtime_error(tmp_path, monkeypatch):
     )
     gatekeeper = ApiGatekeeper(cfg_path)
 
-    gatekeeper._queue.put_nowait(object())
-    monkeypatch.setattr(gatekeeper, "_try_acquire_slot", lambda: (False, 1.0))
+    monkeypatch.setattr(gatekeeper._traffic, "try_acquire_slot", lambda: (False, 1.0))
+    monkeypatch.setattr(gatekeeper._traffic, "enqueue", lambda _task: (_ for _ in ()).throw(Full()))
 
     try:
         gatekeeper.execute(lambda: "value")

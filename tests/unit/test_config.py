@@ -44,3 +44,21 @@ def test_load_rate_limits_invalid_json_raises_value_error(tmp_path):
 
     with pytest.raises(ValueError, match="Invalid JSON"):
         load_rate_limits(cfg_path)
+
+
+def test_load_rate_limits_invalid_budget_raises_value_error(tmp_path):
+    cfg_path = tmp_path / "rate_limits.json"
+    cfg_path.write_text(
+        json.dumps(
+            {
+                "version": "1.00",
+                "requests_per_minute": 10,
+                "concurrent_max": 2,
+                "max_budget_tokens": 0,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="max_budget_tokens"):
+        load_rate_limits(cfg_path)

@@ -94,16 +94,16 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 - [x] 2.5.4 Ensure that terminal connection errors that survive all retry attempts are formatted into clean, un-nested system error objects.
 
 ### 2.6 Token Economy Guardrails & Custom Financial Exceptions
-- [ ] 2.6.1 Create `src/debate_sdk/shared/exceptions.py` defining `class BudgetExceededException(Exception)`.
-  - [ ] 2.6.1.1 Verify that `exceptions.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 2.6.2 Implement tracking state variables inside the Gatekeeper module to accumulate running counts of Input/Output tokens.
-- [ ] 2.6.3 Build an active compliance validator evaluating whether `tracked_consumption + projected_cost > max_budget_tokens`.
-- [ ] 2.6.4 Force the Gatekeeper to instantly raise `BudgetExceededException` and block network access the moment financial caps are crossed.
+- [x] 2.6.1 Create `src/debate_sdk/shared/exceptions.py` defining `class BudgetExceededException(Exception)`.
+  - [x] 2.6.1.1 Verify that `exceptions.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 2.6.2 Implement tracking state variables inside the Gatekeeper module to accumulate running counts of Input/Output tokens.
+- [x] 2.6.3 Build an active compliance validator evaluating whether `tracked_consumption + projected_cost > max_budget_tokens`.
+- [x] 2.6.4 Force the Gatekeeper to instantly raise `BudgetExceededException` and block network access the moment financial caps are crossed.
 
 ### 2.7 Global Runtime Version Compliance Checks
-- [ ] 2.7.1 Write a validation utility that automatically cross-checks the string value of the `version` property inside `rate_limits.json` against `src/debate_sdk/shared/version.py` at boot.
-- [ ] 2.7.2 Configure the application startup routine to execute this check immediately during module initialization.
-- [ ] 2.7.3 Design a targeted initialization interceptor that logs a warning or raises a version mismatch exception if the configuration template is outdated.
+- [x] 2.7.1 Write a validation utility that automatically cross-checks the string value of the `version` property inside `rate_limits.json` against `src/debate_sdk/shared/version.py` at boot.
+- [x] 2.7.2 Configure the application startup routine to execute this check immediately during module initialization.
+- [x] 2.7.3 Design a targeted initialization interceptor that logs a warning or raises a version mismatch exception if the configuration template is outdated.
 
 ### 2.8 Component Testing & Mock Endpoint Simulation (TDD Suite)
 - [ ] 2.8.1 Create the comprehensive component verification test file at `tests/unit/test_gatekeeper.py`.

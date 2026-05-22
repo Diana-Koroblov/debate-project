@@ -13,8 +13,37 @@ class Task:
     args: tuple[Any, ...]
     kwargs: dict[str, Any]
     done: Any
+    projected_cost: float = 0.0
+    input_tokens: int = 0
+    output_tokens: int = 0
     result: Any = None
     error: Exception | None = None
+
+
+def ensure_version_compatibility(config_version: str, expected_version: str, logger: Any) -> None:
+    if config_version == expected_version:
+        return
+    logger.warning(
+        "rate_limit_config_version_mismatch expected=%s found=%s",
+        expected_version,
+        config_version,
+    )
+    message = (
+        "Rate limit config version mismatch: "
+        f"expected '{expected_version}', found '{config_version}'"
+    )
+    raise ValueError(
+        message
+    )
+
+
+def derive_usage_from_result(result: Any) -> tuple[int, int]:
+    if not isinstance(result, dict):
+        return 0, 0
+    if isinstance(result.get("usage"), dict):
+        usage = result["usage"]
+        return int(usage.get("input", 0)), int(usage.get("output", 0))
+    return int(result.get("input_tokens", 0)), int(result.get("output_tokens", 0))
 
 
 def is_transient_error(exc: Exception) -> bool:

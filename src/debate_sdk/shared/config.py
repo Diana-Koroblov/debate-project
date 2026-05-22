@@ -33,12 +33,15 @@ def _normalize_rate_limit_config(raw: dict[str, Any]) -> dict[str, Any]:
     queue_max_size = raw.get("queue_max_size", 100)
     max_retries = raw.get("max_retries", 3)
     backoff_base_seconds = raw.get("backoff_base_seconds", 0.25)
+    max_budget_tokens = raw.get("max_budget_tokens", 100000)
     if not isinstance(queue_max_size, int) or queue_max_size <= 0:
         raise ValueError("Field 'queue_max_size' must be a positive integer")
     if not isinstance(max_retries, int) or max_retries < 0:
         raise ValueError("Field 'max_retries' must be a non-negative integer")
     if not isinstance(backoff_base_seconds, (int, float)) or backoff_base_seconds <= 0:
         raise ValueError("Field 'backoff_base_seconds' must be a positive number")
+    if not isinstance(max_budget_tokens, (int, float)) or max_budget_tokens <= 0:
+        raise ValueError("Field 'max_budget_tokens' must be a positive number")
 
     return {
         "version": version,
@@ -47,6 +50,7 @@ def _normalize_rate_limit_config(raw: dict[str, Any]) -> dict[str, Any]:
         "queue_max_size": queue_max_size,
         "max_retries": max_retries,
         "backoff_base_seconds": float(backoff_base_seconds),
+        "max_budget_tokens": float(max_budget_tokens),
     }
 
 
