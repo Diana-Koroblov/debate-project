@@ -1,0 +1,8 @@
+{
+  "version": "1.00",
+  "requests_per_minute": 60,
+  "concurrent_max": 3,
+  "queue_max_size": 100,
+  "max_retries": 3,
+  "backoff_base_seconds": 0.25
+}

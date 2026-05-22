@@ -62,36 +62,36 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 **Definition of Done (DoD):** `ApiGatekeeper` fully implemented as the sole entry point for network I/O traffic. Safely throttles concurrent requests based on dynamic configurations, buffers overflow operations via a functional FIFO queue, manages lock-step token expenditures, and raises a validated `BudgetExceededException` upon limit violations. Achieves 0 Ruff errors, adheres to the 150 LOC constraint, and hits >85% test coverage via decoupled mock engines.
 
 ### 2.1 Configuration Infrastructure & Schema Scheming
-- [ ] 2.1.1 Create `config/rate_limits.json` populating mandatory metadata fields (`version`, `requests_per_minute`, `concurrent_max`).
-- [ ] 2.1.2 Implement the internal JSON configuration loader utility inside `src/debate_sdk/shared/config.py`.
-  - [ ] 2.1.2.1 Verify that `config.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 2.1.3 Build a strict validation schema parser to ensure the application configuration payload is intact at boot-time.
-- [ ] 2.1.4 Write the semantic initialization step in `shared/config.py` that raises a explicit `ValueError` if required telemetry configuration fields are missing.
+- [x] 2.1.1 Create `config/rate_limits.json` populating mandatory metadata fields (`version`, `requests_per_minute`, `concurrent_max`).
+- [x] 2.1.2 Implement the internal JSON configuration loader utility inside `src/debate_sdk/shared/config.py`.
+  - [x] 2.1.2.1 Verify that `config.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 2.1.3 Build a strict validation schema parser to ensure the application configuration payload is intact at boot-time.
+- [x] 2.1.4 Write the semantic initialization step in `shared/config.py` that raises a explicit `ValueError` if required telemetry configuration fields are missing.
 
 ### 2.2 Singleton Interface Construction (`ApiGatekeeper`)
-- [ ] 2.2.1 Create `src/debate_sdk/shared/gatekeeper.py` defining the core controller class `class ApiGatekeeper`.
-  - [ ] 2.2.1.1 Verify that `gatekeeper.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 2.2.2 Implement a thread-safe Singleton instantiation pattern or secure dynamic constructor reference mapping configuration constants.
-- [ ] 2.2.3 Build the master signature method `def execute(self, api_call, *args, **kwargs)` acting as the comprehensive wrapper layer for all external endpoints.
-- [ ] 2.2.4 Integrate absolute runtime logging inside the execution target to ensure 100% of network traffic triggers detailed tracking logs.
+- [x] 2.2.1 Create `src/debate_sdk/shared/gatekeeper.py` defining the core controller class `class ApiGatekeeper`.
+  - [x] 2.2.1.1 Verify that `gatekeeper.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 2.2.2 Implement a thread-safe Singleton instantiation pattern or secure dynamic constructor reference mapping configuration constants.
+- [x] 2.2.3 Build the master signature method `def execute(self, api_call, *args, **kwargs)` acting as the comprehensive wrapper layer for all external endpoints.
+- [x] 2.2.4 Integrate absolute runtime logging inside the execution target to ensure 100% of network traffic triggers detailed tracking logs.
 
 ### 2.3 Traffic Throttling, Rate Limiting & Concurrent Constraints
-- [ ] 2.3.1 Implement a lightweight sliding-window or token-bucket counter algorithm tracking active request frequencies (RPS/RPM).
-- [ ] 2.3.2 Design an active concurrency tracker utilizing operational locks or semaphores to cap simultaneous API invocations (`concurrent_max`).
-- [ ] 2.3.3 Build a precise internal delta evaluator to compute backoff intervals (`retry_after_seconds`) dynamically when traffic caps are breached.
-- [ ] 2.3.4 Ensure the throttling mechanism evaluates rate limit structures prior to releasing the execution thread to external providers.
+- [x] 2.3.1 Implement a lightweight sliding-window or token-bucket counter algorithm tracking active request frequencies (RPS/RPM).
+- [x] 2.3.2 Design an active concurrency tracker utilizing operational locks or semaphores to cap simultaneous API invocations (`concurrent_max`).
+- [x] 2.3.3 Build a precise internal delta evaluator to compute backoff intervals (`retry_after_seconds`) dynamically when traffic caps are breached.
+- [x] 2.3.4 Ensure the throttling mechanism evaluates rate limit structures prior to releasing the execution thread to external providers.
 
 ### 2.4 Bounded Buffer Queue & Overflow Handling (FIFO Logic)
-- [ ] 2.4.1 Implement a thread-safe FIFO queue container to buffer incoming tasks when application constraints are momentarily saturated.
-- [ ] 2.4.2 Set a concrete maximum queue depth boundary parameter fetched directly from configuration variables.
-- [ ] 2.4.3 Design a proactive backpressure alert loop that drops incoming operations or triggers system errors if the underlying overflow queue hits maximum capacity limits.
-- [ ] 2.4.4 Implement an automated loop background dispatcher that sequentially de-queues and fires pending operations once token bucket windows reset.
+- [x] 2.4.1 Implement a thread-safe FIFO queue container to buffer incoming tasks when application constraints are momentarily saturated.
+- [x] 2.4.2 Set a concrete maximum queue depth boundary parameter fetched directly from configuration variables.
+- [x] 2.4.3 Design a proactive backpressure alert loop that drops incoming operations or triggers system errors if the underlying overflow queue hits maximum capacity limits.
+- [x] 2.4.4 Implement an automated loop background dispatcher that sequentially de-queues and fires pending operations once token bucket windows reset.
 
 ### 2.5 Resilient Transient Error Handling & Backoff Protocols
-- [ ] 2.5.1 Enclose external network execution instances in a robust try-except wrapper targeting common transient network exceptions (5xx errors, HTTP Status 429).
-- [ ] 2.5.2 Implement an exponential backoff mathematical calculation loop modifying subsequent retry pause delays.
-- [ ] 2.5.3 Inject a strict `max_retries` counter loop boundary into the retry routine to prevent infinite system blocking.
-- [ ] 2.5.4 Ensure that terminal connection errors that survive all retry attempts are formatted into clean, un-nested system error objects.
+- [x] 2.5.1 Enclose external network execution instances in a robust try-except wrapper targeting common transient network exceptions (5xx errors, HTTP Status 429).
+- [x] 2.5.2 Implement an exponential backoff mathematical calculation loop modifying subsequent retry pause delays.
+- [x] 2.5.3 Inject a strict `max_retries` counter loop boundary into the retry routine to prevent infinite system blocking.
+- [x] 2.5.4 Ensure that terminal connection errors that survive all retry attempts are formatted into clean, un-nested system error objects.
 
 ### 2.6 Token Economy Guardrails & Custom Financial Exceptions
 - [ ] 2.6.1 Create `src/debate_sdk/shared/exceptions.py` defining `class BudgetExceededException(Exception)`.
