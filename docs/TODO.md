@@ -106,11 +106,11 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 - [x] 2.7.3 Design a targeted initialization interceptor that logs a warning or raises a version mismatch exception if the configuration template is outdated.
 
 ### 2.8 Component Testing & Mock Endpoint Simulation (TDD Suite)
-- [ ] 2.8.1 Create the comprehensive component verification test file at `tests/unit/test_gatekeeper.py`.
-  - [ ] 2.8.1.1 Verify that `test_gatekeeper.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 2.8.2 Write a test leveraging local fixtures to assert that sequential calls exceeding the RPM thresholds are successfully delayed and queued via FIFO without dropping data.
-- [ ] 2.8.3 Build a localized unit test mapping a simulated HTTP 503 error, verifying that the exponential backoff framework executes exactly the configured number of retry iterations before returning a failure.
-- [ ] 2.8.4 Write a validation test mocking high token payload emissions, asserting that `BudgetExceededException` triggers properly and blocks the pipeline thread.
+- [x] 2.8.1 Create the comprehensive component verification test file at `tests/unit/test_gatekeeper.py`.
+  - [x] 2.8.1.1 Verify that `test_gatekeeper.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 2.8.2 Write a test leveraging local fixtures to assert that sequential calls exceeding the RPM thresholds are successfully delayed and queued via FIFO without dropping data.
+- [x] 2.8.3 Build a localized unit test mapping a simulated HTTP 503 error, verifying that the exponential backoff framework executes exactly the configured number of retry iterations before returning a failure.
+- [x] 2.8.4 Write a validation test mocking high token payload emissions, asserting that `BudgetExceededException` triggers properly and blocks the pipeline thread.
 
 ---
 

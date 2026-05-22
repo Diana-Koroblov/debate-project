@@ -91,3 +91,32 @@ def test_execute_retries_transient_error_with_exponential_backoff(tmp_path):
 
     assert gatekeeper.execute(flaky_call) == "ok"
     assert delays == [0.5, 1.0]
+
+
+def test_execute_503_failure_retries_exact_count_then_raises(tmp_path):
+    cfg_path = tmp_path / "rate_limits.json"
+    cfg_path.write_text(
+        (
+            "{"
+            '"version":"1.00",'
+            '"requests_per_minute":60,'
+            '"concurrent_max":3,'
+            '"max_retries":2,'
+            '"backoff_base_seconds":0.25'
+            "}"
+        ),
+        encoding="utf-8",
+    )
+    delays = []
+    gatekeeper = ApiGatekeeper(cfg_path, sleeper=lambda seconds: delays.append(seconds))
+    attempts = {"count": 0}
+
+    def always_fails():
+        attempts["count"] += 1
+        raise RuntimeError("503 service unavailable")
+
+    with pytest.raises(RuntimeError, match="failed"):
+        gatekeeper.execute(always_fails)
+
+    assert attempts["count"] == 3
+    assert delays == [0.25, 0.5]
