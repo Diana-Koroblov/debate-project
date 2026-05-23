@@ -1,0 +1,7 @@
+{
+  "version": "1.00",
+  "log_directory": "results/logs",
+  "max_files": 20,
+  "max_lines_per_file": 500,
+  "log_level": "INFO"
+}

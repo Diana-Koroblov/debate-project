@@ -7,7 +7,13 @@ authors = [
     { name = "Itay", email = "itay.malich2@gmail.com" }
 ]
 requires-python = ">=3.10,<3.11"
-dependencies = []
+dependencies = [
+    "google-generativeai>=0.8.6",
+    "httpx>=0.28.1",
+    "psutil>=7.2.2",
+    "pydantic>=2.13.4",
+    "python-dotenv>=1.2.2",
+]
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]

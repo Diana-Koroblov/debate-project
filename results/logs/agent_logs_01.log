@@ -1,0 +1,503 @@
+2026-05-23 13:00:17,495 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:00:17,511 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:17,629 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:00:17,759 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:17,889 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:00:17,890 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:18,456 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:18,563 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:18,675 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:18,808 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:18,946 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:00:18,955 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:19,622 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:19,727 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:00:19,727 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:00:19,727 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:20,298 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:32,970 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:00:33,007 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:33,138 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:00:33,268 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:33,415 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:00:33,415 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:33,965 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:34,073 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:34,184 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:34,306 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:34,456 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:00:34,466 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:35,143 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:35,268 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:35,403 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:35,511 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:00:35,511 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:00:35,511 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:36,049 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:00:36,167 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:00:36,281 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:00:36,404 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:43,765 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:00:43,781 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:43,883 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:00:44,016 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:44,114 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:00:44,114 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:44,671 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:44,775 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:44,890 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:00:45,014 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:45,150 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:00:45,150 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:45,826 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:45,965 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:46,094 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:00:46,229 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:00:46,229 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:00:46,229 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:00:46,765 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:00:46,872 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:00:46,978 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:00:47,102 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:13,483 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:01:13,500 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:13,601 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:01:13,721 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:13,866 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:01:13,866 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:14,428 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:14,546 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:14,661 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:14,780 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:14,882 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:01:14,882 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:15,547 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:15,648 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:15,781 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:15,894 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:01:15,894 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:01:15,896 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:16,439 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:16,548 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:16,654 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:16,771 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:29,142 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:01:29,161 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:29,289 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:01:29,413 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:29,523 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:01:29,523 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:30,069 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:30,181 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:30,290 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:30,425 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:30,556 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:01:30,558 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:31,217 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:31,328 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:31,441 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:31,574 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:01:31,576 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:01:31,576 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:32,136 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:32,241 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:32,350 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:32,455 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:32,585 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:47,311 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:01:47,319 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:47,433 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:01:47,566 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:47,671 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:01:47,671 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:48,214 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:48,330 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:48,446 - watchdog - ERROR - Agent 'con_agent' (PID 5678) stalled! Timeout exceeded.
+2026-05-23 13:01:48,587 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:48,726 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:01:48,726 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:49,384 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:49,492 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:49,626 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:01:49,728 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:01:49,728 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:01:49,728 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:01:50,283 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:50,393 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:50,510 - watchdog - ERROR - Agent 'agent2' (PID 102) stalled! Timeout exceeded.
+2026-05-23 13:01:50,631 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:04:29,754 - process_utils - INFO - Terminating process tree for PID 1796 (0 children).
+2026-05-23 13:04:29,920 - watchdog - INFO - Registered agent 'stalled_agent' with PID 7260
+2026-05-23 13:04:29,922 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:04:30,449 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 7260) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:04:30,452 - process_utils - INFO - Terminating process tree for PID 7260 (0 children).
+2026-05-23 13:04:30,464 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 7260) killed.
+2026-05-23 13:04:31,029 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:04:44,674 - process_utils - INFO - Terminating process tree for PID 6280 (0 children).
+2026-05-23 13:04:44,813 - watchdog - INFO - Registered agent 'stalled_agent' with PID 5788
+2026-05-23 13:04:44,813 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:04:45,358 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 5788) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:04:45,369 - process_utils - INFO - Terminating process tree for PID 5788 (0 children).
+2026-05-23 13:04:45,375 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 5788) killed.
+2026-05-23 13:04:45,917 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:04:45,936 - process_utils - INFO - Terminating process tree for PID 15088 (0 children).
+2026-05-23 13:04:45,949 - process_utils - WARNING - Process PID 999999 not found for termination.
+2026-05-23 13:04:56,807 - process_utils - INFO - Terminating process tree for PID 24004 (0 children).
+2026-05-23 13:04:56,933 - watchdog - INFO - Registered agent 'stalled_agent' with PID 9036
+2026-05-23 13:04:56,935 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:04:57,495 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 9036) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:04:57,506 - process_utils - INFO - Terminating process tree for PID 9036 (0 children).
+2026-05-23 13:04:57,511 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 9036) killed.
+2026-05-23 13:04:57,976 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:04:57,993 - process_utils - INFO - Terminating process tree for PID 20280 (0 children).
+2026-05-23 13:04:57,999 - process_utils - WARNING - Process PID 999999 not found for termination.
+2026-05-23 13:04:58,103 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:04:58,109 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:04:58,214 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:04:58,340 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:04:58,437 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:04:58,437 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:04:58,998 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:04:58,998 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-23 13:04:59,000 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-23 13:04:59,354 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:04:59,477 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:04:59,477 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:00,171 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:00,276 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:00,408 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:00,515 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:05:00,515 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:05:00,519 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:01,075 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:05:01,075 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-23 13:05:01,077 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-23 13:05:01,529 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:33,329 - process_utils - INFO - Terminating process tree for PID 10020 (0 children).
+2026-05-23 13:05:33,524 - watchdog - INFO - Registered agent 'stalled_agent' with PID 14004
+2026-05-23 13:05:33,524 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:34,077 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 14004) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:05:34,088 - process_utils - INFO - Terminating process tree for PID 14004 (0 children).
+2026-05-23 13:05:34,088 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 14004) killed.
+2026-05-23 13:05:34,651 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:34,686 - process_utils - INFO - Terminating process tree for PID 2528 (0 children).
+2026-05-23 13:05:34,703 - process_utils - INFO - Terminating process tree for PID 1234 (0 children).
+2026-05-23 13:05:34,707 - process_utils - WARNING - Process <MagicMock name='Process().pid' id='1640162238448'> refused to terminate. Sending SIGKILL.
+2026-05-23 13:05:34,707 - process_utils - ERROR - Failed to kill some processes: [<MagicMock name='Process().pid' id='1640162238448'>]
+2026-05-23 13:05:34,829 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:05:34,843 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:34,959 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:05:35,096 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:35,207 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:05:35,217 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:35,750 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:05:35,750 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-23 13:05:35,750 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-23 13:05:36,087 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:36,204 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:05:36,204 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:36,860 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:36,983 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:37,117 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:05:37,235 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:05:37,235 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:05:37,235 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:05:37,777 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:05:37,778 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-23 13:05:37,778 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-23 13:05:38,228 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:06:18,143 - process_utils - INFO - Terminating process tree for PID 19560 (0 children).
+2026-05-23 13:06:18,264 - watchdog - INFO - Registered agent 'stalled_agent' with PID 23440
+2026-05-23 13:06:18,264 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:06:18,828 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 23440) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:06:18,836 - process_utils - INFO - Terminating process tree for PID 23440 (0 children).
+2026-05-23 13:06:18,848 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 23440) killed.
+2026-05-23 13:06:19,399 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:06:19,415 - process_utils - INFO - Terminating process tree for PID 3704 (0 children).
+2026-05-23 13:06:19,415 - process_utils - INFO - Terminating process tree for PID 1234 (0 children).
+2026-05-23 13:06:19,415 - process_utils - WARNING - Process <MagicMock name='Process().pid' id='2362383077904'> refused to terminate. Sending SIGKILL.
+2026-05-23 13:06:19,415 - process_utils - ERROR - Failed to kill some processes: [<MagicMock name='Process().pid' id='2362383077904'>]
+2026-05-23 13:06:19,543 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:06:19,559 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:06:19,677 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:06:19,806 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:06:19,919 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:06:19,919 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:06:20,461 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:06:20,461 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-23 13:06:20,461 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-23 13:06:20,820 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:06:20,924 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:06:20,924 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:06:21,588 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:06:21,697 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:06:21,818 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:06:21,916 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:06:21,916 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:06:21,916 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:06:22,475 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:06:22,475 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-23 13:06:22,475 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-23 13:06:22,925 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:30,471 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-23\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-23 13:09:30,493 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-23\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-23 13:09:30,499 - state_manager - INFO - Cleared state file C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-23\test_state_manager_clear0\states\session_clear_test.state
+2026-05-23 13:09:30,654 - watchdog - INFO - Registered agent 'stalled_agent' with PID 99999
+2026-05-23 13:09:30,654 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:30,880 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 99999) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:09:30,880 - process_utils - WARNING - Process PID 99999 not found for termination.
+2026-05-23 13:09:30,880 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 99999) killed.
+2026-05-23 13:09:31,079 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:31,178 - watchdog - INFO - Registered agent 'stalled_agent' with PID 88888
+2026-05-23 13:09:31,178 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:31,416 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 88888) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:09:31,416 - process_utils - WARNING - Process PID 88888 not found for termination.
+2026-05-23 13:09:31,416 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 88888) killed.
+2026-05-23 13:09:31,600 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:39,920 - process_utils - INFO - Terminating process tree for PID 10556 (0 children).
+2026-05-23 13:09:40,072 - watchdog - INFO - Registered agent 'stalled_agent' with PID 8816
+2026-05-23 13:09:40,072 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:40,609 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 8816) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:09:40,617 - process_utils - INFO - Terminating process tree for PID 8816 (0 children).
+2026-05-23 13:09:40,629 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 8816) killed.
+2026-05-23 13:09:41,179 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:41,204 - process_utils - INFO - Terminating process tree for PID 6140 (0 children).
+2026-05-23 13:09:41,217 - process_utils - INFO - Terminating process tree for PID 1234 (0 children).
+2026-05-23 13:09:41,217 - process_utils - WARNING - Process <MagicMock name='Process().pid' id='2916853474512'> refused to terminate. Sending SIGKILL.
+2026-05-23 13:09:41,225 - process_utils - ERROR - Failed to kill some processes: [<MagicMock name='Process().pid' id='2916853474512'>]
+2026-05-23 13:09:41,348 - watchdog - INFO - Registered agent 'stalled_agent' with PID 99999
+2026-05-23 13:09:41,356 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:41,593 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 99999) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:09:41,594 - process_utils - WARNING - Process PID 99999 not found for termination.
+2026-05-23 13:09:41,594 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 99999) killed.
+2026-05-23 13:09:41,843 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:41,951 - watchdog - INFO - Registered agent 'stalled_agent' with PID 88888
+2026-05-23 13:09:41,960 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:42,193 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 88888) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:09:42,193 - process_utils - WARNING - Process PID 88888 not found for termination.
+2026-05-23 13:09:42,193 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 88888) killed.
+2026-05-23 13:09:42,441 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:42,482 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-24\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-23 13:09:42,496 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-24\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-23 13:09:42,508 - state_manager - INFO - Cleared state file C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-24\test_state_manager_clear0\states\session_clear_test.state
+2026-05-23 13:09:42,668 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:09:42,681 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:42,815 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:09:42,933 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:43,084 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:09:43,084 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:43,642 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:09:43,642 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-23 13:09:43,642 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-23 13:09:43,961 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:44,078 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:09:44,080 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:44,730 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:44,844 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:44,971 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:45,104 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:09:45,104 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:09:45,104 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:09:45,658 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:09:45,658 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-23 13:09:45,658 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-23 13:09:45,997 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:09:57,588 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-25\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-23 13:09:57,588 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-25\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-23 13:09:57,597 - state_manager - ERROR - Failed to save state: Disk full
+2026-05-23 13:10:08,115 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-26\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-23 13:10:08,121 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-26\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-23 13:10:08,121 - state_manager - INFO - Cleared state file C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-26\test_state_manager_clear0\states\session_clear_test.state
+2026-05-23 13:10:18,598 - process_utils - INFO - Terminating process tree for PID 22996 (0 children).
+2026-05-23 13:10:18,760 - watchdog - INFO - Registered agent 'stalled_agent' with PID 19560
+2026-05-23 13:10:18,760 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:19,298 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 19560) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:19,309 - process_utils - INFO - Terminating process tree for PID 19560 (0 children).
+2026-05-23 13:10:19,316 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 19560) killed.
+2026-05-23 13:10:19,862 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:19,893 - process_utils - INFO - Terminating process tree for PID 9108 (0 children).
+2026-05-23 13:10:19,904 - process_utils - INFO - Terminating process tree for PID 1234 (0 children).
+2026-05-23 13:10:19,909 - process_utils - WARNING - Process <MagicMock name='Process().pid' id='2072136362368'> refused to terminate. Sending SIGKILL.
+2026-05-23 13:10:19,909 - process_utils - ERROR - Failed to kill some processes: [<MagicMock name='Process().pid' id='2072136362368'>]
+2026-05-23 13:10:20,025 - watchdog - INFO - Registered agent 'stalled_agent' with PID 99999
+2026-05-23 13:10:20,025 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:20,274 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 99999) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:20,275 - process_utils - WARNING - Process PID 99999 not found for termination.
+2026-05-23 13:10:20,275 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 99999) killed.
+2026-05-23 13:10:20,474 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:20,623 - watchdog - INFO - Registered agent 'stalled_agent' with PID 88888
+2026-05-23 13:10:20,623 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:20,872 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 88888) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:20,873 - process_utils - WARNING - Process PID 88888 not found for termination.
+2026-05-23 13:10:20,873 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 88888) killed.
+2026-05-23 13:10:21,080 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:21,121 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-27\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-23 13:10:21,138 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-27\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-23 13:10:21,147 - state_manager - INFO - Cleared state file C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-27\test_state_manager_clear0\states\session_clear_test.state
+2026-05-23 13:10:21,163 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-27\test_state_manager_load_io_err0\states\session_io_fail_session.state: Permission denied
+2026-05-23 13:10:21,179 - state_manager - ERROR - Failed to save state: Disk failure
+2026-05-23 13:10:21,305 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:10:21,314 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:21,418 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:10:21,545 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:21,658 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:10:21,658 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:22,207 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:22,207 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-23 13:10:22,207 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-23 13:10:22,542 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:22,693 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:10:22,693 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:23,344 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:23,457 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:23,589 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:23,701 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:10:23,701 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:10:23,704 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:24,225 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:24,226 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-23 13:10:24,226 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-23 13:10:24,672 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:46,136 - process_utils - INFO - Terminating process tree for PID 9396 (0 children).
+2026-05-23 13:10:46,285 - watchdog - INFO - Registered agent 'stalled_agent' with PID 2368
+2026-05-23 13:10:46,285 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:46,844 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 2368) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:46,855 - process_utils - INFO - Terminating process tree for PID 2368 (0 children).
+2026-05-23 13:10:46,863 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 2368) killed.
+2026-05-23 13:10:47,409 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:47,430 - process_utils - INFO - Terminating process tree for PID 13184 (0 children).
+2026-05-23 13:10:47,446 - process_utils - INFO - Terminating process tree for PID 1234 (0 children).
+2026-05-23 13:10:47,446 - process_utils - WARNING - Process <MagicMock name='Process().pid' id='2934515036176'> refused to terminate. Sending SIGKILL.
+2026-05-23 13:10:47,446 - process_utils - ERROR - Failed to kill some processes: [<MagicMock name='Process().pid' id='2934515036176'>]
+2026-05-23 13:10:47,457 - recovery - INFO - Registered recovery factory for agent type 'pro'
+2026-05-23 13:10:47,461 - recovery - INFO - Recovering agent 'pro_1' of type 'pro'...
+2026-05-23 13:10:47,463 - recovery - ERROR - No factory registered for agent type 'con'
+2026-05-23 13:10:47,463 - recovery - INFO - Registered recovery factory for agent type 'con'
+2026-05-23 13:10:47,463 - recovery - INFO - Recovering agent 'con_1' of type 'con'...
+2026-05-23 13:10:47,463 - recovery - ERROR - Failed to recover agent 'con_1': Spawn failed
+2026-05-23 13:10:47,582 - watchdog - INFO - Registered agent 'stalled_agent' with PID 99999
+2026-05-23 13:10:47,582 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:47,832 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 99999) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:47,832 - process_utils - WARNING - Process PID 99999 not found for termination.
+2026-05-23 13:10:47,832 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 99999) killed.
+2026-05-23 13:10:48,018 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:48,139 - watchdog - INFO - Registered agent 'stalled_agent' with PID 88888
+2026-05-23 13:10:48,139 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:48,375 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 88888) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:48,377 - process_utils - WARNING - Process PID 88888 not found for termination.
+2026-05-23 13:10:48,377 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 88888) killed.
+2026-05-23 13:10:48,569 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:48,616 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-28\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-23 13:10:48,628 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-28\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-23 13:10:48,643 - state_manager - INFO - Cleared state file C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-28\test_state_manager_clear0\states\session_clear_test.state
+2026-05-23 13:10:48,648 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-28\test_state_manager_load_io_err0\states\session_io_fail_session.state: Permission denied
+2026-05-23 13:10:48,664 - state_manager - ERROR - Failed to save state: Disk failure
+2026-05-23 13:10:48,807 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:10:48,820 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:48,959 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:10:49,077 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:49,187 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:10:49,187 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:49,725 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:49,726 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-23 13:10:49,726 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-23 13:10:50,079 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:50,194 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:10:50,194 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:50,875 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:50,983 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:51,107 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:10:51,223 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:10:51,223 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:10:51,223 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:10:51,790 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:10:51,792 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-23 13:10:51,792 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-23 13:10:52,149 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:27,331 - process_utils - INFO - Terminating process tree for PID 19916 (0 children).
+2026-05-23 13:11:27,442 - watchdog - INFO - Registered agent 'stalled_agent' with PID 8948
+2026-05-23 13:11:27,451 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:11:27,991 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 8948) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:11:28,006 - process_utils - INFO - Terminating process tree for PID 8948 (0 children).
+2026-05-23 13:11:28,012 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 8948) killed.
+2026-05-23 13:11:28,565 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:28,599 - process_utils - INFO - Terminating process tree for PID 12100 (0 children).
+2026-05-23 13:11:28,614 - process_utils - INFO - Terminating process tree for PID 1234 (0 children).
+2026-05-23 13:11:28,618 - process_utils - WARNING - Process <MagicMock name='Process().pid' id='1831938306352'> refused to terminate. Sending SIGKILL.
+2026-05-23 13:11:28,620 - process_utils - ERROR - Failed to kill some processes: [<MagicMock name='Process().pid' id='1831938306352'>]
+2026-05-23 13:11:28,627 - recovery - INFO - Registered recovery factory for agent type 'pro'
+2026-05-23 13:11:28,627 - recovery - INFO - Recovering agent 'pro_1' of type 'pro'...
+2026-05-23 13:11:28,635 - recovery - ERROR - No factory registered for agent type 'con'
+2026-05-23 13:11:28,640 - recovery - INFO - Registered recovery factory for agent type 'con'
+2026-05-23 13:11:28,640 - recovery - INFO - Recovering agent 'con_1' of type 'con'...
+2026-05-23 13:11:28,640 - recovery - ERROR - Failed to recover agent 'con_1': Spawn failed
+2026-05-23 13:11:28,773 - watchdog - INFO - Registered agent 'stalled_agent' with PID 99999
+2026-05-23 13:11:28,773 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:11:28,998 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 99999) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:11:28,998 - process_utils - WARNING - Process PID 99999 not found for termination.
+2026-05-23 13:11:28,998 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 99999) killed.
+2026-05-23 13:11:29,187 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:29,310 - watchdog - INFO - Registered agent 'stalled_agent' with PID 88888
+2026-05-23 13:11:29,310 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:11:29,550 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 88888) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:11:29,552 - process_utils - WARNING - Process PID 88888 not found for termination.
+2026-05-23 13:11:29,552 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 88888) killed.
+2026-05-23 13:11:29,728 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:29,774 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-29\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-23 13:11:29,787 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-29\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-23 13:11:29,796 - state_manager - INFO - Cleared state file C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-29\test_state_manager_clear0\states\session_clear_test.state
+2026-05-23 13:11:29,809 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-29\test_state_manager_load_io_err0\states\session_io_fail_session.state: Permission denied
+2026-05-23 13:11:29,821 - state_manager - ERROR - Failed to save state: Disk failure
+2026-05-23 13:11:29,946 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:11:29,960 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:30,088 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-23 13:11:30,204 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:30,350 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-23 13:11:30,350 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:11:30,895 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:11:30,896 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-23 13:11:30,896 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-23 13:11:31,240 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:31,347 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-23 13:11:31,347 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:11:32,022 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:32,135 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:11:32,258 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:11:32,373 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-23 13:11:32,373 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-23 13:11:32,378 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:11:32,938 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:11:32,938 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-23 13:11:32,938 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-23 13:11:33,391 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:20:57,490 - recovery - INFO - Registered recovery factory for agent type 'mock_agent'
+2026-05-23 13:20:57,585 - watchdog - INFO - Registered agent 'agent_1' with PID 10472
+2026-05-23 13:20:57,585 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:20:57,872 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-30\test_end_to_end_recovery0\states\session_integration_test.state
+2026-05-23 13:20:58,630 - watchdog - ERROR - STALL DETECTED: Agent 'agent_1' (PID 10472) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:20:58,638 - process_utils - INFO - Terminating process tree for PID 10472 (0 children).
+2026-05-23 13:20:58,647 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent_1' (PID 10472) killed.
+2026-05-23 13:20:58,654 - recovery - INFO - Recovering agent 'agent_1' of type 'mock_agent'...
+2026-05-23 13:20:58,662 - watchdog - INFO - Registered agent 'agent_1' with PID 18304
+2026-05-23 13:20:59,688 - watchdog - ERROR - STALL DETECTED: Agent 'agent_1' (PID 18304) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:20:59,689 - process_utils - WARNING - Process PID 18304 not found for termination.
+2026-05-23 13:20:59,689 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent_1' (PID 18304) killed.
+2026-05-23 13:20:59,689 - recovery - INFO - Recovering agent 'agent_1' of type 'mock_agent'...
+2026-05-23 13:20:59,697 - watchdog - INFO - Registered agent 'agent_1' with PID 23956
+2026-05-23 13:21:00,759 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:21:55,862 - recovery - INFO - Registered recovery factory for agent type 'mock_agent'
+2026-05-23 13:21:55,966 - watchdog - INFO - Registered agent 'agent_1' with PID 6372
+2026-05-23 13:21:55,966 - watchdog - INFO - Watchdog daemon started
+2026-05-23 13:21:56,261 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-31\test_end_to_end_recovery0\states\session_integration_test.state
+2026-05-23 13:21:56,516 - watchdog - ERROR - STALL DETECTED: Agent 'agent_1' (PID 6372) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:21:56,525 - process_utils - INFO - Terminating process tree for PID 6372 (0 children).
+2026-05-23 13:21:56,530 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent_1' (PID 6372) killed.
+2026-05-23 13:21:56,532 - recovery - INFO - Recovering agent 'agent_1' of type 'mock_agent'...
+2026-05-23 13:21:56,532 - watchdog - INFO - Registered agent 'agent_1' with PID 17844
+2026-05-23 13:21:57,076 - watchdog - ERROR - STALL DETECTED: Agent 'agent_1' (PID 17844) failed heartbeat! Forcing termination sequence.
+2026-05-23 13:21:57,078 - process_utils - WARNING - Process PID 17844 not found for termination.
+2026-05-23 13:21:57,078 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent_1' (PID 17844) killed.
+2026-05-23 13:21:57,079 - recovery - INFO - Recovering agent 'agent_1' of type 'mock_agent'...
+2026-05-23 13:21:57,081 - watchdog - INFO - Registered agent 'agent_1' with PID 1540
+2026-05-23 13:21:57,539 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 13:21:57,539 - process_utils - WARNING - Process PID 1540 not found for termination.

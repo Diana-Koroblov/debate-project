@@ -1,0 +1,145 @@
+{
+  "ledger": [
+    {
+      "timestamp": "2026-05-23T12:44:32.891722",
+      "agent_id": "pro_agent",
+      "round": 1,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.907572",
+      "agent_id": "con_agent",
+      "round": 1,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.907572",
+      "agent_id": "pro_agent",
+      "round": 2,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.907572",
+      "agent_id": "con_agent",
+      "round": 2,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.907572",
+      "agent_id": "pro_agent",
+      "round": 3,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.907572",
+      "agent_id": "con_agent",
+      "round": 3,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.907572",
+      "agent_id": "pro_agent",
+      "round": 4,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.907572",
+      "agent_id": "con_agent",
+      "round": 4,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "pro_agent",
+      "round": 5,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "con_agent",
+      "round": 5,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "pro_agent",
+      "round": 6,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "con_agent",
+      "round": 6,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "pro_agent",
+      "round": 7,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "con_agent",
+      "round": 7,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "pro_agent",
+      "round": 8,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "con_agent",
+      "round": 8,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "pro_agent",
+      "round": 9,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.923472",
+      "agent_id": "con_agent",
+      "round": 9,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.939286",
+      "agent_id": "pro_agent",
+      "round": 10,
+      "text": "Mock argument",
+      "citations": []
+    },
+    {
+      "timestamp": "2026-05-23T12:44:32.939286",
+      "agent_id": "con_agent",
+      "round": 10,
+      "text": "Mock argument",
+      "citations": []
+    }
+  ],
+  "round": 10
+}

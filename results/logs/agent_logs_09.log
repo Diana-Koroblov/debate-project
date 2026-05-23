@@ -1,0 +1,112 @@
+2026-05-23 15:43:09,525 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-23 15:43:11,003 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-23 15:43:11,158 - watchdog - INFO - Registered agent 'pro_agent' with PID 27192
+2026-05-23 15:43:11,158 - watchdog - INFO - Registered agent 'con_agent' with PID 16368
+2026-05-23 15:43:11,158 - watchdog - INFO - Watchdog daemon started
+2026-05-23 15:43:11,158 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-23 15:43:11,166 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-23 15:43:12,974 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-23 15:43:12,976 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-23 15:43:12,976 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-23 15:43:12,976 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:43:13,002 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-23 15:43:13,002 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-23 15:43:13,002 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-23 15:44:31,906 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-23 15:44:32,018 - watchdog - INFO - Registered agent 'pro_agent' with PID 14052
+2026-05-23 15:44:32,018 - watchdog - INFO - Registered agent 'con_agent' with PID 7080
+2026-05-23 15:44:32,018 - watchdog - INFO - Watchdog daemon started
+2026-05-23 15:44:32,018 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-23 15:44:32,018 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-23 15:44:32,891 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-23 15:44:32,891 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-23 15:44:32,891 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-23 15:44:32,891 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,891 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-23 15:44:32,891 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-23 15:44:32,907 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Argument emitted for round 1
+2026-05-23 15:44:32,907 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Argument emitted for round 2
+2026-05-23 15:44:32,907 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Argument emitted for round 2
+2026-05-23 15:44:32,907 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Argument emitted for round 3
+2026-05-23 15:44:32,907 - agent.judge_worker - INFO - Argument received: pro_agent | Round 3
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Argument emitted for round 3
+2026-05-23 15:44:32,907 - agent.judge_worker - INFO - Argument received: con_agent | Round 3
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Argument emitted for round 4
+2026-05-23 15:44:32,907 - agent.judge_worker - INFO - Argument received: pro_agent | Round 4
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.con_agent - INFO - Argument emitted for round 4
+2026-05-23 15:44:32,907 - agent.judge_worker - INFO - Argument received: con_agent | Round 4
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,907 - agent.pro_agent - INFO - Argument emitted for round 5
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: pro_agent | Round 5
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Argument emitted for round 5
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: con_agent | Round 5
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Argument emitted for round 6
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: pro_agent | Round 6
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Argument emitted for round 6
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: con_agent | Round 6
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Argument emitted for round 7
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: pro_agent | Round 7
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Argument emitted for round 7
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: con_agent | Round 7
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Argument emitted for round 8
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: pro_agent | Round 8
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Argument emitted for round 8
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: con_agent | Round 8
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.pro_agent - INFO - Argument emitted for round 9
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: pro_agent | Round 9
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,923 - agent.con_agent - INFO - Argument emitted for round 9
+2026-05-23 15:44:32,923 - agent.judge_worker - INFO - Argument received: con_agent | Round 9
+2026-05-23 15:44:32,939 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:32,939 - agent.pro_agent - INFO - Argument emitted for round 10
+2026-05-23 15:44:32,939 - agent.judge_worker - INFO - Argument received: pro_agent | Round 10
+2026-05-23 15:44:32,939 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-23 15:44:32,939 - agent.con_agent - INFO - Argument emitted for round 10
+2026-05-23 15:44:32,939 - agent.judge_worker - INFO - Argument received: con_agent | Round 10
+2026-05-23 15:44:32,939 - agent.judge_worker - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-05-23 15:44:32,939 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-23 15:44:33,855 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-23 15:44:33,959 - watchdog - INFO - Registered agent 'pro_agent' with PID 5372
+2026-05-23 15:44:33,959 - watchdog - INFO - Registered agent 'con_agent' with PID 14920
+2026-05-23 15:44:33,959 - watchdog - INFO - Watchdog daemon started
+2026-05-23 15:44:33,959 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-23 15:44:33,959 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-23 15:44:34,848 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-23 15:44:34,848 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-23 15:44:34,848 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-23 15:44:34,848 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-23 15:44:34,848 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-23 15:44:34,848 - agent.judge_worker - ERROR - SYSTEM RESOURCE DEPLETED: Token budget exceeded.
+2026-05-23 15:44:34,848 - process_utils - INFO - Terminating process tree for PID 5372 (0 children).
+2026-05-23 15:44:34,856 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-23 15:44:34,856 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-23 15:44:34,856 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-23 15:44:34,872 - process_utils - INFO - Terminating process tree for PID 14920 (0 children).
+2026-05-23 15:44:38,994 - watchdog - INFO - Watchdog daemon stopped
+2026-05-23 15:44:38,994 - agent.judge_worker - INFO - Executing graceful degradation: Partial history judgment.
+2026-05-23 15:44:38,994 - agent.judge_worker - INFO - TRUNCATED WINNER DECLARED: pro_agent
+2026-05-23 15:44:38,994 - agent.judge_worker - INFO - Termination signal received for agent 'judge_worker'
+2026-05-23 15:44:38,994 - process_utils - WARNING - Process PID 5372 not found for termination.
+2026-05-23 15:44:38,994 - process_utils - WARNING - Process PID 14920 not found for termination.
+2026-05-23 15:44:38,994 - watchdog - INFO - Watchdog daemon stopped

@@ -119,39 +119,39 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 **Definition of Done (DoD):** Logger enforces strict FIFO boundary limits. Watchdog independently catches, terminates, and fully restores a stalled or hanging agent process without leaking OS resources or breaking the debate loop. All files strictly under 150 LOC.
 
 ### 3.1 Logging Infrastructure & FIFO Rotation
-- [ ] 3.1.1 Create `config/logging_config.json` defining schema mappings for rotation parameters.
-- [ ] 3.1.2 Initialize a custom Python logging handler that overrides standard file emissions.
-- [ ] 3.1.3 Implement the strict 500-line limit per file tracking counter mechanism.
-- [ ] 3.1.4 Implement the circular rotation logic (when file 20 hits 500 lines, purge file 1 via FIFO).
-- [ ] 3.1.5 Write a unit test verifying that emitting 10,001 log lines creates exactly 20 files of 500 lines without disk bloating.
+- [x] 3.1.1 Create `config/logging_config.json` defining schema mappings for rotation parameters.
+- [x] 3.1.2 Initialize a custom Python logging handler that overrides standard file emissions.
+- [x] 3.1.3 Implement the strict 500-line limit per file tracking counter mechanism.
+- [x] 3.1.4 Implement the circular rotation logic (when file 20 hits 500 lines, purge file 1 via FIFO).
+- [x] 3.1.5 Write a unit test verifying that emitting 10,001 log lines creates exactly 20 files of 500 lines without disk bloating.
 
 ### 3.2 Watchdog Structure & Process Registration
-- [ ] 3.2.1 Create the `Watchdog` background daemon class using `multiprocessing` or an independent thread.
-  - [ ] 3.2.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 3.2.2 Implement a centralized cross-process dictionary or registry to map `agent_id` to its OS `PID`.
-- [ ] 3.2.3 Build a dynamic storage schema for tracking "heartbeat" timestamps for each unique PID.
-- [ ] 3.2.4 Implement a periodic loop (e.g., runs every 2 seconds) that checks if `current_time - last_heartbeat > timeout_threshold`.
+- [x] 3.2.1 Create the `Watchdog` background daemon class using `multiprocessing` or an independent thread.
+  - [x] 3.2.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 3.2.2 Implement a centralized cross-process dictionary or registry to map `agent_id` to its OS `PID`.
+- [x] 3.2.3 Build a dynamic storage schema for tracking "heartbeat" timestamps for each unique PID.
+- [x] 3.2.4 Implement a periodic loop (e.g., runs every 2 seconds) that checks if `current_time - last_heartbeat > timeout_threshold`.
 
 ### 3.3 Process Interruption & Graceful Termination
-- [ ] 3.3.1 Implement a thread-safe telemetry method for agents to push active heartbeat signals to the tracker.
-- [ ] 3.3.2 Design the forced-termination sequence using `os.kill(pid, signal.SIGKILL)` or `psutil` wrappers.
-- [ ] 3.3.3 Implement cleanup logic to safely release OS pipes/queues associated with the killed PID to prevent zombie processes.
-- [ ] 3.3.4 Log the precise timestamp and cause of the forced termination into the structured log layer.
+- [x] 3.3.1 Implement a thread-safe telemetry method for agents to push active heartbeat signals to the tracker.
+- [x] 3.3.2 Design the forced-termination sequence using `os.kill(pid, signal.SIGKILL)` or `psutil` wrappers.
+- [x] 3.3.3 Implement cleanup logic to safely release OS pipes/queues associated with the killed PID to prevent zombie processes.
+- [x] 3.3.4 Log the precise timestamp and cause of the forced termination into the structured log layer.
 
 ### 3.4 State Recovery & Reinstantiation
-- [ ] 3.4.1 Design a lightweight state serialization scheme that continuously backs up the debate context.
-- [ ] 3.4.2 Implement the extraction utility to read and parse the last valid JSON packet from the backup session logs.
-- [ ] 3.4.3 Write the re-spawning method to instantiate a fresh concrete agent process (`ProDebaterAgent` or `ConDebaterAgent`).
-- [ ] 3.4.4 Inject the extracted history context back into the newly spawned process environment.
-- [ ] 3.4.5 Re-register the new PID with the active communication channels and resume orchestration seamlessly.
+- [x] 3.4.1 Design a lightweight state serialization scheme that continuously backs up the debate context.
+- [x] 3.4.2 Implement the extraction utility to read and parse the last valid JSON packet from the backup session logs.
+- [x] 3.4.3 Write the re-spawning method to instantiate a fresh concrete agent process (`ProDebaterAgent` or `ConDebaterAgent`).
+- [x] 3.4.4 Inject the extracted history context back into the newly spawned process environment.
+- [x] 3.4.5 Re-register the new PID with the active communication channels and resume orchestration seamlessly.
 
 ### 3.5 Automated Verification & Mock Failure Tests
-- [ ] 3.5.1 Write an integration test using `pytest` that spawns a mock agent process.
-  - [ ] 3.5.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 3.5.2 Program the mock agent to deliberately hang (e.g., execute an infinite `time.sleep()`) to simulate an API timeout.
-- [ ] 3.5.3 Assert that the Watchdog successfully detects the expired heartbeat threshold.
-- [ ] 3.5.4 Assert that the original PID is dead and that a new PID has taken over the task.
-- [ ] 3.5.5 Verify the recovered agent correctly reads the prior state and successfully completes a mock debate turn.
+- [x] 3.5.1 Write an integration test using `pytest` that spawns a mock agent process.
+  - [x] 3.5.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 3.5.2 Program the mock agent to deliberately hang (e.g., execute an infinite `time.sleep()`) to simulate an API timeout.
+- [x] 3.5.3 Assert that the Watchdog successfully detects the expired heartbeat threshold.
+- [x] 3.5.4 Assert that the original PID is dead and that a new PID has taken over the task.
+- [x] 3.5.5 Verify the recovered agent correctly reads the prior state and successfully completes a mock debate turn.
 
 ---
 
@@ -160,43 +160,43 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 **Definition of Done (DoD):** Abstract `BaseAgent` fully operational. Implements rigid, multi-process OS-level communication using isolated queues/pipes without race conditions. Enforces strict JSON structural contracts on all inbound/outbound payloads, maintains 0 code duplication, and hits >85% branch coverage via decoupled process testing.
 
 ### 4.1 Abstract Class Infrastructure (OOP & ABC)
-- [ ] 4.1.1 Create `src/debate_sdk/services/base_agent.py` and import Python's abstract base class (`abc`) utilities.
-  - [ ] 4.1.1.1 Verify that `base_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 4.1.2 Define `class BaseAgent(ABC)` and mark `handle_message` as an `@abstractmethod`.
-- [ ] 4.1.3 Implement the base `__init__(self, agent_id: str, config_manager)` constructor tracking runtime state flags (e.g., `self.is_running`).
-- [ ] 4.1.4 Ensure the class docstrings explicitly document the single-responsibility domain model of the base worker.
+- [x] 4.1.1 Create `src/debate_sdk/services/base_agent.py` and import Python's abstract base class (`abc`) utilities.
+  - [x] 4.1.1.1 Verify that `base_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 4.1.2 Define `class BaseAgent(ABC)` and mark `handle_message` as an `@abstractmethod`.
+- [x] 4.1.3 Implement the base `__init__(self, agent_id: str, config_manager)` constructor tracking runtime state flags (e.g., `self.is_running`).
+- [x] 4.1.4 Ensure the class docstrings explicitly document the single-responsibility domain model of the base worker.
 
 ### 4.2 Inter-Process Communication (IPC Primitive Setup)
-- [ ] 4.2.1 Integrate Python's `multiprocessing.Queue` (or `Pipe`) objects into the base agent constructor signatures.
-- [ ] 4.2.2 Assign an isolated, non-shared input channel (`self.inbound_queue`) for the individual agent process to pull messages from.
-- [ ] 4.2.3 Assign a secure outbound routing channel (`self.outbound_queue`) targeted strictly to the Parent Agent router interface.
-- [ ] 4.2.4 Implement a robust, non-blocking encapsulation method for pushing typed dictionary objects into the OS pipeline.
+- [x] 4.2.1 Integrate Python's `multiprocessing.Queue` (or `Pipe`) objects into the base agent constructor signatures.
+- [x] 4.2.2 Assign an isolated, non-shared input channel (`self.inbound_queue`) for the individual agent process to pull messages from.
+- [x] 4.2.3 Assign a secure outbound routing channel (`self.outbound_queue`) targeted strictly to the Parent Agent router interface.
+- [x] 4.2.4 Implement a robust, non-blocking encapsulation method for pushing typed dictionary objects into the OS pipeline.
 
 ### 4.3 The Autonomous Event Loop (`run()`)
-- [ ] 4.3.1 Implement the master `run(self)` process target entry-point function.
-- [ ] 4.3.2 Design the infinite event loop construct (`while self.is_running:`) handling OS runtime interrupts safely.
-- [ ] 4.3.3 Implement blocking extraction (`self.inbound_queue.get(timeout=1.0)`) inside a try-except block to intercept `queue.Empty` events without consuming excessive CPU.
-- [ ] 4.3.4 Create a graceful `terminate(self)` interface method setting `self.is_running = False` to support safe process teardowns.
+- [x] 4.3.1 Implement the master `run(self)` process target entry-point function.
+- [x] 4.3.2 Design the infinite event loop construct (`while self.is_running:`) handling OS runtime interrupts safely.
+- [x] 4.3.3 Implement blocking extraction (`self.inbound_queue.get(timeout=1.0)`) inside a try-except block to intercept `queue.Empty` events without consuming excessive CPU.
+- [x] 4.3.4 Create a graceful `terminate(self)` interface method setting `self.is_running = False` to support safe process teardowns.
 
 ### 4.4 Data Contracts & Schemas (JSON Payload Validation)
-- [ ] 4.4.1 Create robust JSON interface model structures matching the communication schemas defined in PLAN.md (e.g., using `pydantic` or structured dictionary blueprints).
-- [ ] 4.4.2 Implement a centralized `_validate_payload(self, raw_message: str)` string parser in the base class.
-- [ ] 4.4.3 Wrap the payload deserialization step in a rigid `try/except (JSONDecodeError, ValidationError)` container to handle malformed strings.
-- [ ] 4.4.4 Log invalid data structures straight to the Structured Logging system using the `ERROR` level and drop the malicious packet without breaking the loop execution state.
+- [x] 4.4.1 Create robust JSON interface model structures matching the communication schemas defined in PLAN.md (e.g., using `pydantic` or structured dictionary blueprints).
+- [x] 4.4.2 Implement a centralized `_validate_payload(self, raw_message: str)` string parser in the base class.
+- [x] 4.4.3 Wrap the payload deserialization step in a rigid `try/except (JSONDecodeError, ValidationError)` container to handle malformed strings.
+- [x] 4.4.4 Log invalid data structures straight to the Structured Logging system using the `ERROR` level and drop the malicious packet without breaking the loop execution state.
 
 ### 4.5 Token Economy Core Interface Hooks
-- [ ] 4.5.1 Define a concrete `log_token_usage(self, input_tokens: int, output_tokens: int, latency_ms: float)` base method.
-- [ ] 4.5.2 Implement internal logic inside this hook to instantiate a standardized telemetry message object containing timestamps and agent identity metadata.
-- [ ] 4.5.3 Route this metric packet straight into the centralized `ApiGatekeeper` process layer tracking database/file logs.
-- [ ] 4.5.4 Ensure all token tracking logic remains completely separated from generative prompt engineering routines.
+- [x] 4.5.1 Define a concrete `log_token_usage(self, input_tokens: int, output_tokens: int, latency_ms: float)` base method.
+- [x] 4.5.2 Implement internal logic inside this hook to instantiate a standardized telemetry message object containing timestamps and agent identity metadata.
+- [x] 4.5.3 Route this metric packet straight into the centralized `ApiGatekeeper` process layer tracking database/file logs.
+- [x] 4.5.4 Ensure all token tracking logic remains completely separated from generative prompt engineering routines.
 
 ### 4.6 Isolated Decoupled Verification (TDD Boundary Tests)
-- [ ] 4.6.1 Write a dedicated unit testing script: `tests/unit/test_base_agent.py`.
-  - [ ] 4.6.1.1 Verify that `test_base_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 4.6.2 Create a minimal concrete implementation of `BaseAgent` inside the test suite purely for boundary protocol isolation verification.
-- [ ] 4.6.3 Construct a test case that populates a valid `ChildToParentMessage` JSON schema directly into the inbound channel queue.
-- [ ] 4.6.4 Fire up the agent run block briefly, and assert that the object is parsed, validated, and safely hits the concrete `handle_message` execution hook.
-- [ ] 4.6.5 Construct a failure test injecting broken, corrupt raw data, and assert that the contract validator drops the packet with 0 process system crashes.
+- [x] 4.6.1 Write a dedicated unit testing script: `tests/unit/test_base_agent.py` (split into `test_base_agent_core.py`, `test_base_agent_loop.py`, and `test_base_agent_validation.py` to respect the 150-line rule).
+  - [x] 4.6.1.1 Verify that the test files remain strictly under 150 LOC.
+- [x] 4.6.2 Create a minimal concrete implementation of `BaseAgent` inside the test suite purely for boundary protocol isolation verification.
+- [x] 4.6.3 Construct a test case that populates a valid `ChildToParentMessage` JSON schema directly into the inbound channel queue.
+- [x] 4.6.4 Fire up the agent run block briefly, and assert that the object is parsed, validated, and safely hits the concrete `handle_message` execution hook.
+- [x] 4.6.5 Construct a failure test injecting broken, corrupt raw data, and assert that the contract validator drops the packet with 0 process system crashes.
 
 ---
 
@@ -205,46 +205,46 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 **Definition of Done (DoD):** Concrete debater agent subclasses fully operational under strict Persona constraints. Successfully execute real-time internet search queries using independent tool calling, strictly enforce the Direct Rebuttal and Anti-Concession protocols via System Prompts, format outputs in lock-step with `ChildToParentMessage` JSON contract specifications, and pass 100% of functional prompt validation unit tests. No file exceeds 150 LOC.
 
 ### 5.1 Real-Time Intelligence Integration (Web Search Tool)
-- [ ] 5.1.1 Build an abstract interface or wrapper module for the external Search API client within `src/debate_sdk/shared/`.
-  - [ ] 5.1.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 5.1.2 Implement dynamic loading of Search API credentials from the `.env` context layer.
-- [ ] 5.1.3 Construct the search execution mechanism with built-in input string sanitization.
-- [ ] 5.1.4 Implement output parsing logic to format results into structured arrays containing strings of raw content text, source page titles, and reference URLs.
-- [ ] 5.1.5 Add a hard timeout (e.g., < 15 seconds) per search network invocation to prevent pipeline blocking.
+- [x] 5.1.1 Build an abstract interface or wrapper module for the external Search API client within `src/debate_sdk/shared/`.
+  - [x] 5.1.1.1 Verify that the file length remains strictly under 150 LOC.
+- [x] 5.1.2 Implement dynamic loading of Search API credentials from the `.env` context layer.
+- [x] 5.1.3 Construct the search execution mechanism with built-in input string sanitization.
+- [x] 5.1.4 Implement output parsing logic to format results into structured arrays containing strings of raw content text, source page titles, and reference URLs.
+- [x] 5.1.5 Add a hard timeout (e.g., < 15 seconds) per search network invocation to prevent pipeline blocking.
 
 ### 5.2 Intermediate Debater Abstraction (`ChildDebaterAgent`)
-- [ ] 5.2.1 Create `src/debate_sdk/services/child_agent.py` defining `class ChildDebaterAgent(BaseAgent)`.
-  - [ ] 5.2.1.1 Verify that `child_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 5.2.2 Integrate search capability into `ChildDebaterAgent` using direct composition or a reusable capability Mixin class (`WebSearchMixin`).
-- [ ] 5.2.3 Implement the structural orchestration method allowing Gemini to output tool-call requests inside its structured response loop.
-- [ ] 5.2.4 Build the automated serialization module converting agent argument responses into validated `ChildToParentMessage` JSON schemas.
+- [x] 5.2.1 Create `src/debate_sdk/services/child_agent.py` defining `class ChildDebaterAgent(BaseAgent)`.
+  - [x] 5.2.1.1 Verify that `child_agent.py` remains strictly under 150 LOC.
+- [x] 5.2.2 Integrate search capability into `ChildDebaterAgent` using direct composition or a reusable capability Mixin class (`WebSearchMixin`).
+- [x] 5.2.3 Implement the structural orchestration method allowing Gemini to output tool-call requests inside its structured response loop.
+- [x] 5.2.4 Build the automated serialization module converting agent argument responses into validated `ChildToParentMessage` JSON schemas.
 
 ### 5.3 Pro-Stance Agent Realization (`ProDebaterAgent`)
-- [ ] 5.3.1 Create `src/debate_sdk/services/pro_agent.py` implementing `class ProDebaterAgent(ChildDebaterAgent)`.
-  - [ ] 5.3.1.1 Verify that `pro_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 5.3.2 Formulate the explicit astrophysical specialist persona (Drake Equation, exoplanet statistical boundaries, extremophile biology data models).
-- [ ] 5.3.3 Embed Gemini API client instantiation inside the initialization lifecycle.
-- [ ] 5.3.4 Ensure the implementation does not embed any configurations directly into source text strings, routing model configurations straight from `setup.json`.
+- [x] 5.3.1 Create `src/debate_sdk/services/pro_agent.py` implementing `class ProDebaterAgent(ChildDebaterAgent)`.
+  - [x] 5.3.1.1 Verify that `pro_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 5.3.2 Formulate the explicit astrophysical specialist persona (Drake Equation, exoplanet statistical boundaries, extremophile biology data models).
+- [x] 5.3.3 Embed Gemini API client instantiation inside the initialization lifecycle.
+- [x] 5.3.4 Ensure the implementation does not embed any configurations directly into source text strings, routing model configurations straight from `setup.json`.
 
 ### 5.4 Con-Stance Agent Realization (`ConDebaterAgent`)
-- [ ] 5.4.1 Create `src/debate_sdk/services/con_agent.py` implementing `class ConDebaterAgent(ChildDebaterAgent)`.
-  - [ ] 5.4.1.1 Verify that `con_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 5.4.2 Formulate the explicit scientific skeptic persona (Fermi Paradox mechanics, Great Filter theories, physical constraints of space travel, myth debunking).
-- [ ] 5.4.3 Embed Gemini API client execution targets mirroring the sibling agent's operational state to ensure a symmetrical design pattern.
+- [x] 5.4.1 Create `src/debate_sdk/services/con_agent.py` implementing `class ConDebaterAgent(ChildDebaterAgent)`.
+  - [x] 5.4.1.1 Verify that `con_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 5.4.2 Formulate the explicit scientific skeptic persona (Fermi Paradox mechanics, Great Filter theories, physical constraints of space travel, myth debunking).
+- [x] 5.4.3 Embed Gemini API client execution targets mirroring the sibling agent's operational state to ensure a symmetrical design pattern.
 
 ### 5.5 Adversarial Rules & Behavioral Prompt Engineering
-- [ ] 5.5.1 Write the "Direct Rebuttal" instruction section forcing the agent to systematically identify, quote, and log a contradiction against the opponent's prior argument block.
-- [ ] 5.5.2 Write the "Anti-Concession Protocol" instruction explicitly forbidding the agent from utilizing agreeable terms, changing its stance, or people-pleasing.
-- [ ] 5.5.3 Inject strict "Politically Correct" and professional linguistic rules into the system directives to maintain a civil culture of debate.
-- [ ] 5.5.4 Enforce formatting guardrails demanding that all text generations strictly adhere to the defined raw JSON properties layout.
+- [x] 5.5.1 Write the "Direct Rebuttal" instruction section forcing the agent to systematically identify, quote, and log a contradiction against the opponent's prior argument block.
+- [x] 5.5.2 Write the "Anti-Concession Protocol" instruction explicitly forbidding the agent from utilizing agreeable terms, changing its stance, or people-pleasing.
+- [x] 5.5.3 Inject strict "Politically Correct" and professional linguistic rules into the system directives to maintain a civil culture of debate.
+- [x] 5.5.4 Enforce formatting guardrails demanding that all text generations strictly adhere to the defined raw JSON properties layout.
 
 ### 5.6 Functional Persona & Tool Testing (TDD Suite)
-- [ ] 5.6.1 Create `tests/unit/test_child_agents.py` initializing offline pytest fixtures.
-  - [ ] 5.6.1.1 Verify that `test_child_agents.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 5.6.2 Write a test case utilizing a `MockEngine` to simulate a Search API response, asserting that the agent correctly parses the mock data payload.
-- [ ] 5.6.3 Construct a validation test passing an opponent's message block to `ProDebaterAgent`, asserting that its generated output complies with the `ChildToParentMessage` structural contract.
-- [ ] 5.6.4 Construct an identical validation test for `ConDebaterAgent`, verifying character consistency and compliance.
-- [ ] 5.6.5 Assert that any runtime text emissions violating the schema format are dropped by the internal sdk exception-handlers without bringing down the running process thread.
+- [x] 5.6.1 Create `tests/unit/test_child_agents.py` initializing offline pytest fixtures.
+  - [x] 5.6.1.1 Verify that `test_child_agents.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 5.6.2 Write a test case utilizing a `MockEngine` to simulate a Search API response, asserting that the agent correctly parses the mock data payload.
+- [x] 5.6.3 Construct a validation test passing an opponent's message block to `ProDebaterAgent`, asserting that its generated output complies with the `ChildToParentMessage` structural contract.
+- [x] 5.6.4 Construct an identical validation test for `ConDebaterAgent`, verifying character consistency and compliance.
+- [x] 5.6.5 Assert that any runtime text emissions violating the schema format are dropped by the internal sdk exception-handlers without bringing down the running process thread.
 ---
 
 ## Phase 6: Parent Judge & Orchestration
@@ -252,43 +252,43 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 **Definition of Done (DoD):** `ParentJudgeAgent` successfully orchestrated as a centralized authority process. Enforces an unalterable loop of exactly 10 rounds, sanitizes and routes messages exclusively via the Parent-Child topology, processes Gemini-based evaluation via `FinalJudgmentSchema`, strictly outlaws ties by injecting a differential scoring mandate, and recovers gracefully from `BudgetExceededException`. 100% of end-to-end integration tests pass, and all files remain strictly under 150 LOC.
 
 ### 6.1 Orchestrator Process Initialization (`ParentJudgeAgent`)
-- [ ] 6.1.1 Create `src/debate_sdk/services/judge_agent.py` implementing `class ParentJudgeAgent(BaseAgent)`.
-  - [ ] 6.1.1.1 Verify that `judge_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 6.1.2 Initialize the Gemini API client specifically configured for high-reasoning evaluation tasks using parameters from `setup.json`.
-- [ ] 6.1.3 Implement the constructor logic to accept input and outbound OS IPC queues for both child processes (Pro and Con).
-- [ ] 6.1.4 Design a safe subprocess manager loop to spawn, track, and gracefully terminate the underlying child worker instances.
+- [x] 6.1.1 Create `src/debate_sdk/services/judge_agent.py` implementing `class ParentJudgeAgent(BaseAgent)`.
+  - [x] 6.1.1.1 Verify that `judge_agent.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 6.1.2 Initialize the Gemini API client specifically configured for high-reasoning evaluation tasks using parameters from `setup.json`.
+- [x] 6.1.3 Implement the constructor logic to accept input and outbound OS IPC queues for both child processes (Pro and Con).
+- [x] 6.1.4 Design a safe subprocess manager loop to spawn, track, and gracefully terminate the underlying child worker instances.
 
 ### 6.2 Centralized Session State & History Aggregation
-- [ ] 6.2.1 Build an in-memory structured history ledger class inside the SDK layer to log conversation payloads chronologically.
-  - [ ] 6.2.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 6.2.2 Implement a real-time append module that captures and serializes incoming `ChildToParentMessage` objects.
-- [ ] 6.2.3 Enforce runtime history sanitation to strip any formatting anomalies or toxic string tokens before ledger insertion.
-- [ ] 6.2.4 Integrate a persistent live-backup writer that flushes the history state into a backup file on every turn to support Watchdog recovery metrics.
+- [x] 6.2.1 Build an in-memory structured history ledger class inside the SDK layer to log conversation payloads chronologically.
+  - [x] 6.2.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 6.2.2 Implement a real-time append module that captures and serializes incoming `ChildToParentMessage` objects.
+- [x] 6.2.3 Enforce runtime history sanitation to strip any formatting anomalies or toxic string tokens before ledger insertion.
+- [x] 6.2.4 Integrate a persistent live-backup writer that flushes the history state into a backup file on every turn to support Watchdog recovery metrics.
 
 ### 6.3 Procedural Turn Management & Message Routing
-- [ ] 6.3.1 Implement a strict step-counter tracking the total number of processed debate sequences (exactly 10 rounds).
-- [ ] 6.3.2 Write the deterministic routing switch that blocks child-to-child traffic and forces the sequential pipeline layout: `Pro -> Parent -> Con` and `Con -> Parent -> Pro`.
-- [ ] 6.3.3 Design the `ParentToChildRouter` JSON contract builder to bundle appropriate historical context snapshots into the next player's queue prompt.
-- [ ] 6.3.4 Implement a Turn Watchdog ping mechanism inside the loop to verify an agent has updated its heartbeat upon receiving a routed turn.
+- [x] 6.3.1 Implement a strict step-counter tracking the total number of processed debate sequences (exactly 10 rounds).
+- [x] 6.3.2 Write the deterministic routing switch that blocks child-to-child traffic and forces the sequential pipeline layout: `Pro -> Parent -> Con` and `Con -> Parent -> Pro`.
+- [x] 6.3.3 Design the `ParentToChildRouter` JSON contract builder to bundle appropriate historical context snapshots into the next player's queue prompt.
+- [x] 6.3.4 Implement a Turn Watchdog ping mechanism inside the loop to verify an agent has updated its heartbeat upon receiving a routed turn.
 
 ### 6.4 The "No-Tie" Judging Engine & Schema Parsing
-- [ ] 6.4.1 Formulate the core system evaluation directives instructing the judge to grade purely on persuasiveness, rhetoric, and rules adherence, ignoring absolute factual truth.
-- [ ] 6.4.2 Embed the unyielding "Anti-Tie Protocol" into the final prompt context, forcing a clear winner declaration.
-- [ ] 6.4.3 Implement a strict structural Pydantic contract or JSON schema matching `FinalJudgmentSchema` to extract `winner_id`, a mandatory numeric `differential_score`, and an array of granular justifications.
-- [ ] 6.4.4 Build a < 150 LOC verification step for all judge-related business logic modules to maintain modularity.
+- [x] 6.4.1 Formulate the core system evaluation directives instructing the judge to grade purely on persuasiveness, rhetoric, and rules adherence, ignoring absolute factual truth.
+- [x] 6.4.2 Embed the unyielding "Anti-Tie Protocol" into the final prompt context, forcing a clear winner declaration.
+- [x] 6.4.3 Implement a strict structural Pydantic contract or JSON schema matching `FinalJudgmentSchema` to extract `winner_id`, a mandatory numeric `differential_score`, and an array of granular justifications.
+- [x] 6.4.4 Build a < 150 LOC verification step for all judge-related business logic modules to maintain modularity.
 
 ### 6.5 Resilience, Budget Exceptions & Graceful Degradation
-- [ ] 6.5.1 Enclose the entire orchestration routing loop inside a comprehensive try-except block targeting `BudgetExceededException`.
-- [ ] 6.5.2 Implement the budget failure interceptor: when raised by the `ApiGatekeeper`, halt further child process loops immediately.
-- [ ] 6.5.3 Write a fallback evaluation method that passes the partially accumulated history ledger directly to the judge process.
-- [ ] 6.5.4 Force the judge to deliver a structured final decision based on the available history, clearly indicating that the debate was truncated due to exhaustion of runtime resources.
+- [x] 6.5.1 Enclose the entire orchestration routing loop inside a comprehensive try-except block targeting `BudgetExceededException`.
+- [x] 6.5.2 Implement the budget failure interceptor: when raised by the `ApiGatekeeper`, halt further child process loops immediately.
+- [x] 6.5.3 Write a fallback evaluation method that passes the partially accumulated history ledger directly to the judge process.
+- [x] 6.5.4 Force the judge to deliver a structured final decision based on the available history, clearly indicating that the debate was truncated due to exhaustion of runtime resources.
 
 ### 6.6 Automated Integration Testing (End-to-End Simulations)
-- [ ] 6.6.1 Create the integration test suite script at `tests/integration/test_orchestration_flow.py`.
-  - [ ] 6.6.1.1 Verify that `test_orchestration_flow.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 6.6.2 Implement mock child fixtures that respond instantly with valid structured JSON packets to bypass network calls during base protocol verification.
-- [ ] 6.6.3 Write a test case verifying that the orchestrator executes exactly 10 rounds and terminates smoothly.
-- [ ] 6.6.4 Write a validation test mocking a token budget exhaustion event midway through round 4, asserting that the exception is caught, a winner is declared via partial history, and the OS processes shut down cleanly with 0 zombie states.
+- [x] 6.6.1 Create the integration test suite script at `tests/integration/test_orchestration_flow.py`.
+  - [x] 6.6.1.1 Verify that `test_orchestration_flow.py` remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 6.6.2 Implement mock child fixtures that respond instantly with valid structured JSON packets to bypass network calls during base protocol verification.
+- [x] 6.6.3 Write a test case verifying that the orchestrator executes exactly 10 rounds and terminates smoothly.
+- [x] 6.6.4 Write a validation test mocking a token budget exhaustion event midway through round 4, asserting that the exception is caught, a winner is declared via partial history, and the OS processes shut down cleanly with 0 zombie states.
 
 ---
 
