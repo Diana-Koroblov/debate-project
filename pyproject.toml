@@ -19,6 +19,9 @@ dependencies = [
 requires = ["uv_build>=0.11.8,<0.12.0"]
 build-backend = "uv_build"
 
+[project.scripts]
+debate-cli = "debate_project.cli:main"
+
 [tool.ruff]
 line-length = 100
 target-version = "py310"

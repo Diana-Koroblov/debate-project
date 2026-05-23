@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import multiprocessing
-from datetime import datetime
 from typing import Any, Dict
 
 from debate_sdk.services.base_agent import BaseAgent
@@ -12,11 +11,8 @@ from debate_sdk.services.judge_decision_mixin import JudgeDecisionMixin
 from debate_sdk.services.judge_process_mixin import JudgeProcessMixin
 from debate_sdk.shared.contracts import (
     ChildToParentMessage,
-    FinalJudgmentSchema,
-    HeartbeatMessage,
     JudgmentJustification,
     ParentToChildRouter,
-    TokenTelemetry,
 )
 from debate_sdk.shared.exceptions import BudgetExceededException
 from debate_sdk.shared.history import HistoryLedger
@@ -44,21 +40,25 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
         self.pro_inbound: multiprocessing.Queue = multiprocessing.Queue()
         self.con_inbound: multiprocessing.Queue = multiprocessing.Queue()
 
-        # 6.3.1: Strict round tracking (exactly 10 rounds)
+        debate_cfg = config.get("debate", {})
+
+        # 6.3.1: Strict round tracking sourced from validated setup config.
         self.current_round = 0
+        self.max_rounds = int(debate_cfg.get("rounds", 10))
         self.active_agent_id: str | None = None
         self.watchdog = Watchdog(config)
 
         # Mixin & Shared state initialization
-        debate_cfg = config.get("debate", {})
         GeminiMixin.__init__(
             self, model_name=debate_cfg.get("model", "gemini-1.5-pro"),
             system_instruction="You are the Supreme Judge of the Scientific Debate.",
             generation_config={"response_mime_type": "application/json"}
         )
         self.ledger = HistoryLedger()
-        self.state_manager = StateManager(config.get("storage_dir", "results/state"), 
-                                        config.get("session_id", "default"))
+        self.state_manager = StateManager(
+            config.get("storage_dir", "results/state"),
+            config.get("session_id", "default"),
+        )
 
     def start_debate(self) -> None:
         """Initiate the first round by prompting the Pro agent."""
@@ -76,6 +76,8 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
                 return
 
             self.logger.info(f"Argument received: {message.agent_id} | Round {self.current_round}")
+            if self.config.get("stream_events", False):
+                self.send_message(message.model_dump())
             self.ledger.add_entry(message)
             self._backup_state()
             self._route_next_turn()
@@ -83,14 +85,14 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
     def _send_turn_prompt(self, agent_id: str) -> None:
         """6.3.3: Construct and route the ParentToChildRouter contract."""
         self.active_agent_id = agent_id
-        is_last = self.current_round >= 10 and agent_id == "con_agent"
-        
+        is_last = self.current_round >= self.max_rounds and agent_id == "con_agent"
+
         prompt = ParentToChildRouter(
             recipient_id=agent_id,
             history=self.ledger.get_full_history_strings(),
             game_status="ENDING" if is_last else "ACTIVE"
         )
-        
+
         target = self.pro_inbound if agent_id == "pro_agent" else self.con_inbound
         target.put(prompt.model_dump())
 
@@ -99,17 +101,20 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
         if self.active_agent_id == "pro_agent":
             self._send_turn_prompt("con_agent")
         else:
-            if self.current_round < 10:
+            if self.current_round < self.max_rounds:
                 self.current_round += 1
                 self._send_turn_prompt("pro_agent")
             else:
-                self.logger.info("Debate concluded after 10 rounds. Finalizing judgment...")
+                self.logger.info(
+                    "Debate concluded after %s rounds. Finalizing judgment...",
+                    self.max_rounds,
+                )
                 self.active_agent_id = None
-                
+
                 # 6.4: Execute judging phase
                 final_history = self.ledger.get_full_history_strings()
                 judgment = self.evaluate_debate(final_history)
-                
+
                 # Emit the final judgment
                 self.send_message(judgment.model_dump())
                 self.logger.info(f"WINNER DECLARED: {judgment.winner_id}")
@@ -143,17 +148,17 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
         6.5.2: Halt child processes and deliver fallback judgment.
         """
         self.logger.error("SYSTEM RESOURCE DEPLETED: Token budget exceeded.")
-        
+
         # Immediate halt of child processes
         self.terminate_children()
         self.active_agent_id = None
 
         # 6.5.3: Fallback evaluation via partial history
         self.logger.info("Executing graceful degradation: Partial history judgment.")
-        
+
         partial_history = self.ledger.get_full_history_strings()
         judgment = self.evaluate_debate(partial_history)
-        
+
         # 6.5.4: Force the judge to acknowledge truncation in justifications
         judgment.justification.insert(0, JudgmentJustification(
             point="RESOURCE_TRUNCATION",

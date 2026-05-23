@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import logging
 import threading
 import time
 from collections.abc import Callable
@@ -17,6 +16,7 @@ from debate_sdk.shared.gatekeeper_runtime import (
     run_with_retries,
 )
 from debate_sdk.shared.gatekeeper_traffic import TrafficController
+from debate_sdk.shared.logger import setup_logger
 from debate_sdk.shared.version import __version__
 
 
@@ -40,7 +40,7 @@ class ApiGatekeeper:
     ) -> None:
         if getattr(self, "_initialized", False):
             return
-        self._logger = logging.getLogger(__name__)
+        self._logger = setup_logger("gatekeeper")
         self._config = load_rate_limits(config_path)
         self._sleeper = sleeper or time.sleep
         self._max_retries = self._config.get("max_retries", 3)
@@ -91,6 +91,12 @@ class ApiGatekeeper:
         with self._budget_lock:
             self._input_tokens_total += max(task.input_tokens, derived_input)
             self._output_tokens_total += max(task.output_tokens, derived_output)
+            self._logger.info(
+                "token_usage_update input_tokens=%s output_tokens=%s tracked_consumption=%s",
+                self._input_tokens_total,
+                self._output_tokens_total,
+                self._tracked_token_consumption,
+            )
 
     def _run_task(self, task: Task) -> None:
         call_name = getattr(task.api_call, "__name__", repr(task.api_call))
