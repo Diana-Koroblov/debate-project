@@ -38,7 +38,7 @@ def resolve_pricing(model_name: str) -> PricingRate:
     for name, rate in RATES.items():
         if model_name.startswith(name):
             return rate
-    return RATES["gemini-1.5-pro"]
+    return RATES["gemini-2.5-flash"]
 
 
 def parse_token_usage(log_dir: Path | str) -> dict[str, float]:

@@ -8,10 +8,9 @@ from queue import Full
 from typing import Any
 
 from debate_sdk.shared.config import load_rate_limits
-from debate_sdk.shared.exceptions import BudgetExceededException
+from debate_sdk.shared.gatekeeper_budget import record_usage, reserve_budget, token_usage_snapshot
 from debate_sdk.shared.gatekeeper_runtime import (
     Task,
-    derive_usage_from_result,
     ensure_version_compatibility,
     run_with_retries,
 )
@@ -25,7 +24,8 @@ class ApiGatekeeper:
     _instance_lock = threading.Lock()
 
     def __new__(
-        cls, config_path: Path | str | None = None, *, time_fn: Callable[[], float] | None = None,
+        cls, config_path: Path | str | None = None,
+        *, time_fn: Callable[[], float] | None = None,
         sleeper: Callable[[float], None] | None = None,
     ) -> ApiGatekeeper:
         if cls._instance is None:
@@ -35,7 +35,8 @@ class ApiGatekeeper:
         return cls._instance
 
     def __init__(
-        self, config_path: Path | str | None = None, *, time_fn: Callable[[], float] | None = None,
+        self, config_path: Path | str | None = None,
+        *, time_fn: Callable[[], float] | None = None,
         sleeper: Callable[[float], None] | None = None,
     ) -> None:
         if getattr(self, "_initialized", False):
@@ -70,33 +71,7 @@ class ApiGatekeeper:
 
     @property
     def token_usage(self) -> dict[str, float]:
-        return {
-            "input_tokens": float(self._input_tokens_total),
-            "output_tokens": float(self._output_tokens_total),
-            "tracked_consumption": self._tracked_token_consumption,
-            "max_budget_tokens": self._max_budget_tokens,
-        }
-
-    def _reserve_budget(self, projected_cost: float) -> None:
-        with self._budget_lock:
-            projected_total = self._tracked_token_consumption + projected_cost
-            if projected_total > self._max_budget_tokens:
-                raise BudgetExceededException(
-                    "Projected token cost exceeds configured budget limit"
-                )
-            self._tracked_token_consumption = projected_total
-
-    def _record_usage(self, task: Task) -> None:
-        derived_input, derived_output = derive_usage_from_result(task.result)
-        with self._budget_lock:
-            self._input_tokens_total += max(task.input_tokens, derived_input)
-            self._output_tokens_total += max(task.output_tokens, derived_output)
-            self._logger.info(
-                "token_usage_update input_tokens=%s output_tokens=%s tracked_consumption=%s",
-                self._input_tokens_total,
-                self._output_tokens_total,
-                self._tracked_token_consumption,
-            )
+        return token_usage_snapshot(self)
 
     def _run_task(self, task: Task) -> None:
         call_name = getattr(task.api_call, "__name__", repr(task.api_call))
@@ -115,7 +90,7 @@ class ApiGatekeeper:
             task.error = exc
             self._logger.exception("api_call_failure name=%s", call_name)
         finally:
-            self._record_usage(task)
+            record_usage(self, task)
             self._logger.info("api_call_complete name=%s", call_name)
             task.done.set()
 
@@ -130,7 +105,7 @@ class ApiGatekeeper:
     ) -> Any:
         call_name = getattr(api_call, "__name__", repr(api_call))
         self._logger.info("api_call_start name=%s", call_name)
-        self._reserve_budget(float(projected_cost_tokens))
+        reserve_budget(self, float(projected_cost_tokens))
         task = Task(api_call=api_call, args=args, kwargs=kwargs, done=threading.Event())
         task.input_tokens, task.output_tokens = int(input_tokens), int(output_tokens)
         acquired, retry_after_seconds = self._traffic.try_acquire_slot()

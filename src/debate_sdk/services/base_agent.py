@@ -28,15 +28,6 @@ class BaseAgent(ABC):
         inbound_queue: Queue,
         outbound_queue: Queue
     ) -> None:
-        """
-        Initialize the base agent state and communication channels.
-
-        Args:
-            agent_id (str): Unique identifier for the agent.
-            config (Dict[str, Any]): Global setup configuration.
-            inbound_queue (Queue): Input channel for this agent.
-            outbound_queue (Queue): Output channel to the orchestrator.
-        """
         self.agent_id = agent_id
         self.config = config
         self.inbound_queue = inbound_queue
@@ -47,24 +38,11 @@ class BaseAgent(ABC):
 
     @abstractmethod
     def handle_message(self, message: AnyMessage) -> None:
-        """
-        Execute agent-specific logic upon receiving a validated message.
-
-        Args:
-            message (AnyMessage): The validated Pydantic message model.
-        """
+        """Execute agent-specific logic for one validated message."""
         raise NotImplementedError("Subclasses must implement handle_message")
 
     def _validate_payload(self, raw_message: Any) -> AnyMessage | None:
-        """
-        Centralized parser to validate and deserialize IPC payloads.
-
-        Args:
-            raw_message (Any): Raw string or dict from the OS pipeline.
-
-        Returns:
-            AnyMessage | None: Validated model or None if validation fails.
-        """
+        """Validate and deserialize IPC payloads."""
         try:
             if isinstance(raw_message, str):
                 return MESSAGE_ADAPTER.validate_json(raw_message)
@@ -74,33 +52,24 @@ class BaseAgent(ABC):
             return None
 
     def run(self) -> None:
-        """
-        Master entry-point function for the agent process event loop.
-        """
+        """Start the agent event loop."""
         self.is_running = True
         self.logger.info(f"Event loop started for agent '{self.agent_id}'")
-
-        # 3.3.1: Start background heartbeat thread
         hb_thread = threading.Thread(target=self._heartbeat_loop, daemon=True)
         hb_thread.start()
-
         while self.is_running:
             try:
-                # Blocking extraction with timeout for CPU efficiency
                 raw_data = self.inbound_queue.get(timeout=1.0)
                 message = self._validate_payload(raw_data)
                 if message:
                     self.handle_message(message)
             except queue.Empty:
-                # Normal timeout, continue polling
                 continue
             except BudgetExceededException:
-                # 6.5.1: Propagate budget exhaustion to orchestrator
                 raise
             except Exception as exc:
                 self.logger.error(f"Critical error in agent event loop: {exc}")
                 self.terminate()
-
         self.logger.info(f"Event loop terminated for agent '{self.agent_id}'")
 
     def terminate(self) -> None:
@@ -109,7 +78,7 @@ class BaseAgent(ABC):
         self.logger.info(f"Termination signal received for agent '{self.agent_id}'")
 
     def _heartbeat_loop(self) -> None:
-        """Background loop for health telemetry (Sub-task 3.3.1)."""
+        """Background loop for health telemetry."""
         hb_interval = self.config.get("watchdog", {}).get("check_interval_seconds", 2)
         while self.is_running:
             heartbeat = {
@@ -127,18 +96,7 @@ class BaseAgent(ABC):
         latency_ms: float,
         model: str = "unknown"
     ) -> None:
-        """
-        Standardized hook to emit token telemetry for the Token Economy.
-
-        This method instantiates a structured telemetry message and routes
-        it to the outbound OS pipeline for centralized tracking.
-
-        Args:
-            input_tokens (int): Count of tokens sent to the LLM.
-            output_tokens (int): Count of tokens received from the LLM.
-            latency_ms (float): Response time in milliseconds.
-            model (str): Name of the model used.
-        """
+        """Emit token telemetry to the outbound queue."""
         telemetry = {
             "type": "telemetry",
             "agent_id": self.agent_id,
@@ -150,15 +108,7 @@ class BaseAgent(ABC):
         self.send_message(telemetry)
 
     def send_message(self, message: Dict[str, Any]) -> None:
-        """
-        Dispatch a structured payload to the outbound OS pipeline.
-
-        This method encapsulates the non-blocking push to the outbound
-        queue, ensuring consistent logging of all agent output.
-
-        Args:
-            message (Dict[str, Any]): The JSON-serializable dictionary to send.
-        """
+        """Dispatch a structured payload to the outbound OS pipeline."""
         self.logger.debug(f"Sending message: {message}")
         try:
             self.outbound_queue.put_nowait(message)

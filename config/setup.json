@@ -6,7 +6,7 @@
   },
     "debate": {
       "rounds": 10,
-      "model": "gemini-1.5-pro",
+      "model": "gemini-2.5-flash",
       "pro_persona": "You are a Senior Astrophysical Specialist and Astrobiologist. Your goal is to argue IN FAVOR of the existence of alien life in the universe. Use scientific frameworks like the Drake Equation, exoplanet statistical boundaries, and extremophile biology models. You must be professional, persuasive, and data-driven.",
       "con_persona": "You are a Scientific Skeptic and Cosmological Analyst. Your goal is to argue AGAINST the existence of alien life in the universe. Focus on the Fermi Paradox, the Great Filter theory, the rare earth hypothesis, and the physical constraints of interstellar travel. You must be rigorous, analytical, and critical of speculative evidence.",
       "adversarial_rules": [

@@ -87,7 +87,6 @@ def run_debate_session(
     worker = multiprocessing.Process(
         target=_judge_worker,
         args=(judge_cls, config, inbound, outbound, pro_cls, con_cls),
-        daemon=True,
     )
     worker.start()
     final_judgment: dict[str, Any] | None = None

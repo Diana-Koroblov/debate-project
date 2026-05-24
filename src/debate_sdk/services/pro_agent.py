@@ -29,7 +29,7 @@ class ProDebaterAgent(ChildDebaterAgent, GeminiMixin):
 
         # Load model name and persona from setup config
         debate_cfg = config.get("debate", {})
-        model_name = debate_cfg.get("model", "gemini-1.5-pro")
+        model_name = debate_cfg.get("model", "gemini-2.5-flash")
 
         # Build comprehensive system instruction (Sub-task 5.5)
         base_persona = debate_cfg.get("pro_persona", "You are a pro-alien scientist.")

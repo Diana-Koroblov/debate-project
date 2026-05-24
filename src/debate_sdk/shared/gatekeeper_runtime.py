@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
+
+RETRY_DELAY_RE = re.compile(r"retry in (?P<seconds>\d+(?:\.\d+)?)s", re.IGNORECASE)
 
 
 @dataclass
@@ -56,6 +59,14 @@ def is_transient_error(exc: Exception) -> bool:
     return any(token in message for token in ("429", "500", "502", "503", "504"))
 
 
+def retry_delay_seconds(exc: Exception, attempt: int, backoff_base_seconds: float) -> float:
+    delay = backoff_base_seconds * (2**attempt)
+    match = RETRY_DELAY_RE.search(str(exc))
+    if not match:
+        return delay
+    return max(delay, float(match.group("seconds")))
+
+
 def run_with_retries(
     api_call: Callable[..., Any],
     logger: Any,
@@ -73,7 +84,7 @@ def run_with_retries(
         except Exception as exc:
             if not is_transient_error(exc) or attempt >= max_retries:
                 raise RuntimeError(f"API call '{name}' failed: {exc}") from None
-            delay = backoff_base_seconds * (2**attempt)
+            delay = retry_delay_seconds(exc, attempt, backoff_base_seconds)
             logger.warning("api_call_retry name=%s attempt=%s delay=%.3f", name, attempt + 1, delay)
             sleeper(delay)
             attempt += 1

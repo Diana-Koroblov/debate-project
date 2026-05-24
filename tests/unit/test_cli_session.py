@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import multiprocessing
 from pathlib import Path
+from unittest.mock import MagicMock
+
+import pytest
 
 from debate_sdk.sdk.session import DebateSessionOptions, build_session_config, run_debate_session
 
@@ -49,7 +52,7 @@ def test_build_session_config_clamps_rounds(monkeypatch) -> None:
         lambda: {
             "version": "1.00",
             "watchdog": {},
-            "debate": {"rounds": 4, "model": "gemini-1.5-pro"},
+            "debate": {"rounds": 4, "model": "gemini-2.5-flash"},
         },
     )
 
@@ -67,7 +70,7 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
         lambda: {
             "version": "1.00",
             "watchdog": {"timeout_seconds": 1, "check_interval_seconds": 1},
-            "debate": {"rounds": 3, "model": "gemini-1.5-pro"},
+            "debate": {"rounds": 3, "model": "gemini-2.5-flash"},
         },
     )
     monkeypatch.setattr(
@@ -89,3 +92,24 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
     assert events == ["argument", "final_judgment"]
     assert result.final_judgment["winner_id"] == "pro_agent"
     assert result.artifact_path == tmp_path / "session-test.json"
+
+
+def test_run_debate_session_worker_is_not_daemon(monkeypatch) -> None:
+    fake_worker = MagicMock()
+    fake_worker.is_alive.return_value = False
+    process_cls = MagicMock(return_value=fake_worker)
+
+    monkeypatch.setattr(
+        "debate_sdk.sdk.session.load_setup_config",
+        lambda: {
+            "version": "1.00",
+            "watchdog": {"timeout_seconds": 1, "check_interval_seconds": 1},
+            "debate": {"rounds": 1, "model": "gemini-2.5-flash"},
+        },
+    )
+    monkeypatch.setattr("debate_sdk.sdk.session.multiprocessing.Process", process_cls)
+
+    with pytest.raises(RuntimeError, match="final judgment"):
+        run_debate_session(DebateSessionOptions(rounds=1, session_id="daemon-check"))
+
+    assert process_cls.call_args.kwargs.get("daemon", False) is False

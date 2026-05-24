@@ -6,10 +6,12 @@ import os
 from typing import Any, Dict
 
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 from debate_sdk.shared.gatekeeper import ApiGatekeeper
 from debate_sdk.shared.logger import setup_logger
 
+load_dotenv()
 logger = setup_logger("gemini_mixin")
 
 
@@ -31,7 +33,7 @@ class GeminiMixin:
         Initialize the Gemini model.
 
         Args:
-            model_name (str): ID of the Gemini model (e.g., 'gemini-1.5-pro').
+            model_name (str): ID of the Gemini model (e.g., 'gemini-2.5-flash').
             system_instruction (str): The persona-defining system prompt.
             generation_config (Dict[str, Any]): Optional generation parameters.
         """

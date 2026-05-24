@@ -322,8 +322,8 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 - [x] 7.4.4 Verify that `.env` is completely omitted from the git tree tracking, and that a fully populated `.env-example` template is present.
 
 ### 7.5 Production Manual & Technical Documentation Delivery
-- [ ] 7.5.1 Write the root-level `README.md` following the mandatory full user manual standard (Step-by-step setup, configuration reference, CLI workflows).
-- [ ] 7.5.2 Embed clear text-based ASCII architecture diagrams mapping the Layered SDK layout and the Multi-Process IPC queue boundaries.
-- [ ] 7.5.3 Create the mandatory Prompt Book appendix log documenting all core systemic and persona directives utilized across the development cycle.
-- [ ] 7.5.4 Include a complete, unedited copy of a full 10-round debate script output dialogue directly inside the repository documentation stack.
-- [ ] 7.5.5 Ensure the final README contains explicit theoretical mappings connecting system architecture traits to the international ISO/IEC 25010 product quality standards.
+- [x] 7.5.1 Write the root-level `README.md` following the mandatory full user manual standard (Step-by-step setup, configuration reference, CLI workflows).
+- [x] 7.5.2 Embed clear text-based ASCII architecture diagrams mapping the Layered SDK layout and the Multi-Process IPC queue boundaries.
+- [x] 7.5.3 Create the mandatory Prompt Book appendix log documenting all core systemic and persona directives utilized across the development cycle.
+- [x] 7.5.4 Include a complete, unedited copy of a full 10-round debate script output dialogue directly inside the repository documentation stack.
+- [x] 7.5.5 Ensure the final README contains explicit theoretical mappings connecting system architecture traits to the international ISO/IEC 25010 product quality standards.

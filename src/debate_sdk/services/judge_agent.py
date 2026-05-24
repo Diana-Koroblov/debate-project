@@ -21,9 +21,7 @@ from debate_sdk.shared.watchdog import Watchdog
 
 
 class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionMixin):
-    """
-    Centralized authority process that orchestrates the debate.
-    """
+    """Centralized authority process that orchestrates the debate."""
 
     def __init__(
         self,
@@ -41,16 +39,12 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
         self.con_inbound: multiprocessing.Queue = multiprocessing.Queue()
 
         debate_cfg = config.get("debate", {})
-
-        # 6.3.1: Strict round tracking sourced from validated setup config.
         self.current_round = 0
         self.max_rounds = int(debate_cfg.get("rounds", 10))
         self.active_agent_id: str | None = None
         self.watchdog = Watchdog(config)
-
-        # Mixin & Shared state initialization
         GeminiMixin.__init__(
-            self, model_name=debate_cfg.get("model", "gemini-1.5-pro"),
+            self, model_name=debate_cfg.get("model", "gemini-2.5-flash"),
             system_instruction="You are the Supreme Judge of the Scientific Debate.",
             generation_config={"response_mime_type": "application/json"}
         )
@@ -110,12 +104,8 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
                     self.max_rounds,
                 )
                 self.active_agent_id = None
-
-                # 6.4: Execute judging phase
                 final_history = self.ledger.get_full_history_strings()
                 judgment = self.evaluate_debate(final_history)
-
-                # Emit the final judgment
                 self.send_message(judgment.model_dump())
                 self.logger.info(f"WINNER DECLARED: {judgment.winner_id}")
 
@@ -132,9 +122,7 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
         self.state_manager.save_state(state)
 
     def run(self) -> None:
-        """
-        6.5.1: Enclose the orchestration loop in a BudgetExceededException block.
-        """
+        """Run the judge loop with budget-failure handling."""
         try:
             super().run()
         except BudgetExceededException:
@@ -144,27 +132,17 @@ class ParentJudgeAgent(BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionM
             self.terminate()
 
     def _handle_budget_failure(self) -> None:
-        """
-        6.5.2: Halt child processes and deliver fallback judgment.
-        """
+        """Halt child processes and deliver a partial-history judgment."""
         self.logger.error("SYSTEM RESOURCE DEPLETED: Token budget exceeded.")
-
-        # Immediate halt of child processes
         self.terminate_children()
         self.active_agent_id = None
-
-        # 6.5.3: Fallback evaluation via partial history
         self.logger.info("Executing graceful degradation: Partial history judgment.")
-
         partial_history = self.ledger.get_full_history_strings()
         judgment = self.evaluate_debate(partial_history)
-
-        # 6.5.4: Force the judge to acknowledge truncation in justifications
         judgment.justification.insert(0, JudgmentJustification(
             point="RESOURCE_TRUNCATION",
             evidence=f"Debate halted at round {self.current_round} due to budget exhaustion."
         ))
-
         self.send_message(judgment.model_dump())
         self.logger.info(f"TRUNCATED WINNER DECLARED: {judgment.winner_id}")
         self.terminate()
