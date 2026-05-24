@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Dict, List
+from typing import List
 
 from debate_sdk.shared.contracts import FinalJudgmentSchema
 
@@ -22,20 +22,20 @@ class JudgeDecisionMixin:
 
         # 6.4.1 & 6.4.2: Formulate the unyielding "No-Tie" prompt
         eval_prompt = self._build_evaluation_prompt(history)
-        
+
         # 1. Generation (JSON output enforced by Mixin config)
         raw_output = getattr(self, "generate_argument")(eval_prompt)
-        
+
         try:
             data = json.loads(raw_output)
             # 6.4.3: Extract and validate via FinalJudgmentSchema
             judgment = FinalJudgmentSchema(**data)
-            
+
             # Outlaw ties (differential_score must be non-zero)
             if judgment.differential_score == 0:
                 self.logger.warning("Judge attempted a tie. Forcing re-evaluation.")
                 judgment.differential_score = 0.1 # Minimal bias for Pro if tied
-            
+
             return judgment
         except (json.JSONDecodeError, Exception) as exc:
             self.logger.error(f"Judging failure: {exc}")

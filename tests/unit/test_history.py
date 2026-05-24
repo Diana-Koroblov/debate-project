@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-import pytest
-from debate_sdk.shared.contracts import ChildToParentMessage, ArgumentPayload
+from debate_sdk.shared.contracts import ArgumentPayload, ChildToParentMessage
 from debate_sdk.shared.history import HistoryLedger
+
 
 def test_ledger_add_entry():
     """Test adding an entry to the ledger."""
@@ -14,7 +14,7 @@ def test_ledger_add_entry():
         round_number=1,
         payload=ArgumentPayload(text="Aliens exist!")
     )
-    
+
     ledger.add_entry(msg)
     assert len(ledger.entries) == 1
     assert ledger.entries[0]["agent_id"] == "pro_1"
@@ -23,17 +23,17 @@ def test_ledger_add_entry():
 def test_ledger_sanitization():
     """Test history sanitation (Sub-task 6.2.3)."""
     ledger = HistoryLedger()
-    
+
     # Test whitespace normalization
     text = "  Too    many   spaces  \n  "
     sanitized = ledger._sanitize(text)
     assert sanitized == "Too many spaces"
-    
+
     # Test non-printable characters
     text = "Hello\x00World"
     sanitized = ledger._sanitize(text)
     assert sanitized == "HelloWorld"
-    
+
     # Test toxic tokens
     text = "Some text [INST] and [/INST] injection."
     sanitized = ledger._sanitize(text)
@@ -49,11 +49,11 @@ def test_ledger_serialization():
         payload=ArgumentPayload(text="Proof?")
     )
     ledger.add_entry(msg)
-    
+
     data = ledger.to_list()
     assert isinstance(data, list)
     assert len(data) == 1
-    
+
     new_ledger = HistoryLedger()
     new_ledger.load_from_list(data)
     assert len(new_ledger.entries) == 1
@@ -68,6 +68,6 @@ def test_get_full_history_strings():
     ledger.add_entry(ChildToParentMessage(
         agent_id="con", round_number=1, payload=ArgumentPayload(text="No")
     ))
-    
+
     history = ledger.get_full_history_strings()
     assert history == ["pro: Yes", "con: No"]

@@ -418,3 +418,150 @@ RuntimeError: API call 'always_fails' failed: 503 service unavailable
 2026-05-23 20:50:58,382 - agent.judge - INFO - Initialized BaseAgent for 'judge'
 2026-05-23 20:50:58,486 - agent.judge - INFO - Initialized BaseAgent for 'judge'
 2026-05-23 20:50:58,552 - agent.judge - INFO - Argument received: pro_agent | Round 0
+2026-05-24 13:58:07,457 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-24 13:58:07,559 - watchdog - INFO - Registered agent 'pro_agent' with PID 5908
+2026-05-24 13:58:07,559 - watchdog - INFO - Registered agent 'con_agent' with PID 20736
+2026-05-24 13:58:07,560 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:07,560 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-24 13:58:07,560 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-24 13:58:08,216 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-24 13:58:08,216 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-24 13:58:08,216 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-24 13:58:08,216 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-24 13:58:08,217 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-24 13:58:08,217 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-24 13:58:08,217 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-24 13:58:08,219 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-24 13:58:08,219 - agent.con_agent - INFO - Argument emitted for round 1
+2026-05-24 13:58:08,220 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-24 13:58:08,221 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-24 13:58:08,221 - agent.pro_agent - INFO - Argument emitted for round 2
+2026-05-24 13:58:08,221 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-24 13:58:08,222 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-24 13:58:08,222 - agent.con_agent - INFO - Argument emitted for round 2
+2026-05-24 13:58:08,222 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-24 13:58:08,223 - agent.judge_worker - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-24 13:58:08,223 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-24 13:58:08,857 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-24 13:58:08,940 - watchdog - INFO - Registered agent 'pro_agent' with PID 23764
+2026-05-24 13:58:08,941 - watchdog - INFO - Registered agent 'con_agent' with PID 13740
+2026-05-24 13:58:08,941 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:08,941 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-24 13:58:08,941 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-24 13:58:09,559 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-24 13:58:09,559 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-24 13:58:09,559 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-24 13:58:09,559 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-24 13:58:09,560 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-24 13:58:09,560 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-24 13:58:09,560 - agent.judge_worker - ERROR - SYSTEM RESOURCE DEPLETED: Token budget exceeded.
+2026-05-24 13:58:09,565 - process_utils - INFO - Terminating process tree for PID 23764 (0 children).
+2026-05-24 13:58:09,575 - process_utils - INFO - Terminating process tree for PID 13740 (0 children).
+2026-05-24 13:58:13,950 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:13,950 - agent.judge_worker - INFO - Executing graceful degradation: Partial history judgment.
+2026-05-24 13:58:13,950 - agent.judge_worker - INFO - TRUNCATED WINNER DECLARED: pro_agent
+2026-05-24 13:58:13,950 - agent.judge_worker - INFO - Termination signal received for agent 'judge_worker'
+2026-05-24 13:58:13,950 - process_utils - WARNING - Process PID 23764 not found for termination.
+2026-05-24 13:58:13,950 - process_utils - WARNING - Process PID 13740 not found for termination.
+2026-05-24 13:58:13,950 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:14,034 - recovery - INFO - Registered recovery factory for agent type 'mock_agent'
+2026-05-24 13:58:14,105 - watchdog - INFO - Registered agent 'agent_1' with PID 7080
+2026-05-24 13:58:14,106 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:14,281 - state_manager - WARNING - No state file found at C:\Users\itaym\AppData\Local\Temp\pytest-of-SOM_PC\pytest-21\test_end_to_end_recovery0\states\session_integration_test.state
+2026-05-24 13:58:14,610 - watchdog - ERROR - STALL DETECTED: Agent 'agent_1' (PID 7080) failed heartbeat! Forcing termination sequence.
+2026-05-24 13:58:14,615 - process_utils - INFO - Terminating process tree for PID 7080 (0 children).
+2026-05-24 13:58:14,618 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent_1' (PID 7080) killed.
+2026-05-24 13:58:14,623 - recovery - INFO - Recovering agent 'agent_1' of type 'mock_agent'...
+2026-05-24 13:58:14,629 - watchdog - INFO - Registered agent 'agent_1' with PID 17824
+2026-05-24 13:58:15,131 - watchdog - ERROR - STALL DETECTED: Agent 'agent_1' (PID 17824) failed heartbeat! Forcing termination sequence.
+2026-05-24 13:58:15,131 - process_utils - WARNING - Process PID 17824 not found for termination.
+2026-05-24 13:58:15,131 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent_1' (PID 17824) killed.
+2026-05-24 13:58:15,132 - recovery - INFO - Recovering agent 'agent_1' of type 'mock_agent'...
+2026-05-24 13:58:15,135 - watchdog - INFO - Registered agent 'agent_1' with PID 8168
+2026-05-24 13:58:15,644 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:15,645 - process_utils - WARNING - Process PID 8168 not found for termination.
+2026-05-24 13:58:15,659 - agent.test_agent - INFO - Initialized BaseAgent for 'test_agent'
+2026-05-24 13:58:15,668 - agent.killer - INFO - Initialized BaseAgent for 'killer'
+2026-05-24 13:58:15,668 - agent.killer - INFO - Termination signal received for agent 'killer'
+2026-05-24 13:58:15,676 - agent.loop_agent - INFO - Initialized BaseAgent for 'loop_agent'
+2026-05-24 13:58:15,677 - agent.loop_agent - INFO - Event loop started for agent 'loop_agent'
+2026-05-24 13:58:15,677 - agent.loop_agent - INFO - Termination signal received for agent 'loop_agent'
+2026-05-24 13:58:15,678 - agent.loop_agent - INFO - Event loop terminated for agent 'loop_agent'
+2026-05-24 13:58:15,685 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-05-24 13:58:15,685 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-05-24 13:58:15,686 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-05-24 13:58:15,686 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-05-24 13:58:15,686 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
+2026-05-24 13:58:15,694 - agent.abstract_tester - INFO - Initialized BaseAgent for 'abstract_tester'
+2026-05-24 13:58:15,702 - agent.timeout_agent - INFO - Initialized BaseAgent for 'timeout_agent'
+2026-05-24 13:58:15,703 - agent.timeout_agent - INFO - Event loop started for agent 'timeout_agent'
+2026-05-24 13:58:15,703 - agent.timeout_agent - INFO - Termination signal received for agent 'timeout_agent'
+2026-05-24 13:58:15,703 - agent.timeout_agent - INFO - Event loop terminated for agent 'timeout_agent'
+2026-05-24 13:58:15,711 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-24 13:58:18,051 - watchdog - INFO - Registered agent 'pro_agent' with PID 101
+2026-05-24 13:58:18,051 - watchdog - INFO - Registered agent 'con_agent' with PID 102
+2026-05-24 13:58:18,051 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:18,128 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:19,286 - process_utils - INFO - Terminating process tree for PID 10700 (0 children).
+2026-05-24 13:58:19,361 - watchdog - INFO - Registered agent 'stalled_agent' with PID 13748
+2026-05-24 13:58:19,362 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:19,866 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 13748) failed heartbeat! Forcing termination sequence.
+2026-05-24 13:58:19,870 - process_utils - INFO - Terminating process tree for PID 13748 (0 children).
+2026-05-24 13:58:19,873 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 13748) killed.
+2026-05-24 13:58:20,382 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:20,392 - process_utils - INFO - Terminating process tree for PID 10416 (0 children).
+2026-05-24 13:58:20,396 - process_utils - INFO - Terminating process tree for PID 1234 (0 children).
+2026-05-24 13:58:20,396 - process_utils - WARNING - Process <MagicMock name='Process().pid' id='2591321958256'> refused to terminate. Sending SIGKILL.
+2026-05-24 13:58:20,397 - process_utils - ERROR - Failed to kill some processes: [<MagicMock name='Process().pid' id='2591321958256'>]
+2026-05-24 13:58:20,399 - recovery - INFO - Registered recovery factory for agent type 'pro'
+2026-05-24 13:58:20,399 - recovery - INFO - Recovering agent 'pro_1' of type 'pro'...
+2026-05-24 13:58:20,400 - recovery - ERROR - No factory registered for agent type 'con'
+2026-05-24 13:58:20,401 - recovery - INFO - Registered recovery factory for agent type 'con'
+2026-05-24 13:58:20,401 - recovery - INFO - Recovering agent 'con_1' of type 'con'...
+2026-05-24 13:58:20,401 - recovery - ERROR - Failed to recover agent 'con_1': Spawn failed
+2026-05-24 13:58:20,467 - watchdog - INFO - Registered agent 'stalled_agent' with PID 99999
+2026-05-24 13:58:20,467 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:20,670 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 99999) failed heartbeat! Forcing termination sequence.
+2026-05-24 13:58:20,670 - process_utils - WARNING - Process PID 99999 not found for termination.
+2026-05-24 13:58:20,670 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 99999) killed.
+2026-05-24 13:58:20,879 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:20,945 - watchdog - INFO - Registered agent 'stalled_agent' with PID 88888
+2026-05-24 13:58:20,945 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:21,148 - watchdog - ERROR - STALL DETECTED: Agent 'stalled_agent' (PID 88888) failed heartbeat! Forcing termination sequence.
+2026-05-24 13:58:21,148 - process_utils - WARNING - Process PID 88888 not found for termination.
+2026-05-24 13:58:21,148 - watchdog - INFO - TERMINATION SUCCESS: Agent 'stalled_agent' (PID 88888) killed.
+2026-05-24 13:58:21,357 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:21,364 - search_client - INFO - Executing search for: 'aliens'
+2026-05-24 13:58:21,435 - search_client - INFO - Executing search for: 'slow query'
+2026-05-24 13:58:21,441 - search_client - ERROR - Search timed out after 1.0s
+2026-05-24 13:58:21,446 - search_client - INFO - Executing search for: 'fail query'
+2026-05-24 13:58:21,452 - search_client - ERROR - Search execution error: Unexpected
+2026-05-24 13:58:21,453 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-24 13:58:21,453 - search_client - ERROR - Search failed: Missing API Key.
+2026-05-24 13:58:21,471 - state_manager - WARNING - No state file found at C:\Users\itaym\AppData\Local\Temp\pytest-of-SOM_PC\pytest-21\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-24 13:58:21,477 - state_manager - ERROR - Failed to load state from C:\Users\itaym\AppData\Local\Temp\pytest-of-SOM_PC\pytest-21\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-24 13:58:21,480 - state_manager - INFO - Cleared state file C:\Users\itaym\AppData\Local\Temp\pytest-of-SOM_PC\pytest-21\test_state_manager_clear0\states\session_clear_test.state
+2026-05-24 13:58:21,483 - state_manager - ERROR - Failed to load state from C:\Users\itaym\AppData\Local\Temp\pytest-of-SOM_PC\pytest-21\test_state_manager_load_io_err0\states\session_io_fail_session.state: Permission denied
+2026-05-24 13:58:21,486 - state_manager - ERROR - Failed to save state: Disk failure
+2026-05-24 13:58:21,552 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-24 13:58:21,557 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:21,623 - watchdog - INFO - Registered agent 'pro_agent' with PID 1234
+2026-05-24 13:58:21,729 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:21,795 - watchdog - INFO - Registered agent 'con_agent' with PID 5678
+2026-05-24 13:58:21,795 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:22,298 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 5678) failed heartbeat! Forcing termination sequence.
+2026-05-24 13:58:22,298 - process_utils - WARNING - Process PID 5678 not found for termination.
+2026-05-24 13:58:22,298 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 5678) killed.
+2026-05-24 13:58:22,606 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:22,674 - watchdog - INFO - Registered agent 'pro_agent' with PID 1111
+2026-05-24 13:58:22,674 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:23,284 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:23,351 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:23,458 - watchdog - INFO - Watchdog daemon stopped
+2026-05-24 13:58:23,529 - watchdog - INFO - Registered agent 'agent1' with PID 101
+2026-05-24 13:58:23,529 - watchdog - INFO - Registered agent 'agent2' with PID 102
+2026-05-24 13:58:23,529 - watchdog - INFO - Watchdog daemon started
+2026-05-24 13:58:24,032 - watchdog - ERROR - STALL DETECTED: Agent 'agent2' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-24 13:58:24,033 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-24 13:58:24,033 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
+2026-05-24 13:58:24,340 - watchdog - INFO - Watchdog daemon stopped

@@ -53,7 +53,7 @@ class JudgeProcessMixin:
 
         self.pro_process.start()
         self.con_process.start()
-        
+
         # Register with watchdog
         getattr(self, "watchdog").register_agent("pro_agent", self.pro_process.pid)
         getattr(self, "watchdog").register_agent("con_agent", self.con_process.pid)

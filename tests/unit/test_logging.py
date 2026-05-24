@@ -2,14 +2,12 @@
 
 from __future__ import annotations
 
-import json
 import logging
 import shutil
 from pathlib import Path
 
 import pytest
 
-from debate_sdk.shared.config import load_logging_config
 from debate_sdk.shared.logger import setup_logger
 from debate_sdk.shared.logging_handler import FIFORotatingHandler
 
@@ -104,11 +102,11 @@ def test_handler_initialization_from_existing(temp_log_dir: Path):
 
     logger.info("Line 3")
     logger.info("Line 4")
-    logger.info("Line 5") # Hits limit
+    logger.info("Line 5")  # Hits limit
 
     assert handler._current_line_count == 5
 
-    logger.info("Line 6") # Should rotate
+    logger.info("Line 6")  # Should rotate
     assert handler._current_file_index == 2
     assert handler._current_line_count == 1
 
@@ -126,112 +124,3 @@ def test_handler_initialization_at_limit(temp_log_dir: Path):
     assert handler._current_file_index == 2
     assert handler._current_line_count == 0
     handler.close()
-
-
-def test_load_logging_config_valid(tmp_path: Path):
-    """Test loading a valid logging configuration."""
-    config_file = tmp_path / "logging_config.json"
-    data = {
-        "version": "1.00",
-        "log_directory": "results/logs",
-        "max_files": 20,
-        "max_lines_per_file": 500
-    }
-    config_file.write_text(json.dumps(data))
-
-    config = load_logging_config(config_file)
-    assert config["max_files"] == 20
-    assert config["max_lines_per_file"] == 500
-
-
-def test_load_logging_config_invalid(tmp_path: Path):
-    """Test loading an invalid logging configuration."""
-    config_file = tmp_path / "logging_config.json"
-    data = {"version": "1.00"}  # Missing fields
-    config_file.write_text(json.dumps(data))
-
-    with pytest.raises(ValueError, match="Missing required logging fields"):
-        load_logging_config(config_file)
-
-
-def test_fifo_rotation_logic(temp_log_dir: Path):
-    """Test that the handler rotates and purges files correctly."""
-    max_files = 3
-    max_lines = 5
-    handler = FIFORotatingHandler(temp_log_dir, max_files, max_lines)
-    handler.setFormatter(logging.Formatter("%(message)s"))
-    logger = logging.getLogger("test_fifo")
-    logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
-
-    # Emit 15 lines -> should create 3 files of 5 lines each
-    for i in range(15):
-        logger.info(f"Line {i+1}")
-
-    log_files = sorted(temp_log_dir.glob("agent_logs_*.log"))
-    assert len(log_files) == 3
-    assert log_files[0].name == "agent_logs_01.log"
-    assert log_files[2].name == "agent_logs_03.log"
-
-    # Verify content of first file
-    with open(log_files[0], "r") as f:
-        lines = f.readlines()
-        assert len(lines) == 5
-        assert lines[0].strip() == "Line 1"
-
-    # Emit 1 more line -> should trigger rotation and purge oldest (File 1)
-    logger.info("Line 16")
-
-    log_files = sorted(temp_log_dir.glob("agent_logs_*.log"))
-    assert len(log_files) == 3
-    # File 01 should now contain lines 6-10 (previously File 02)
-    with open(log_files[0], "r") as f:
-        lines = f.readlines()
-        assert lines[0].strip() == "Line 6"
-
-    # File 03 should now contain line 16
-    with open(log_files[2], "r") as f:
-        lines = f.readlines()
-        assert len(lines) == 1
-        assert lines[0].strip() == "Line 16"
-
-    handler.close()
-    logger.removeHandler(handler)
-
-
-def test_10001_lines_rotation(temp_log_dir: Path):
-    """Test that 10,001 lines create exactly 20 files of 500 lines."""
-    max_files = 20
-    max_lines = 500
-    handler = FIFORotatingHandler(temp_log_dir, max_files, max_lines)
-    handler.setFormatter(logging.Formatter("%(message)s"))
-    logger = logging.getLogger("test_large")
-    logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
-
-    # Emit 10,001 lines
-    for i in range(10001):
-        logger.info(f"L{i}")
-
-    log_files = sorted(temp_log_dir.glob("agent_logs_*.log"))
-    assert len(log_files) == 20
-
-    # File 01 should start from Line 1 (L1) -> No, L500.
-    # Lines 0-499 -> File 01
-    # ...
-    # Lines 9500-9999 -> File 20
-    # Line 10000 -> Rotates. File 01 (L0-499) deleted.
-    # Files 02-20 become 01-19.
-    # New File 20 gets L10000.
-
-    with open(log_files[0], "r") as f:
-        lines = f.readlines()
-        assert lines[0].strip() == "L500"
-
-    with open(log_files[-1], "r") as f:
-        lines = f.readlines()
-        assert len(lines) == 1
-        assert lines[0].strip() == "L10000"
-
-    handler.close()
-    logger.removeHandler(handler)

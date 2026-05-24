@@ -7,13 +7,13 @@ from typing import Any, Dict
 
 from debate_sdk.services.child_agent import ChildDebaterAgent
 from debate_sdk.services.gemini_mixin import GeminiMixin
-from debate_sdk.shared.contracts import ParentToChildRouter
+
 
 class ProDebaterAgent(ChildDebaterAgent, GeminiMixin):
     """
     Agent specialized in arguing for the existence of extraterrestrial life.
-    
-    This agent utilizes the Gemini API to generate evidence-based arguments 
+
+    This agent utilizes the Gemini API to generate evidence-based arguments
     and the Search tool to gather real-time astrophysical data.
     """
 
@@ -26,11 +26,11 @@ class ProDebaterAgent(ChildDebaterAgent, GeminiMixin):
     ) -> None:
         """Initialize the pro agent with persona and Gemini model."""
         super().__init__(agent_id, config, inbound_queue, outbound_queue)
-        
+
         # Load model name and persona from setup config
         debate_cfg = config.get("debate", {})
         model_name = debate_cfg.get("model", "gemini-1.5-pro")
-        
+
         # Build comprehensive system instruction (Sub-task 5.5)
         base_persona = debate_cfg.get("pro_persona", "You are a pro-alien scientist.")
         rules = "\n".join(debate_cfg.get("adversarial_rules", []))
@@ -38,8 +38,8 @@ class ProDebaterAgent(ChildDebaterAgent, GeminiMixin):
         system_prompt = f"{base_persona}\n\nDEBATE PROTOCOLS:\n{rules}\n\n{fmt}"
 
         GeminiMixin.__init__(
-            self, 
-            model_name=model_name, 
+            self,
+            model_name=model_name,
             system_instruction=system_prompt,
             generation_config={"response_mime_type": "application/json"}
         )

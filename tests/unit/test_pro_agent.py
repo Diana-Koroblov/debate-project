@@ -15,8 +15,8 @@ from debate_sdk.shared.contracts import ParentToChildRouter
 def mock_config():
     """Mock configuration."""
     return {
-        "version": "1.00", 
-        "watchdog": {"timeout_seconds": 10}, 
+        "version": "1.00",
+        "watchdog": {"timeout_seconds": 10},
         "debate": {
             "model": "gemini-test",
             "pro_persona": "Test Persona"
@@ -35,7 +35,7 @@ def test_pro_agent_initialization(mock_config):
 def test_pro_agent_execute_turn(mock_config):
     """Test the turn execution and argument emission."""
     inbound, outbound = Queue(), Queue()
-    
+
     with patch("google.generativeai.GenerativeModel") as mock_model_cls:
         # Setup mock chat response
         mock_model = mock_model_cls.return_value
@@ -43,17 +43,17 @@ def test_pro_agent_execute_turn(mock_config):
         mock_response = MagicMock()
         mock_response.text = '{"text": "Life is everywhere.", "citations": []}'
         mock_chat.send_message.return_value = mock_response
-        
+
         agent = ProDebaterAgent("pro_v1", mock_config, inbound, outbound)
-        
+
         prompt = ParentToChildRouter(
             recipient_id="pro_v1",
             history=["Opponent: Why life?", "Me: Because stats."],
             game_status="ACTIVE"
         )
-        
+
         agent._execute_turn(prompt)
-        
+
         # Verify argument reached outbound queue
         msg = outbound.get(timeout=1.0)
         assert msg["type"] == "argument"

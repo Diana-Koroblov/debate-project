@@ -32,11 +32,11 @@ def _normalize_setup_config(raw: dict[str, Any]) -> dict[str, Any]:
     debate = raw["debate"]
     if not isinstance(debate, dict):
         raise ValueError("Field 'debate' must be a JSON object")
-    
+
     for field in ("rounds", "model", "pro_persona", "con_persona"):
         if field not in debate:
             raise ValueError(f"Missing required debate field: {field}")
-    
+
     if not isinstance(debate["rounds"], int) or debate["rounds"] <= 0:
         raise ValueError("debate.rounds must be a positive integer")
 

@@ -7,14 +7,13 @@ from typing import Any, Dict
 
 from debate_sdk.services.child_agent import ChildDebaterAgent
 from debate_sdk.services.gemini_mixin import GeminiMixin
-from debate_sdk.shared.contracts import ParentToChildRouter
 
 
 class ConDebaterAgent(ChildDebaterAgent, GeminiMixin):
     """
     Agent specialized in arguing against the existence of extraterrestrial life.
 
-    This agent utilizes the Gemini API to generate skeptical, evidence-based 
+    This agent utilizes the Gemini API to generate skeptical, evidence-based
     arguments and the Search tool to gather real-time cosmological data.
     """
 

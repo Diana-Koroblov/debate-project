@@ -309,17 +309,17 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 - [x] 7.2.3 Ensure that unexpected process terminations caught by the Watchdog are visualized smoothly in the terminal without breaking the screen alignment.
 
 ### 7.3 Token Cost Accounting & Analytical Summaries
-- [ ] 7.3.1 Build the end-of-debate summary parser to read total transaction metrics from the structured Gatekeeper logs.
-- [ ] 7.3.2 Implement a tabular data generator to render a complete Cost Breakdown matrix on the terminal screen (Input Tokens, Output Tokens, Total Costs).
-  - [ ] 7.3.2.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 7.3.3 Apply the exact Google Gemini API pricing metrics (cost per million tokens) to ensure the mathematical calculations are precise.
-- [ ] 7.3.4 Log the final economic summary report directly into a clean JSON tracking artifact inside the `results/` directory.
+- [x] 7.3.1 Build the end-of-debate summary parser to read total transaction metrics from the structured Gatekeeper logs.
+- [x] 7.3.2 Implement a tabular data generator to render a complete Cost Breakdown matrix on the terminal screen (Input Tokens, Output Tokens, Total Costs).
+  - [x] 7.3.2.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 7.3.3 Apply the exact Google Gemini API pricing metrics (cost per million tokens) to ensure the mathematical calculations are precise.
+- [x] 7.3.4 Log the final economic summary report directly into a clean JSON tracking artifact inside the `results/` directory.
 
 ### 7.4 Final Quality Gates & Static Code Audits
-- [ ] 7.4.1 Execute a comprehensive automated line-of-code (LOC) scan across all source files, ensuring exactly 0 `.py` files exceed 150 lines.
-- [ ] 7.4.2 Run the final full test suite via `uv run pytest tests/ --cov=src` and assert that total branch and statement coverage meets or exceeds 85%.
-- [ ] 7.4.3 Execute the final strict linter check via `uv run ruff check .` ensuring exactly 0 warnings or code style violations remain.
-- [ ] 7.4.4 Verify that `.env` is completely omitted from the git tree tracking, and that a fully populated `.env-example` template is present.
+- [x] 7.4.1 Execute a comprehensive automated line-of-code (LOC) scan across all source files, ensuring exactly 0 `.py` files exceed 150 lines.
+- [x] 7.4.2 Run the final full test suite via `uv run pytest tests/ --cov=src` and assert that total branch and statement coverage meets or exceeds 85%.
+- [x] 7.4.3 Execute the final strict linter check via `uv run ruff check .` ensuring exactly 0 warnings or code style violations remain.
+- [x] 7.4.4 Verify that `.env` is completely omitted from the git tree tracking, and that a fully populated `.env-example` template is present.
 
 ### 7.5 Production Manual & Technical Documentation Delivery
 - [ ] 7.5.1 Write the root-level `README.md` following the mandatory full user manual standard (Step-by-step setup, configuration reference, CLI workflows).

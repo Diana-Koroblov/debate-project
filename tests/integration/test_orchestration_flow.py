@@ -8,6 +8,7 @@ import time
 from typing import Any, Dict
 
 import pytest
+
 from debate_sdk.services.child_agent import ChildDebaterAgent
 from debate_sdk.services.judge_agent import ParentJudgeAgent
 from debate_sdk.shared.contracts import FinalJudgmentSchema, JudgmentJustification
@@ -54,13 +55,13 @@ def integration_config():
     }
 
 
-def _run_judge(judge_cls: type[ParentJudgeAgent], config: Dict[str, Any], 
+def _run_judge(judge_cls: type[ParentJudgeAgent], config: Dict[str, Any],
                inbound: multiprocessing.Queue, outbound: multiprocessing.Queue,
                pro_cls: type[ChildDebaterAgent], con_cls: type[ChildDebaterAgent]):
     """Worker to start debate and run judge event loop."""
     import os
     os.environ["GOOGLE_API_KEY"] = "mock-key"
-    
+
     judge = judge_cls("judge_worker", config, inbound, outbound)
     judge.spawn_children(pro_cls=pro_cls, con_cls=con_cls)
     judge.start_debate()
@@ -74,7 +75,7 @@ def test_full_debate_orchestration(integration_config):
 
     try:
         judge_proc = multiprocessing.Process(
-            target=_run_judge, 
+            target=_run_judge,
             args=(MockJudge, integration_config, inbound, outbound, MockDebater, MockDebater)
         )
         judge_proc.start()
@@ -92,7 +93,7 @@ def test_full_debate_orchestration(integration_config):
 
         assert final_msg is not None
         assert final_msg["winner_id"] == "pro_agent"
-        
+
     finally:
         if 'judge_proc' in locals() and judge_proc.is_alive():
             judge_proc.terminate()
@@ -106,7 +107,7 @@ def test_budget_exhaustion_mid_debate(integration_config):
     try:
         # Use MockBudgetJudge which raises BudgetExceededException
         judge_proc = multiprocessing.Process(
-            target=_run_judge, 
+            target=_run_judge,
             args=(MockBudgetJudge, integration_config, inbound, outbound, MockDebater, MockDebater)
         )
         judge_proc.start()

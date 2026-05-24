@@ -13,7 +13,7 @@ def test_load_setup_config_valid(tmp_path):
         "version": "1.00",
         "watchdog": {"timeout_seconds": 10, "check_interval_seconds": 2},
         "debate": {
-            "rounds": 10, 
+            "rounds": 10,
             "model": "gemini",
             "pro_persona": "Pro Persona",
             "con_persona": "Con Persona"
@@ -32,7 +32,7 @@ def test_load_setup_config_invalid(tmp_path):
         "version": "1.00",
         "watchdog": {"timeout_seconds": 0},
         "debate": {
-            "rounds": 10, 
+            "rounds": 10,
             "model": "gemini",
             "pro_persona": "Pro Persona",
             "con_persona": "Con Persona"
@@ -58,7 +58,7 @@ def test_load_setup_config_invalid_interval(tmp_path):
         "version": "1.00",
         "watchdog": {"timeout_seconds": 10, "check_interval_seconds": 0},
         "debate": {
-            "rounds": 10, 
+            "rounds": 10,
             "model": "gemini",
             "pro_persona": "Pro Persona",
             "con_persona": "Con Persona"

@@ -45,11 +45,11 @@ class ChildDebaterAgent(BaseAgent, WebSearchMixin):
         Execute a debate turn: generate, parse, and emit.
         """
         self.logger.info(f"Agent '{self.agent_id}' generating argument...")
-        
+
         # Subclasses must provide generate_argument (usually via GeminiMixin)
         user_prompt = f"OPPONENT HISTORY:\n{prompt.history}\n\nGenerate your structured response."
         raw_output = getattr(self, "generate_argument")(user_prompt)
-        
+
         try:
             data = json.loads(raw_output)
             argument_text = data.get("text")
@@ -58,7 +58,7 @@ class ChildDebaterAgent(BaseAgent, WebSearchMixin):
                 return
 
             citations = data.get("citations", [])
-            
+
             # Emission
             self.emit_argument(
                 text=argument_text,

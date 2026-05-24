@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 import google.generativeai as genai
-from pydantic import BaseModel
 
 from debate_sdk.shared.gatekeeper import ApiGatekeeper
 from debate_sdk.shared.logger import setup_logger
@@ -17,8 +16,8 @@ logger = setup_logger("gemini_mixin")
 class GeminiMixin:
     """
     Encapsulates Google Gemini API orchestration.
-    
-    This mixin manages model instantiation, system prompts, 
+
+    This mixin manages model instantiation, system prompts,
     and structured output generation.
     """
 
@@ -38,7 +37,13 @@ class GeminiMixin:
         """
         api_key = os.getenv("GOOGLE_API_KEY", "")
         if not api_key:
-            logger.error("GOOGLE_API_KEY not found in environment.")
+            try:
+                raise EnvironmentError(
+                    "No API key inputted in the settings. "
+                    "Please set GOOGLE_API_KEY."
+                )
+            except EnvironmentError:
+                logger.exception("API key configuration exception")
 
         genai.configure(api_key=api_key)
         self._model = genai.GenerativeModel(

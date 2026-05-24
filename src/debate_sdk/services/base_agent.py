@@ -1,11 +1,4 @@
-"""Abstract Base Class for all multi-process debate agents.
-
-This module establishes the core architectural contract for agents in the
-debate swarm. It manages the agent's identity, its lifecycle state, and
-the OS-level IPC primitives (Queues) required for decoupled communication.
-By centralizing these primitives here, we ensure consistent behavior and
-message routing across all concrete debater and judge instances.
-"""
+"""Base class for debate agents communicating over multiprocessing queues."""
 
 from __future__ import annotations
 
@@ -26,21 +19,7 @@ from debate_sdk.shared.logger import setup_logger
 
 
 class BaseAgent(ABC):
-    """
-    Abstract base class defining the core lifecycle and interface for debate agents.
-
-    This class follows the single-responsibility principle, managing agent
-    identification, runtime state tracking, and IPC communication while
-    delegating message handling to concrete implementations.
-
-    Attributes:
-        agent_id (str): Unique identifier for the agent instance.
-        config (Dict[str, Any]): Validated configuration dictionary.
-        inbound_queue (Queue): OS-level channel for receiving messages.
-        outbound_queue (Queue): OS-level channel for sending messages.
-        is_running (bool): Flag indicating if the agent's loop is active.
-        logger (logging.Logger): Logger instance specific to the agent's identity.
-    """
+    """Core lifecycle and IPC contract for concrete debate agents."""
 
     def __init__(
         self,
