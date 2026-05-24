@@ -297,16 +297,16 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 **Definition of Done (DoD):** Interactive CLI fully realized as a thin presentation layer, supporting full keyboard menu navigation. Successfully initiates and streams multi-process debate states in real-time, generates a complete post-debate Token Cost Breakdown, and passes 100% of final quality gates (0 Ruff errors, >85% test coverage, and 0 files exceeding 150 LOC). Mandatory README.md and Prompt Log fully compiled.
 
 ### 7.1 Interactive Terminal Menu Construction (UI/UX Layer)
-- [ ] 7.1.1 Build the interactive terminal interface menu utilizing keyboard navigation (e.g., standard arrow keys using `inquirer` or manual key-loop polling).
-  - [ ] 7.1.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
-- [ ] 7.1.2 Ensure the presentation layer contains exactly 0 business or routing logic, delegating all invocation targets to the core SDK layer.
-- [ ] 7.1.3 Implement input boundaries allowing the user to select parameters (e.g., number of rounds up to 10) dynamically parsed from setup frameworks.
-- [ ] 7.1.4 Apply custom terminal styling (e.g., using `colorama` or ANSI escape codes) to clearly differentiate between Pro, Con, and Parent Agent messaging.
+- [x] 7.1.1 Build the interactive terminal interface menu utilizing keyboard navigation (e.g., standard arrow keys using `inquirer` or manual key-loop polling).
+  - [x] 7.1.1.1 Verify that the file length remains strictly under 150 LOC; if the file exceeds this boundary, aggressively modularize and split the logic into separate components (e.g., using Mixins, Utilities, or Strategy files).
+- [x] 7.1.2 Ensure the presentation layer contains exactly 0 business or routing logic, delegating all invocation targets to the core SDK layer.
+- [x] 7.1.3 Implement input boundaries allowing the user to select parameters (e.g., number of rounds up to 10) dynamically parsed from setup frameworks.
+- [x] 7.1.4 Apply custom terminal styling (e.g., using `colorama` or ANSI escape codes) to clearly differentiate between Pro, Con, and Parent Agent messaging.
 
 ### 7.2 Live Stream Orchestration & Live Visualization
-- [ ] 7.2.1 Build a thread-safe stdout streaming hook within the CLI to intercept and display ongoing IPC queue message transactions in real-time.
-- [ ] 7.2.2 Implement a standard dynamic progress bar or loading spinner representing LLM thinking and search execution states.
-- [ ] 7.2.3 Ensure that unexpected process terminations caught by the Watchdog are visualized smoothly in the terminal without breaking the screen alignment.
+- [x] 7.2.1 Build a thread-safe stdout streaming hook within the CLI to intercept and display ongoing IPC queue message transactions in real-time.
+- [x] 7.2.2 Implement a standard dynamic progress bar or loading spinner representing LLM thinking and search execution states.
+- [x] 7.2.3 Ensure that unexpected process terminations caught by the Watchdog are visualized smoothly in the terminal without breaking the screen alignment.
 
 ### 7.3 Token Cost Accounting & Analytical Summaries
 - [ ] 7.3.1 Build the end-of-debate summary parser to read total transaction metrics from the structured Gatekeeper logs.
