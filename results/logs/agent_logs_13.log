@@ -418,3 +418,129 @@ RuntimeError: API call 'always_fails' failed: 503 service unavailable
 2026-05-24 14:42:56,025 - process_utils - WARNING - Process PID 102 not found for termination.
 2026-05-24 14:42:56,025 - watchdog - INFO - TERMINATION SUCCESS: Agent 'agent2' (PID 102) killed.
 2026-05-24 14:42:56,333 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 10:07:57,361 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 10:07:58,325 - gemini_mixin - ERROR - API key configuration exception
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\services\gemini_mixin.py", line 43, in __init__
+    raise EnvironmentError(
+OSError: No API key inputted in the settings. Please set GOOGLE_API_KEY.
+2026-05-26 10:07:58,359 - watchdog - INFO - Registered agent 'pro_agent' with PID 29596
+2026-05-26 10:07:58,363 - watchdog - INFO - Registered agent 'con_agent' with PID 13172
+2026-05-26 10:07:58,363 - watchdog - INFO - Watchdog daemon started
+2026-05-26 10:07:58,363 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 10:07:58,380 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 10:07:59,406 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 10:07:59,406 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-26 10:07:59,406 - gemini_mixin - ERROR - API key configuration exception
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\services\gemini_mixin.py", line 43, in __init__
+    raise EnvironmentError(
+OSError: No API key inputted in the settings. Please set GOOGLE_API_KEY.
+2026-05-26 10:07:59,428 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 10:07:59,428 - search_client - WARNING - TAVILY_API_KEY not found in environment.
+2026-05-26 10:07:59,428 - gemini_mixin - ERROR - API key configuration exception
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\services\gemini_mixin.py", line 43, in __init__
+    raise EnvironmentError(
+OSError: No API key inputted in the settings. Please set GOOGLE_API_KEY.
+2026-05-26 10:07:59,428 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 10:07:59,455 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 10:07:59,458 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 10:07:59,458 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:08:02,773 - gatekeeper - ERROR - api_call_failure name=send_message
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper.py", line 79, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper_runtime.py", line 86, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'send_message' failed: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2026-05-26 10:08:02,773 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 10:08:02,773 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:08:02,773 - gemini_mixin - ERROR - Gemini generation failed: API call 'send_message' failed: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2026-05-26 10:08:02,773 - agent.pro_agent - ERROR - Critical error in agent event loop: API call 'send_message' failed: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2026-05-26 10:08:02,773 - agent.pro_agent - INFO - Termination signal received for agent 'pro_agent'
+2026-05-26 10:08:02,773 - agent.pro_agent - INFO - Event loop terminated for agent 'pro_agent'
+2026-05-26 10:08:12,465 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 29596) failed heartbeat! Forcing termination sequence.
+2026-05-26 10:08:12,473 - process_utils - WARNING - Process PID 29596 not found for termination.
+2026-05-26 10:08:12,473 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 29596) killed.
+2026-05-26 10:22:27,741 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 10:22:29,575 - watchdog - INFO - Registered agent 'pro_agent' with PID 6676
+2026-05-26 10:22:29,577 - watchdog - INFO - Registered agent 'con_agent' with PID 32804
+2026-05-26 10:22:29,579 - watchdog - INFO - Watchdog daemon started
+2026-05-26 10:22:29,579 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 10:22:29,581 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 10:22:30,995 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 10:22:30,995 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 10:22:31,031 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 10:22:31,031 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 10:22:31,031 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 10:22:31,032 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:22:42,282 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 10:22:42,282 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 10:22:42,282 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:22:42,282 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-26 10:22:42,282 - agent.judge_cli - INFO - Argument received: pro_agent | Round 1
+2026-05-26 10:22:42,288 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-26 10:22:42,288 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:23:06,502 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 10:23:06,502 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 10:23:06,502 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:23:06,504 - agent.con_agent - INFO - Argument emitted for round 1
+2026-05-26 10:23:06,504 - agent.judge_cli - INFO - Argument received: con_agent | Round 1
+2026-05-26 10:23:06,511 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 10:23:06,513 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:23:08,884 - gatekeeper - WARNING - api_call_retry name=send_message attempt=1 delay=5.198
+2026-05-26 10:23:14,265 - gatekeeper - WARNING - api_call_retry name=send_message attempt=2 delay=59.800
+2026-05-26 10:24:29,126 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 10:24:29,126 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=4000.0
+2026-05-26 10:24:29,126 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:24:29,126 - agent.pro_agent - INFO - Argument emitted for round 2
+2026-05-26 10:24:29,139 - agent.judge_cli - INFO - Argument received: pro_agent | Round 2
+2026-05-26 10:24:29,142 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-26 10:24:29,142 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:24:48,568 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 10:24:48,568 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=4000.0
+2026-05-26 10:24:48,568 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:24:48,568 - agent.con_agent - INFO - Argument emitted for round 2
+2026-05-26 10:24:48,568 - agent.judge_cli - INFO - Argument received: con_agent | Round 2
+2026-05-26 10:24:48,568 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 10:24:48,568 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:25:10,026 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 10:25:10,026 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=6000.0
+2026-05-26 10:25:10,026 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:25:10,026 - agent.pro_agent - INFO - Argument emitted for round 3
+2026-05-26 10:25:10,026 - agent.judge_cli - INFO - Argument received: pro_agent | Round 3
+2026-05-26 10:25:10,031 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-26 10:25:10,031 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:25:24,604 - gatekeeper - WARNING - api_call_retry name=send_message attempt=1 delay=49.471
+2026-05-26 10:26:32,932 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 10:26:32,932 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=6000.0
+2026-05-26 10:26:32,932 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:26:32,932 - agent.con_agent - INFO - Argument emitted for round 3
+2026-05-26 10:26:32,932 - agent.judge_cli - INFO - Argument received: con_agent | Round 3
+2026-05-26 10:26:32,948 - agent.judge_cli - INFO - Debate concluded after 3 rounds. Finalizing judgment...
+2026-05-26 10:26:32,948 - agent.judge_cli - INFO - Supreme Judge is evaluating the final arguments...
+2026-05-26 10:26:32,948 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 10:26:42,655 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 6676) failed heartbeat! Forcing termination sequence.
+2026-05-26 10:26:42,655 - process_utils - INFO - Terminating process tree for PID 6676 (0 children).
+2026-05-26 10:26:42,672 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 6676) killed.
+2026-05-26 10:26:44,680 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 32804) failed heartbeat! Forcing termination sequence.
+2026-05-26 10:26:44,680 - process_utils - INFO - Terminating process tree for PID 32804 (0 children).
+2026-05-26 10:26:44,696 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 32804) killed.
+2026-05-26 10:26:52,273 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 10:26:52,273 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 10:26:52,273 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 10:26:52,273 - agent.judge_cli - ERROR - Judging failure: Invalid \escape: line 4 column 413 (char 465)
+2026-05-26 10:26:52,273 - agent.judge_cli - INFO - WINNER DECLARED: pro_agent

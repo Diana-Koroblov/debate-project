@@ -1,0 +1,6 @@
+2026-05-26 10:05:16,610 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 10:05:17,760 - gemini_mixin - ERROR - API key configuration exception
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\services\gemini_mixin.py", line 43, in __init__
+    raise EnvironmentError(
+OSError: No API key inputted in the settings. Please set GOOGLE_API_KEY.

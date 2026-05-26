@@ -51,12 +51,17 @@ def derive_usage_from_result(result: Any) -> tuple[int, int]:
 
 def is_transient_error(exc: Exception) -> bool:
     status = getattr(exc, "status", None) or getattr(exc, "status_code", None)
-    if isinstance(status, int) and (status == 429 or 500 <= status < 600):
+    message = str(exc).lower()
+
+    # 429/Quota errors are treated as fatal to prevent heartbeat stalls
+    if (isinstance(status, int) and status == 429) or "quota" in message or "429" in message:
+        return False
+
+    if isinstance(status, int) and (500 <= status < 600):
         return True
     if isinstance(exc, (TimeoutError, ConnectionError)):
         return True
-    message = str(exc)
-    return any(token in message for token in ("429", "500", "502", "503", "504"))
+    return any(token in message for token in ("500", "502", "503", "504"))
 
 
 def retry_delay_seconds(exc: Exception, attempt: int, backoff_base_seconds: float) -> float:

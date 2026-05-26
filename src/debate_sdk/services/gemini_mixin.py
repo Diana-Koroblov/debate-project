@@ -55,7 +55,12 @@ class GeminiMixin:
         )
         self._chat = self._model.start_chat(history=[])
         # Initialize gatekeeper (Singleton)
-        self._gatekeeper = ApiGatekeeper("config/rate_limits.json")
+        self._gatekeeper = ApiGatekeeper(
+            "config/rate_limits.json",
+            agent_id=getattr(self, "agent_id", "unknown"),
+            model_name=model_name,
+            outbound_queue=getattr(self, "outbound_queue", None)
+        )
 
     def generate_argument(self, prompt: str) -> str:
         """

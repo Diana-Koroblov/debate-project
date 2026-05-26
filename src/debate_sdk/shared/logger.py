@@ -38,7 +38,8 @@ def setup_logger(name: str = "debate_project") -> logging.Logger:
     handler = FIFORotatingHandler(
         log_dir=config["log_directory"],
         max_files=config["max_files"],
-        max_lines=config["max_lines_per_file"]
+        max_lines=config["max_lines_per_file"],
+        encoding="utf-8"
     )
 
     formatter = logging.Formatter(

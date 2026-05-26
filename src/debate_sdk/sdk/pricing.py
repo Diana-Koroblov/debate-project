@@ -3,15 +3,9 @@
 from __future__ import annotations
 
 import json
-import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
-
-TOKEN_RE = re.compile(
-    r"token_usage_update input_tokens=(?P<input>\d+) "
-    r"output_tokens=(?P<output>\d+) tracked_consumption=(?P<tracked>[0-9.]+)"
-)
 
 
 @dataclass(frozen=True)
@@ -41,33 +35,26 @@ def resolve_pricing(model_name: str) -> PricingRate:
     return RATES["gemini-2.5-flash"]
 
 
-def parse_token_usage(log_dir: Path | str) -> dict[str, float]:
-    """Read the latest cumulative token totals from gatekeeper log lines."""
-    usage = {"input_tokens": 0.0, "output_tokens": 0.0, "tracked_consumption": 0.0}
-    log_root = Path(log_dir)
-    for path in sorted(log_root.glob("agent_logs_*.log")):
-        for line in path.read_text(encoding="utf-8").splitlines():
-            match = TOKEN_RE.search(line)
-            if not match:
-                continue
-            usage = {
-                "input_tokens": float(match.group("input")),
-                "output_tokens": float(match.group("output")),
-                "tracked_consumption": float(match.group("tracked")),
-            }
-    return usage
-
-
-def build_cost_summary(model_name: str, log_dir: Path | str) -> dict[str, Any]:
+def build_cost_summary(
+    model_name: str, 
+    usage: dict[str, float]
+) -> dict[str, Any]:
     """Build a terminal-friendly and artifact-friendly cost summary."""
-    usage = parse_token_usage(log_dir)
     rate = resolve_pricing(model_name)
-    input_cost = usage["input_tokens"] / 1_000_000 * rate.input_per_million
-    output_cost = usage["output_tokens"] / 1_000_000 * rate.output_per_million
+    input_tokens = usage.get("input_tokens", 0.0)
+    output_tokens = usage.get("output_tokens", 0.0)
+    
+    input_cost = input_tokens / 1_000_000 * rate.input_per_million
+    output_cost = output_tokens / 1_000_000 * rate.output_per_million
+    
     return {
         "model": model_name,
         "pricing": asdict(rate),
-        "usage": usage,
+        "usage": {
+            "input_tokens": input_tokens,
+            "output_tokens": output_tokens,
+            "tracked_consumption": usage.get("tracked_consumption", 0.0)
+        },
         "costs": {
             "input_cost_usd": round(input_cost, 6),
             "output_cost_usd": round(output_cost, 6),

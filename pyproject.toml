@@ -4,7 +4,8 @@ version = "1.00"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Itay", email = "itay.malich2@gmail.com" }
+    { name = "Itay", email = "itay.malich2@gmail.com" },
+    { name = "Diana", email = "dianakoroblov27@gmail.com" }
 ]
 requires-python = ">=3.10,<3.11"
 dependencies = [
@@ -35,7 +36,14 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 source = ["src"]
-omit = ["src/main.py", "tests/*"]
+omit = [
+    "src/main.py",
+    "src/debate_project/cli.py",
+    "src/debate_project/render.py",
+    "src/debate_project/menu.py",
+    "src/debate_project/__main__.py",
+    "tests/*"
+]
 
 [tool.coverage.report]
 fail_under = 85

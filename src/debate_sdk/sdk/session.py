@@ -90,6 +90,8 @@ def run_debate_session(
     )
     worker.start()
     final_judgment: dict[str, Any] | None = None
+    token_usage = {"input_tokens": 0, "output_tokens": 0}
+    total_chars = 0
     try:
         while worker.is_alive() or not outbound.empty():
             try:
@@ -98,9 +100,18 @@ def run_debate_session(
                 if on_idle:
                     on_idle()
                 continue
-            if isinstance(event, dict) and on_event:
+            if not isinstance(event, dict):
+                continue
+            if on_event:
                 on_event(event)
-            if isinstance(event, dict) and event.get("type") == "final_judgment":
+            if event.get("type") == "argument":
+                payload = event.get("payload", {})
+                total_chars += len(payload.get("text", ""))
+            if event.get("type") == "telemetry":
+                usage = event.get("usage", {})
+                token_usage["input_tokens"] += usage.get("input", 0)
+                token_usage["output_tokens"] += usage.get("output", 0)
+            if event.get("type") == "final_judgment":
                 final_judgment = event
                 break
         worker.join(timeout=5)
@@ -110,7 +121,13 @@ def run_debate_session(
             worker.join(timeout=5)
     if final_judgment is None:
         raise RuntimeError("Debate session ended without a final judgment")
-    log_dir = load_logging_config()["log_directory"]
-    cost_summary = build_cost_summary(config["debate"]["model"], log_dir)
+    
+    # Heuristic fallback if live tokens are zero (estimated_tokens = total_chars // 4)
+    if token_usage["input_tokens"] == 0 and token_usage["output_tokens"] == 0:
+        estimated = total_chars // 4
+        token_usage["input_tokens"] = estimated // 2
+        token_usage["output_tokens"] = estimated // 2
+
+    cost_summary = build_cost_summary(config["debate"]["model"], token_usage)
     artifact_path = write_cost_summary(cost_summary, "results", config["session_id"])
     return DebateSessionResult(final_judgment, cost_summary, artifact_path)

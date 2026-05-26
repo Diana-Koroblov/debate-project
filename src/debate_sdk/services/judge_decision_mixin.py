@@ -57,5 +57,7 @@ class JudgeDecisionMixin:
             "3. ANTI-TIE PROTOCOL: You MUST declare a winner. A tie is a failure.\n"
             "4. Assign a differential score between 1 and 10 representing the margin of victory.\n"
             "5. Provide granular justifications for your decision.\n"
-            "6. Output MUST be valid JSON matching the FinalJudgmentSchema."
+            "6. Output MUST be valid JSON. You MUST use exactly these keys: "
+            "\"winner_id\", \"differential_score\", and \"justification\". "
+            "Do NOT use a key named \"winner\"; use \"winner_id\"."
         )

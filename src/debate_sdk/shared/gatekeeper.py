@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import multiprocessing
 import threading
 import time
 from collections.abc import Callable
@@ -27,6 +28,9 @@ class ApiGatekeeper:
         cls, config_path: Path | str | None = None,
         *, time_fn: Callable[[], float] | None = None,
         sleeper: Callable[[float], None] | None = None,
+        agent_id: str | None = None,
+        model_name: str | None = None,
+        outbound_queue: multiprocessing.Queue | None = None,
     ) -> ApiGatekeeper:
         if cls._instance is None:
             with cls._instance_lock:
@@ -38,10 +42,16 @@ class ApiGatekeeper:
         self, config_path: Path | str | None = None,
         *, time_fn: Callable[[], float] | None = None,
         sleeper: Callable[[float], None] | None = None,
+        agent_id: str | None = None,
+        model_name: str | None = None,
+        outbound_queue: multiprocessing.Queue | None = None,
     ) -> None:
         if getattr(self, "_initialized", False):
             return
         self._logger = setup_logger("gatekeeper")
+        self._agent_id = agent_id
+        self._model_name = model_name
+        self._outbound_queue = outbound_queue
         self._config = load_rate_limits(config_path)
         self._sleeper = sleeper or time.sleep
         self._max_retries = self._config.get("max_retries", 3)
@@ -91,6 +101,21 @@ class ApiGatekeeper:
             self._logger.exception("api_call_failure name=%s", call_name)
         finally:
             record_usage(self, task)
+            if self._outbound_queue is not None:
+                try:
+                    self._outbound_queue.put_nowait({
+                        "type": "telemetry",
+                        "agent_id": self._agent_id or "unknown",
+                        "model": self._model_name or "gemini-2.5-flash",
+                        "usage": {
+                            "input": int(task.input_tokens or 0),
+                            "output": int(task.output_tokens or 0)
+                        },
+                        "latency_ms": float(0.0),
+                        "timestamp": float(time.time())
+                    })
+                except Exception as exc:
+                    self._logger.warning("Failed to dispatch telemetry: %s", exc)
             self._logger.info("api_call_complete name=%s", call_name)
             task.done.set()
 

@@ -102,8 +102,8 @@ class BaseAgent(ABC):
             "agent_id": self.agent_id,
             "model": model,
             "usage": {"input": input_tokens, "output": output_tokens},
-            "latency_ms": latency_ms,
-            "timestamp": datetime.utcnow().isoformat()
+            "latency_ms": float(latency_ms),
+            "timestamp": float(time.time())
         }
         self.send_message(telemetry)
 

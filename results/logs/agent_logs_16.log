@@ -1,0 +1,522 @@
+2026-05-26 11:15:12,629 - agent.judge_1 - ERROR - SYSTEM RESOURCE DEPLETED: Token budget exceeded.
+2026-05-26 11:15:12,634 - agent.judge_1 - INFO - Executing graceful degradation: Partial history judgment.
+2026-05-26 11:15:12,635 - agent.judge_1 - INFO - TRUNCATED WINNER DECLARED: pro_agent
+2026-05-26 11:15:12,635 - agent.judge_1 - INFO - Termination signal received for agent 'judge_1'
+2026-05-26 11:15:12,660 - agent.judge - INFO - Initialized BaseAgent for 'judge'
+2026-05-26 11:15:12,787 - agent.judge - INFO - Initialized BaseAgent for 'judge'
+2026-05-26 11:15:12,892 - agent.judge - INFO - Argument received: pro_agent | Round 0
+2026-05-26 11:15:31,081 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 11:15:31,893 - watchdog - INFO - Registered agent 'pro_agent' with PID 32200
+2026-05-26 11:15:31,893 - watchdog - INFO - Registered agent 'con_agent' with PID 35396
+2026-05-26 11:15:31,893 - watchdog - INFO - Watchdog daemon started
+2026-05-26 11:15:31,893 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 11:15:31,893 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 11:15:32,610 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 11:15:32,629 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 11:15:32,629 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 11:15:32,641 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 11:15:32,641 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 11:15:32,641 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 11:15:32,979 - gatekeeper - WARNING - api_call_retry name=send_message attempt=1 delay=41.074
+2026-05-26 11:16:14,291 - gatekeeper - WARNING - api_call_retry name=send_message attempt=2 delay=59.762
+2026-05-26 11:17:14,295 - gatekeeper - WARNING - api_call_retry name=send_message attempt=3 delay=59.760
+2026-05-26 11:17:26,092 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 11:17:26,893 - watchdog - INFO - Registered agent 'pro_agent' with PID 20516
+2026-05-26 11:17:26,895 - watchdog - INFO - Registered agent 'con_agent' with PID 35124
+2026-05-26 11:17:26,895 - watchdog - INFO - Watchdog daemon started
+2026-05-26 11:17:26,895 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 11:17:26,895 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 11:17:27,656 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 11:17:27,669 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 11:17:27,669 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 11:17:27,669 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 11:17:27,686 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 11:17:27,700 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 11:17:27,907 - gatekeeper - WARNING - api_call_retry name=send_message attempt=1 delay=46.140
+2026-05-26 11:18:14,289 - gatekeeper - WARNING - api_call_retry name=send_message attempt=2 delay=59.769
+2026-05-26 11:19:14,308 - gatekeeper - WARNING - api_call_retry name=send_message attempt=3 delay=59.750
+2026-05-26 11:20:14,306 - gatekeeper - ERROR - api_call_failure name=send_message
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper.py", line 79, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper_runtime.py", line 86, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'send_message' failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 59.749708786s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 59
+}
+]
+2026-05-26 11:20:14,306 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 11:20:14,306 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 11:20:14,306 - gemini_mixin - ERROR - Gemini generation failed: API call 'send_message' failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 59.749708786s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 59
+}
+]
+2026-05-26 11:20:14,306 - agent.pro_agent - ERROR - Critical error in agent event loop: API call 'send_message' failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 59.749708786s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 59
+}
+]
+2026-05-26 11:20:14,306 - agent.pro_agent - INFO - Termination signal received for agent 'pro_agent'
+2026-05-26 11:20:14,306 - agent.pro_agent - INFO - Event loop terminated for agent 'pro_agent'
+2026-05-26 11:20:23,643 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 20516) failed heartbeat! Forcing termination sequence.
+2026-05-26 11:20:23,643 - process_utils - WARNING - Process PID 20516 not found for termination.
+2026-05-26 11:20:23,643 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 20516) killed.
+2026-05-26 11:26:45,679 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 11:26:46,501 - watchdog - INFO - Registered agent 'pro_agent' with PID 22296
+2026-05-26 11:26:46,501 - watchdog - INFO - Registered agent 'con_agent' with PID 10636
+2026-05-26 11:26:46,501 - watchdog - INFO - Watchdog daemon started
+2026-05-26 11:26:46,501 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 11:26:46,501 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 11:26:47,288 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 11:26:47,314 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 11:26:47,315 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 11:26:47,332 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 11:26:47,332 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 11:26:47,332 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 11:26:47,565 - gatekeeper - ERROR - api_call_failure name=send_message
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper.py", line 79, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper_runtime.py", line 86, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'send_message' failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+2026-05-26 11:26:47,565 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 11:26:47,565 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 11:26:47,565 - gemini_mixin - ERROR - Gemini generation failed: API call 'send_message' failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+2026-05-26 11:26:47,565 - agent.pro_agent - ERROR - Critical error in agent event loop: API call 'send_message' failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+2026-05-26 11:26:47,565 - agent.pro_agent - INFO - Termination signal received for agent 'pro_agent'
+2026-05-26 11:26:47,565 - agent.pro_agent - INFO - Event loop terminated for agent 'pro_agent'
+2026-05-26 11:26:58,570 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 22296) failed heartbeat! Forcing termination sequence.
+2026-05-26 11:26:58,572 - process_utils - WARNING - Process PID 22296 not found for termination.
+2026-05-26 11:26:58,572 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 22296) killed.
+2026-05-26 11:32:08,166 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 11:32:08,974 - watchdog - INFO - Registered agent 'pro_agent' with PID 35452
+2026-05-26 11:32:08,974 - watchdog - INFO - Registered agent 'con_agent' with PID 4136
+2026-05-26 11:32:08,974 - watchdog - INFO - Watchdog daemon started
+2026-05-26 11:32:08,974 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 11:32:08,974 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 11:32:09,716 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 11:32:09,716 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 11:32:09,751 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 11:32:09,751 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 11:32:09,751 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 11:32:09,751 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 11:32:09,983 - gatekeeper - ERROR - api_call_failure name=send_message
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper.py", line 79, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper_runtime.py", line 86, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'send_message' failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+2026-05-26 11:32:09,983 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 11:32:09,983 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 11:32:09,983 - gemini_mixin - ERROR - Gemini generation failed: API call 'send_message' failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+2026-05-26 11:32:09,983 - agent.pro_agent - ERROR - Critical error in agent event loop: API call 'send_message' failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+2026-05-26 11:32:09,983 - agent.pro_agent - INFO - Termination signal received for agent 'pro_agent'
+2026-05-26 11:32:09,983 - agent.pro_agent - INFO - Event loop terminated for agent 'pro_agent'
+2026-05-26 11:32:21,029 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 35452) failed heartbeat! Forcing termination sequence.
+2026-05-26 11:32:21,030 - process_utils - WARNING - Process PID 35452 not found for termination.
+2026-05-26 11:32:21,030 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 35452) killed.
+2026-05-26 11:34:36,727 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 11:34:37,603 - watchdog - INFO - Registered agent 'pro_agent' with PID 12284
+2026-05-26 11:34:37,603 - watchdog - INFO - Registered agent 'con_agent' with PID 5368
+2026-05-26 11:34:37,605 - watchdog - INFO - Watchdog daemon started
+2026-05-26 11:34:37,605 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 11:34:37,605 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 11:34:38,724 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 11:34:38,725 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 11:34:38,742 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 11:34:38,742 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 11:34:38,742 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 11:34:38,742 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 11:34:39,110 - gatekeeper - WARNING - api_call_retry name=send_message attempt=1 delay=34.942
+2026-05-26 11:35:14,179 - gatekeeper - WARNING - api_call_retry name=send_message attempt=2 delay=59.878
+2026-05-26 11:36:14,292 - gatekeeper - WARNING - api_call_retry name=send_message attempt=3 delay=59.764
+2026-05-26 11:37:14,299 - gatekeeper - ERROR - api_call_failure name=send_message
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper.py", line 79, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper_runtime.py", line 86, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'send_message' failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 59.7465187s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 59
+}
+]
+2026-05-26 11:37:14,312 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 11:37:14,312 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 11:37:14,312 - gemini_mixin - ERROR - Gemini generation failed: API call 'send_message' failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 59.7465187s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 59
+}
+]
+2026-05-26 11:37:14,313 - agent.pro_agent - ERROR - Critical error in agent event loop: API call 'send_message' failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 59.7465187s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 59
+}
+]
+2026-05-26 11:37:14,313 - agent.pro_agent - INFO - Termination signal received for agent 'pro_agent'
+2026-05-26 11:37:14,313 - agent.pro_agent - INFO - Event loop terminated for agent 'pro_agent'
+2026-05-26 11:37:24,256 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 12284) failed heartbeat! Forcing termination sequence.
+2026-05-26 11:37:24,257 - process_utils - WARNING - Process PID 12284 not found for termination.
+2026-05-26 11:37:24,257 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 12284) killed.
+2026-05-26 11:59:08,822 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 11:59:09,706 - watchdog - INFO - Registered agent 'pro_agent' with PID 30340
+2026-05-26 11:59:09,706 - watchdog - INFO - Registered agent 'con_agent' with PID 32276
+2026-05-26 11:59:09,706 - watchdog - INFO - Watchdog daemon started
+2026-05-26 11:59:09,706 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 11:59:09,706 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 11:59:10,755 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 11:59:10,755 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 11:59:10,825 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 11:59:10,825 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 11:59:10,825 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 11:59:10,827 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 11:59:20,951 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 11:59:20,952 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 11:59:20,952 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 11:59:20,952 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-26 11:59:20,952 - agent.judge_cli - INFO - Argument received: pro_agent | Round 1
+2026-05-26 11:59:20,956 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-26 11:59:20,956 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 11:59:53,725 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 11:59:53,727 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 11:59:53,727 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 11:59:53,727 - agent.con_agent - INFO - Argument emitted for round 1
+2026-05-26 11:59:53,728 - agent.judge_cli - INFO - Argument received: con_agent | Round 1
+2026-05-26 11:59:53,729 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 11:59:53,731 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:00:02,992 - gatekeeper - WARNING - api_call_retry name=send_message attempt=1 delay=11.072
+2026-05-26 12:00:32,251 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:00:32,251 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=4000.0
+2026-05-26 12:00:32,251 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:00:32,251 - agent.pro_agent - ERROR - RUNTIME SCHEMA VIOLATION: Dropping malformed emission.
+2026-05-26 12:07:37,777 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 12:07:38,785 - watchdog - INFO - Registered agent 'pro_agent' with PID 31512
+2026-05-26 12:07:38,785 - watchdog - INFO - Registered agent 'con_agent' with PID 30372
+2026-05-26 12:07:38,785 - watchdog - INFO - Watchdog daemon started
+2026-05-26 12:07:38,786 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 12:07:38,786 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 12:07:39,763 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 12:07:39,776 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 12:07:39,776 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 12:07:39,793 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 12:07:39,793 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 12:07:39,793 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:07:56,913 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:07:56,913 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:07:56,913 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:07:56,913 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-26 12:07:56,914 - agent.judge_cli - INFO - Argument received: pro_agent | Round 1
+2026-05-26 12:07:56,917 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-26 12:07:56,917 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:08:12,386 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:08:12,386 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:08:12,386 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:08:12,386 - agent.con_agent - INFO - Argument emitted for round 1
+2026-05-26 12:08:12,387 - agent.judge_cli - INFO - Argument received: con_agent | Round 1
+2026-05-26 12:08:12,389 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 12:08:12,390 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:08:29,398 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:08:29,398 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=4000.0
+2026-05-26 12:08:29,398 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:08:29,398 - agent.pro_agent - INFO - Argument emitted for round 2
+2026-05-26 12:08:29,398 - agent.judge_cli - INFO - Argument received: pro_agent | Round 2
+2026-05-26 12:08:29,398 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-26 12:08:29,398 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:08:48,518 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:08:48,518 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=4000.0
+2026-05-26 12:08:48,518 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:08:48,518 - agent.con_agent - INFO - Argument emitted for round 2
+2026-05-26 12:08:48,531 - agent.judge_cli - INFO - Argument received: con_agent | Round 2
+2026-05-26 12:08:48,534 - agent.judge_cli - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-26 12:08:48,538 - process_utils - INFO - Terminating process tree for PID 31512 (0 children).
+2026-05-26 12:08:48,564 - process_utils - INFO - Terminating process tree for PID 30372 (0 children).
+2026-05-26 12:08:49,191 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:08:49,191 - agent.judge_cli - INFO - Supreme Judge is evaluating the final arguments...
+2026-05-26 12:08:49,191 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:09:08,225 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:09:08,225 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:09:08,225 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:09:08,225 - agent.judge_cli - ERROR - Judging failure: 3 validation errors for FinalJudgmentSchema
+winner_id
+  Field required [type=missing, input_value={'winner': 'pro_agent', '...nce in the universe."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+differential_score
+  Field required [type=missing, input_value={'winner': 'pro_agent', '...nce in the universe."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+justification
+  Field required [type=missing, input_value={'winner': 'pro_agent', '...nce in the universe."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-26 12:09:08,227 - agent.judge_cli - INFO - WINNER DECLARED: pro_agent
+2026-05-26 12:19:10,913 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-05-26 12:19:11,857 - watchdog - INFO - Registered agent 'pro_agent' with PID 35900
+2026-05-26 12:19:11,857 - watchdog - INFO - Registered agent 'con_agent' with PID 14220
+2026-05-26 12:19:11,858 - watchdog - INFO - Watchdog daemon started
+2026-05-26 12:19:11,858 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 12:19:11,859 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-05-26 12:19:12,740 - agent.pro_agent - INFO - Initialized BaseAgent for 'pro_agent'
+2026-05-26 12:19:12,740 - agent.con_agent - INFO - Initialized BaseAgent for 'con_agent'
+2026-05-26 12:19:12,767 - agent.con_agent - INFO - Event loop started for agent 'con_agent'
+2026-05-26 12:19:12,767 - agent.pro_agent - INFO - Event loop started for agent 'pro_agent'
+2026-05-26 12:19:12,768 - agent.pro_agent - INFO - Agent 'pro_agent' generating argument...
+2026-05-26 12:19:12,768 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:19:22,290 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:19:22,290 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:19:22,290 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:19:22,292 - agent.pro_agent - INFO - Argument emitted for round 1
+2026-05-26 12:19:22,292 - agent.judge_cli - INFO - Argument received: pro_agent | Round 1
+2026-05-26 12:19:22,298 - agent.con_agent - INFO - Agent 'con_agent' generating argument...
+2026-05-26 12:19:22,298 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:19:41,282 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:19:41,282 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:19:41,282 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:19:41,282 - agent.con_agent - INFO - Argument emitted for round 1
+2026-05-26 12:19:41,282 - agent.judge_cli - INFO - Argument received: con_agent | Round 1
+2026-05-26 12:19:41,285 - agent.judge_cli - INFO - Debate concluded after 1 rounds. Finalizing judgment...
+2026-05-26 12:19:41,294 - process_utils - INFO - Terminating process tree for PID 35900 (0 children).
+2026-05-26 12:19:41,312 - process_utils - INFO - Terminating process tree for PID 14220 (0 children).
+2026-05-26 12:19:42,067 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:19:42,067 - agent.judge_cli - INFO - Supreme Judge is evaluating the final arguments...
+2026-05-26 12:19:42,067 - gatekeeper - INFO - api_call_start name=send_message
+2026-05-26 12:19:57,094 - gatekeeper - INFO - api_call_success name=send_message
+2026-05-26 12:19:57,094 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:19:57,094 - gatekeeper - INFO - api_call_complete name=send_message
+2026-05-26 12:19:57,096 - agent.judge_cli - ERROR - Judging failure: 3 validation errors for FinalJudgmentSchema
+winner_id
+  Field required [type=missing, input_value={'winner': 'con_agent', '...y failed to address."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+differential_score
+  Field required [type=missing, input_value={'winner': 'con_agent', '...y failed to address."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+justification
+  Field required [type=missing, input_value={'winner': 'con_agent', '...y failed to address."}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-26 12:19:57,096 - agent.judge_cli - INFO - WINNER DECLARED: pro_agent
+2026-05-26 12:23:49,493 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:23:49,730 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:23:49,846 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:23:49,965 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:23:50,072 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:23:50,164 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:23:50,294 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:23:50,396 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:02,473 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:02,604 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:02,697 - watchdog - INFO - Registered agent 'pro_agent' with PID 101
+2026-05-26 12:24:02,697 - watchdog - INFO - Registered agent 'con_agent' with PID 102
+2026-05-26 12:24:02,697 - watchdog - INFO - Watchdog daemon started
+2026-05-26 12:24:02,701 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:02,801 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:24:02,805 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:02,894 - agent.judge_1 - INFO - Argument received: pro_agent | Round 0
+2026-05-26 12:24:02,908 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:02,991 - agent.judge_1 - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 12:24:02,996 - agent.judge_1 - INFO - Argument received: pro_agent | Round 1
+2026-05-26 12:24:02,996 - agent.judge_1 - INFO - Argument received: con_agent | Round 1
+2026-05-26 12:24:03,011 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:03,099 - agent.judge_1 - INFO - Argument received: con_agent | Round 10
+2026-05-26 12:24:03,099 - agent.judge_1 - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-05-26 12:24:03,101 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-26 12:24:03,101 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-26 12:24:03,108 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:24:03,108 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-05-26 12:24:03,108 - gatekeeper - INFO - api_call_start name=<MagicMock name='GenerativeModel().start_chat().send_message' id='2125499260432'>
+2026-05-26 12:24:03,108 - gatekeeper - INFO - api_call_success name=<MagicMock name='GenerativeModel().start_chat().send_message' id='2125499260432'>
+2026-05-26 12:24:03,111 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:24:03,111 - gatekeeper - INFO - api_call_complete name=<MagicMock name='GenerativeModel().start_chat().send_message' id='2125499260432'>
+2026-05-26 12:24:03,111 - agent.judge_1 - ERROR - Judging failure: the JSON object must be str, bytes or bytearray, not MagicMock
+2026-05-26 12:24:03,111 - agent.judge_1 - INFO - WINNER DECLARED: pro_agent
+2026-05-26 12:24:03,114 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:03,206 - agent.judge_1 - INFO - Argument received: con_agent | Round 10
+2026-05-26 12:24:03,208 - agent.judge_1 - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-05-26 12:24:03,208 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-26 12:24:03,208 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-26 12:24:03,216 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:24:03,216 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-05-26 12:24:03,216 - agent.judge_1 - INFO - WINNER DECLARED: pro_agent
+2026-05-26 12:24:03,216 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:03,307 - agent.judge_1 - INFO - Argument received: pro_agent | Round 0
+2026-05-26 12:24:16,937 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:17,125 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:17,274 - watchdog - INFO - Registered agent 'pro_agent' with PID 101
+2026-05-26 12:24:17,274 - watchdog - INFO - Registered agent 'con_agent' with PID 102
+2026-05-26 12:24:17,274 - watchdog - INFO - Watchdog daemon started
+2026-05-26 12:24:17,282 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:17,433 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:24:17,450 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:17,608 - agent.judge_1 - INFO - Argument received: pro_agent | Round 0
+2026-05-26 12:24:17,637 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:17,804 - agent.judge_1 - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-26 12:24:17,806 - agent.judge_1 - INFO - Argument received: pro_agent | Round 1
+2026-05-26 12:24:17,809 - agent.judge_1 - INFO - Argument received: con_agent | Round 1
+2026-05-26 12:24:17,832 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:18,006 - agent.judge_1 - INFO - Argument received: con_agent | Round 10
+2026-05-26 12:24:18,009 - agent.judge_1 - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-05-26 12:24:18,010 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-26 12:24:18,011 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-26 12:24:18,023 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:24:18,023 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-05-26 12:24:18,024 - gatekeeper - INFO - api_call_start name=<MagicMock name='GenerativeModel().start_chat().send_message' id='3170688600384'>
+2026-05-26 12:24:18,025 - gatekeeper - INFO - api_call_success name=<MagicMock name='GenerativeModel().start_chat().send_message' id='3170688600384'>
+2026-05-26 12:24:18,026 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-05-26 12:24:18,026 - gatekeeper - INFO - api_call_complete name=<MagicMock name='GenerativeModel().start_chat().send_message' id='3170688600384'>
+2026-05-26 12:24:18,027 - agent.judge_1 - ERROR - Judging failure: the JSON object must be str, bytes or bytearray, not MagicMock
+2026-05-26 12:24:18,028 - agent.judge_1 - INFO - WINNER DECLARED: pro_agent
+2026-05-26 12:24:18,034 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:18,205 - agent.judge_1 - INFO - Argument received: con_agent | Round 10
+2026-05-26 12:24:18,208 - agent.judge_1 - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-05-26 12:24:18,209 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-26 12:24:18,209 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-26 12:24:18,223 - watchdog - INFO - Watchdog daemon stopped
+2026-05-26 12:24:18,223 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-05-26 12:24:18,224 - agent.judge_1 - INFO - WINNER DECLARED: pro_agent
+2026-05-26 12:24:18,230 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-05-26 12:24:18,392 - agent.judge_1 - INFO - Argument received: pro_agent | Round 0
+2026-05-26 12:24:18,549 - gatekeeper - INFO - api_call_start name=fake_call
+2026-05-26 12:24:18,549 - gatekeeper - INFO - api_call_success name=fake_call
+2026-05-26 12:24:18,549 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-05-26 12:24:18,550 - gatekeeper - INFO - api_call_complete name=fake_call
+2026-05-26 12:24:18,653 - gatekeeper - INFO - api_call_start name=fake_call_error
+2026-05-26 12:24:18,653 - gatekeeper - ERROR - api_call_failure name=fake_call_error
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper.py", line 89, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper_runtime.py", line 86, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'fake_call_error' failed: boom
+2026-05-26 12:24:18,653 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-05-26 12:24:18,653 - gatekeeper - INFO - api_call_complete name=fake_call_error
+2026-05-26 12:24:18,774 - gatekeeper - INFO - api_call_start name=flaky_call
+2026-05-26 12:24:18,774 - gatekeeper - WARNING - api_call_retry name=flaky_call attempt=1 delay=0.500
+2026-05-26 12:24:18,774 - gatekeeper - WARNING - api_call_retry name=flaky_call attempt=2 delay=1.000
+2026-05-26 12:24:18,774 - gatekeeper - INFO - api_call_success name=flaky_call
+2026-05-26 12:24:18,775 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-05-26 12:24:18,775 - gatekeeper - INFO - api_call_complete name=flaky_call
+2026-05-26 12:24:18,889 - gatekeeper - INFO - api_call_start name=always_fails
+2026-05-26 12:24:18,889 - gatekeeper - WARNING - api_call_retry name=always_fails attempt=1 delay=0.250
+2026-05-26 12:24:18,889 - gatekeeper - WARNING - api_call_retry name=always_fails attempt=2 delay=0.500
+2026-05-26 12:24:18,889 - gatekeeper - ERROR - api_call_failure name=always_fails
+Traceback (most recent call last):
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper.py", line 89, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\diana\debate_project\src\debate_sdk\shared\gatekeeper_runtime.py", line 86, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'always_fails' failed: 503 service unavailable
+2026-05-26 12:24:18,890 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-05-26 12:24:18,890 - gatekeeper - INFO - api_call_complete name=always_fails
+2026-05-26 12:24:18,974 - state_manager - WARNING - No state file found at C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-58\test_state_manager_load_non_ex0\states\session_ghost_session.state
+2026-05-26 12:24:19,004 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-58\test_state_manager_load_corrup0\states\session_corrupt_session.state: Expecting value: line 1 column 1 (char 0)
+2026-05-26 12:24:19,011 - state_manager - INFO - Cleared state file C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-58\test_state_manager_clear0\states\session_clear_test.state
+2026-05-26 12:24:19,024 - state_manager - ERROR - Failed to load state from C:\Users\diana\AppData\Local\Temp\pytest-of-diana\pytest-58\test_state_manager_load_io_err0\states\session_io_fail_session.state: Permission denied
+2026-05-26 12:24:19,032 - state_manager - ERROR - Failed to save state: Disk failure

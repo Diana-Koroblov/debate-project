@@ -73,7 +73,7 @@ class TokenTelemetry(BaseModel):
     model: str
     usage: TokenUsage
     latency_ms: float
-    timestamp: str
+    timestamp: float
 
 
 class HeartbeatMessage(BaseModel):

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 from debate_sdk.shared.exceptions import BudgetExceededException
 from debate_sdk.shared.gatekeeper_runtime import Task, derive_usage_from_result
 
@@ -21,7 +23,7 @@ def reserve_budget(gatekeeper: object, projected_cost: float) -> None:
         gatekeeper._tracked_token_consumption = projected_total
 
 
-def record_usage(gatekeeper: object, task: Task) -> None:
+def record_usage(gatekeeper: Any, task: Task) -> None:
     derived_input, derived_output = derive_usage_from_result(task.result)
     with gatekeeper._budget_lock:
         gatekeeper._input_tokens_total += max(task.input_tokens, derived_input)
