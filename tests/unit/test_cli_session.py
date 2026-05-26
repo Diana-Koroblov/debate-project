@@ -49,7 +49,7 @@ class StubJudge:
 def test_build_session_config_clamps_rounds(monkeypatch) -> None:
     monkeypatch.setattr(
         "debate_sdk.sdk.session.load_setup_config",
-        lambda: {
+        lambda config_path=None: {
             "version": "1.00",
             "watchdog": {},
             "debate": {"rounds": 4, "model": "gemini-2.5-flash"},
@@ -67,7 +67,7 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
     multiprocessing.set_start_method("spawn", force=True)
     monkeypatch.setattr(
         "debate_sdk.sdk.session.load_setup_config",
-        lambda: {
+        lambda config_path=None: {
             "version": "1.00",
             "watchdog": {"timeout_seconds": 1, "check_interval_seconds": 1},
             "debate": {"rounds": 3, "model": "gemini-2.5-flash"},
@@ -75,7 +75,7 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
     )
     monkeypatch.setattr(
         "debate_sdk.sdk.session.load_logging_config",
-        lambda: {"log_directory": str(tmp_path)},
+        lambda config_path=None: {"log_directory": str(tmp_path)},
     )
     monkeypatch.setattr(
         "debate_sdk.sdk.session.write_cost_summary",
@@ -101,7 +101,7 @@ def test_run_debate_session_worker_is_not_daemon(monkeypatch) -> None:
 
     monkeypatch.setattr(
         "debate_sdk.sdk.session.load_setup_config",
-        lambda: {
+        lambda config_path=None: {
             "version": "1.00",
             "watchdog": {"timeout_seconds": 1, "check_interval_seconds": 1},
             "debate": {"rounds": 1, "model": "gemini-2.5-flash"},

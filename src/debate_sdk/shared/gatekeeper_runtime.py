@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import time
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
@@ -21,6 +22,31 @@ class Task:
     output_tokens: int = 0
     result: Any = None
     error: Exception | None = None
+
+
+def dispatch_telemetry(
+    logger: Any,
+    outbound_queue: Any,
+    agent_id: str | None,
+    model_name: str | None,
+    task: Task,
+) -> None:
+    if outbound_queue is None:
+        return
+    try:
+        outbound_queue.put_nowait({
+            "type": "telemetry",
+            "agent_id": agent_id or "unknown",
+            "model": model_name or "gemini-2.5-flash",
+            "usage": {
+                "input": int(task.input_tokens or 0),
+                "output": int(task.output_tokens or 0)
+            },
+            "latency_ms": float(0.0),
+            "timestamp": float(time.time())
+        })
+    except Exception as exc:
+        logger.warning("Failed to dispatch telemetry: %s", exc)
 
 
 def ensure_version_compatibility(config_version: str, expected_version: str, logger: Any) -> None:

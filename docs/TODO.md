@@ -327,3 +327,29 @@ This document serves as the granular Agile project tracker for the "Debate Proje
 - [x] 7.5.3 Create the mandatory Prompt Book appendix log documenting all core systemic and persona directives utilized across the development cycle.
 - [x] 7.5.4 Include a complete, unedited copy of a full 10-round debate script output dialogue directly inside the repository documentation stack.
 - [x] 7.5.5 Ensure the final README contains explicit theoretical mappings connecting system architecture traits to the international ISO/IEC 25010 product quality standards.
+
+---
+
+## Phase 8: Modularization & Architecture Refactoring
+**Priority:** High | **Status:** Done
+**Definition of Done (DoD):** System modularized into focused, single-responsibility components to maintain the <150 LOC constraint and improve architectural clarity. All mixins and sub-systems verified through unit and integration testing.
+
+### 8.1 Configuration & Infrastructure Modularization
+- [x] 8.1.1 Implement `src/debate_sdk/shared/config_utils.py` for specialized JSON normalization and validation logic.
+- [x] 8.1.2 Decompose `ApiGatekeeper` into `gatekeeper_budget.py`, `gatekeeper_traffic.py`, and `gatekeeper_runtime.py` to isolate financial caps, traffic control, and retry logic.
+
+### 8.2 Agent Service Layer Modularization
+- [x] 8.2.1 Implement `src/debate_sdk/services/gemini_mixin.py` to centralize shared Gemini API interaction logic.
+- [x] 8.2.2 Refactor `ParentJudgeAgent` into specialized mixins:
+  - [x] `judge_decision_mixin.py`: Decision-making and evaluation logic.
+  - [x] `judge_process_mixin.py`: Subprocess management and child worker lifecycle.
+  - [x] `judge_routing_mixin.py`: IPC routing and deterministic turn management.
+
+---
+
+## Phase 9: Final Compliance & Delivery
+**Priority:** High | **Status:** Done
+**Definition of Done (DoD):** Final repository state audited against all mandatory guidelines and documentation synced.
+
+- [x] 9.0 Final Submission Audit: Verified against V3NEW submission guidelines and Commands-V4 PDF.
+- [x] 9.1 Sync documentation: Ensure README.md and PLAN.md accurately reflect the modular file structure.

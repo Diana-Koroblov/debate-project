@@ -39,7 +39,7 @@ def test_setup_logger(temp_log_dir: Path, monkeypatch):
     assert isinstance(logger.handlers[0], FIFORotatingHandler)
 
     logger.info("Test message")
-    log_file = temp_log_dir / "agent_logs_01.log"
+    log_file = temp_log_dir / "test_setup_logs_01.log"
     assert log_file.exists()
 
     # Clean up to avoid PermissionError on Windows
@@ -91,7 +91,7 @@ def test_handler_initialization_from_existing(temp_log_dir: Path):
     file1.write_text("Line 1\nLine 2\n")
 
     # Initialize handler
-    handler = FIFORotatingHandler(temp_log_dir, max_files=5, max_lines=5)
+    handler = FIFORotatingHandler(temp_log_dir, max_files=5, max_lines=5, process_name="agent")
     assert handler._current_file_index == 1
     assert handler._current_line_count == 2
 
@@ -119,7 +119,7 @@ def test_handler_initialization_at_limit(temp_log_dir: Path):
     file1 = temp_log_dir / "agent_logs_01.log"
     file1.write_text("L1\nL2\nL3\nL4\nL5\n")
 
-    handler = FIFORotatingHandler(temp_log_dir, max_files=5, max_lines=5)
+    handler = FIFORotatingHandler(temp_log_dir, max_files=5, max_lines=5, process_name="agent")
     # Should have rotated immediately
     assert handler._current_file_index == 2
     assert handler._current_line_count == 0

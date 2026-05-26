@@ -27,11 +27,16 @@ debate_project/
 |   +-- pro_agent.py              Pro-debate persona + Gemini
 |   +-- con_agent.py              Con-debate persona + Gemini
 |   +-- judge_agent.py            Parent judge orchestration
-|   +-- *_mixin.py                Search, judging, and Gemini helpers
+|   +-- judge_*_mixin.py          Decomposed judging, routing, and process logic
+|   +-- gemini_mixin.py           Shared LLM interface
+|   +-- web_search_mixin.py       Tavily search capabilities
 |
 +-- src/debate_sdk/shared/        Infrastructure layer
-|   +-- gatekeeper.py             API throttling and budget enforcement
+|   +-- gatekeeper.py             API orchestration singleton
+|   +-- gatekeeper_*.py           Sub-systems for budget, traffic, and runtime
 |   +-- watchdog.py               Health monitoring and process recovery hooks
+|   +-- config.py                 Configuration loader
+|   +-- config_utils.py           Strict JSON normalization/validation
 |   +-- state_manager.py          Debate checkpoint persistence
 |   +-- search_client.py          Tavily integration
 |   +-- logger.py                 Structured logging setup

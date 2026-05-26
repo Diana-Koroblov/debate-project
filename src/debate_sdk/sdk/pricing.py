@@ -36,17 +36,17 @@ def resolve_pricing(model_name: str) -> PricingRate:
 
 
 def build_cost_summary(
-    model_name: str, 
+    model_name: str,
     usage: dict[str, float]
 ) -> dict[str, Any]:
     """Build a terminal-friendly and artifact-friendly cost summary."""
     rate = resolve_pricing(model_name)
     input_tokens = usage.get("input_tokens", 0.0)
     output_tokens = usage.get("output_tokens", 0.0)
-    
+
     input_cost = input_tokens / 1_000_000 * rate.input_per_million
     output_cost = output_tokens / 1_000_000 * rate.output_per_million
-    
+
     return {
         "model": model_name,
         "pricing": asdict(rate),

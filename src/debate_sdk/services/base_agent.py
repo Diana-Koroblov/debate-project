@@ -57,20 +57,32 @@ class BaseAgent(ABC):
         self.logger.info(f"Event loop started for agent '{self.agent_id}'")
         hb_thread = threading.Thread(target=self._heartbeat_loop, daemon=True)
         hb_thread.start()
-        while self.is_running:
-            try:
-                raw_data = self.inbound_queue.get(timeout=1.0)
-                message = self._validate_payload(raw_data)
-                if message:
-                    self.handle_message(message)
-            except queue.Empty:
-                continue
-            except BudgetExceededException:
-                raise
-            except Exception as exc:
-                self.logger.error(f"Critical error in agent event loop: {exc}")
-                self.terminate()
-        self.logger.info(f"Event loop terminated for agent '{self.agent_id}'")
+        try:
+            while self.is_running:
+                try:
+                    raw_data = self.inbound_queue.get(timeout=1.0)
+                    message = self._validate_payload(raw_data)
+                    if message:
+                        self.handle_message(message)
+                except queue.Empty:
+                    continue
+                except BudgetExceededException:
+                    raise
+                except Exception as exc:
+                    self.logger.error(f"Critical error in agent event loop: {exc}")
+                    self.terminate()
+        finally:
+            self.is_running = False
+            self.logger.info(f"Event loop terminated for agent '{self.agent_id}'")
+            # 6.4.3: Ensure all handlers are flushed and closed (Windows stability)
+            import logging
+            for handler in self.logger.handlers:
+                try:
+                    handler.flush()
+                    handler.close()
+                except Exception:
+                    pass
+            logging.shutdown()
 
     def terminate(self) -> None:
         """Gracefully signal the agent to cease operations."""

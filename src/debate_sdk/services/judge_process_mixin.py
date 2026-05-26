@@ -55,13 +55,14 @@ class JudgeProcessMixin:
         self.con_process.start()
 
         # Register with watchdog
-        getattr(self, "watchdog").register_agent("pro_agent", self.pro_process.pid)
-        getattr(self, "watchdog").register_agent("con_agent", self.con_process.pid)
+        getattr(self, "watchdog").register_agent("pro_agent", self.pro_process)
+        getattr(self, "watchdog").register_agent("con_agent", self.con_process)
         getattr(self, "watchdog").start()
 
     def terminate_children(self) -> None:
         """Gracefully shut down all managed child processes."""
         for proc in [self.pro_process, self.con_process]:
-            if proc and proc.pid:
+            if proc and proc.is_alive():
                 terminate_process_tree(proc.pid)
+                proc.join(timeout=2.0)
         getattr(self, "watchdog").stop()

@@ -98,19 +98,22 @@ The agent system utilizes a hierarchy to maximize code reuse and enforce structu
 
 *   **Concrete Implementations:**
     *   **`ChildDebaterAgent` (Abstract):** Adds `search_tool` capabilities and argument generation logic.
-        *   **`ProDebaterAgent`:** Implements astrophysical specific personas and logic.
-        *   **`ConDebaterAgent`:** Implements skeptical/Fermi Paradox personas and logic.
-    *   **`ParentJudgeAgent`:** Implements orchestration logic, turn management, history aggregation, and final decision-making.
+        *   **`ProDebaterAgent`:** Implements astrophysical specific personas and logic using `GeminiMixin`.
+        *   **`ConDebaterAgent`:** Implements skeptical/Fermi Paradox personas and logic using `GeminiMixin`.
+    *   **`ParentJudgeAgent`:** Implements orchestration logic, turn management, history aggregation, and final decision-making through specialized mixins:
+        *   `JudgeDecisionMixin`: Evaluation and final judgment generation.
+        *   `JudgeProcessMixin`: Lifecycle management of child worker processes.
+        *   `JudgeRoutingMixin`: Message routing and turn sequence control.
 
 ---
 
 ## 3. Core Subsystems & Structural Interfaces
 
 ### 3.1 Centralized API Gatekeeper (`ApiGatekeeper`)
-The `ApiGatekeeper` is a singleton-like controller that mediates all external network traffic.
-*   **Rate Limiting:** Reads `config/rate_limits.json` to enforce RPS (Requests Per Second) and TPM (Tokens Per Minute) caps.
-*   **Overflow Queue:** Implements a FIFO (First-In-First-Out) buffer. If a request hits a rate limit, it is queued and retried automatically once the window resets, preventing 429 errors from reaching the agents.
-*   **Resilience:** Built-in exponential backoff for transient 5xx errors and hard timeouts (60s) for all requests.
+The `ApiGatekeeper` is a singleton-like controller that mediates all external network traffic. To maintain modularity, it is decomposed into several specialized sub-systems:
+*   `gatekeeper_budget.py`: Manages token consumption tracking and enforces the `max_budget_tokens` cap.
+*   `gatekeeper_traffic.py`: Implements the sliding-window rate limiter, concurrency controller, and overflow FIFO queue.
+*   `gatekeeper_runtime.py`: Provides the low-level execution engine for retries, backoff calculations, and telemetry dispatch.
 
 ### 3.2 Watchdog & Resilience Daemon
 A dedicated background process monitors the health of the agent swarm.

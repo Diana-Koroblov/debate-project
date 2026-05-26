@@ -44,18 +44,25 @@ class Watchdog:
         self._manager = Manager()
         self.registry: Dict[str, int] = self._manager.dict()
         self.heartbeats: Dict[int, float] = self._manager.dict()
+        self._processes: Dict[str, Any] = {}
 
         self._stop_event = threading.Event()
         self._thread: threading.Thread | None = None
 
-    def register_agent(self, agent_id: str, pid: int) -> None:
+    def register_agent(self, agent_id: str, proc_or_pid: Any) -> None:
         """
         Register a new agent process for monitoring.
 
         Args:
             agent_id (str): Unique identifier for the agent.
-            pid (int): Operating System Process ID.
+            proc_or_pid (multiprocessing.Process | int): Process object or PID.
         """
+        if hasattr(proc_or_pid, "pid"):
+            pid = proc_or_pid.pid
+            self._processes[agent_id] = proc_or_pid
+        else:
+            pid = int(proc_or_pid)
+
         self.registry[agent_id] = pid
         self.heartbeat(pid)
         logger.info(f"Registered agent '{agent_id}' with PID {pid}")
@@ -124,7 +131,13 @@ class Watchdog:
             f"Forcing termination sequence."
         )
 
+        import contextlib
         success = terminate_process_tree(pid)
+        proc = self._processes.pop(agent_id, None)
+        if proc and hasattr(proc, "join"):
+            with contextlib.suppress(Exception):
+                proc.join(timeout=2.0)
+
         if success:
             logger.info(f"TERMINATION SUCCESS: Agent '{agent_id}' (PID {pid}) killed.")
         else:

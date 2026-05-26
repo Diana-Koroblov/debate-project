@@ -16,12 +16,20 @@ class FIFORotatingHandler(logging.Handler):
         max_lines (int): Maximum number of lines allowed per file.
     """
 
-    def __init__(self, log_dir: str | Path, max_files: int, max_lines: int, encoding: str = "utf-8") -> None:
+    def __init__(
+        self,
+        log_dir: str | Path,
+        max_files: int,
+        max_lines: int,
+        encoding: str = "utf-8",
+        process_name: str = "agent"
+    ) -> None:
         super().__init__()
         self.log_dir = Path(log_dir)
         self.max_files = max_files
         self.max_lines = max_lines
         self.encoding = encoding
+        self.process_name = process_name
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self._current_file_index = 0
         self._current_line_count = 0
@@ -30,7 +38,7 @@ class FIFORotatingHandler(logging.Handler):
 
     def _initialize_state(self) -> None:
         """Find the latest log file and its line count."""
-        existing_logs = sorted(self.log_dir.glob("agent_logs_*.log"))
+        existing_logs = sorted(self.log_dir.glob(f"{self.process_name}_logs_*.log"))
         if not existing_logs:
             self._rotate()
             return
@@ -49,6 +57,7 @@ class FIFORotatingHandler(logging.Handler):
             self._rotate()
         else:
             self._stream = open(latest_file, "a", encoding=self.encoding)  # noqa: SIM115
+            self._current_line_count = self._current_line_count # Ensure sync
 
     def _rotate(self) -> None:
         """Rotate to a new log file, purging the oldest if at max_files."""
@@ -61,20 +70,20 @@ class FIFORotatingHandler(logging.Handler):
             self._purge_and_shift()
             self._current_file_index = self.max_files
 
-        new_file = self.log_dir / f"agent_logs_{self._current_file_index:02d}.log"
+        new_file = self.log_dir / f"{self.process_name}_logs_{self._current_file_index:02d}.log"
         self._stream = open(new_file, "w", encoding=self.encoding)  # noqa: SIM115
         self._current_line_count = 0
 
     def _purge_and_shift(self) -> None:
         """Purge the oldest file and shift indices of existing ones."""
-        oldest = self.log_dir / "agent_logs_01.log"
+        oldest = self.log_dir / f"{self.process_name}_logs_01.log"
         if oldest.exists():
             oldest.unlink()
 
         for i in range(2, self.max_files + 1):
-            src = self.log_dir / f"agent_logs_{i:02d}.log"
+            src = self.log_dir / f"{self.process_name}_logs_{i:02d}.log"
             if src.exists():
-                dst = self.log_dir / f"agent_logs_{i-1:02d}.log"
+                dst = self.log_dir / f"{self.process_name}_logs_{i-1:02d}.log"
                 src.rename(dst)
 
     def emit(self, record: logging.LogRecord) -> None:

@@ -121,7 +121,7 @@ def run_debate_session(
             worker.join(timeout=5)
     if final_judgment is None:
         raise RuntimeError("Debate session ended without a final judgment")
-    
+
     # Heuristic fallback if live tokens are zero (estimated_tokens = total_chars // 4)
     if token_usage["input_tokens"] == 0 and token_usage["output_tokens"] == 0:
         estimated = total_chars // 4

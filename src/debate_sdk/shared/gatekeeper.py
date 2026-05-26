@@ -12,6 +12,7 @@ from debate_sdk.shared.config import load_rate_limits
 from debate_sdk.shared.gatekeeper_budget import record_usage, reserve_budget, token_usage_snapshot
 from debate_sdk.shared.gatekeeper_runtime import (
     Task,
+    dispatch_telemetry,
     ensure_version_compatibility,
     run_with_retries,
 )
@@ -101,21 +102,9 @@ class ApiGatekeeper:
             self._logger.exception("api_call_failure name=%s", call_name)
         finally:
             record_usage(self, task)
-            if self._outbound_queue is not None:
-                try:
-                    self._outbound_queue.put_nowait({
-                        "type": "telemetry",
-                        "agent_id": self._agent_id or "unknown",
-                        "model": self._model_name or "gemini-2.5-flash",
-                        "usage": {
-                            "input": int(task.input_tokens or 0),
-                            "output": int(task.output_tokens or 0)
-                        },
-                        "latency_ms": float(0.0),
-                        "timestamp": float(time.time())
-                    })
-                except Exception as exc:
-                    self._logger.warning("Failed to dispatch telemetry: %s", exc)
+            dispatch_telemetry(
+                self._logger, self._outbound_queue, self._agent_id, self._model_name, task
+            )
             self._logger.info("api_call_complete name=%s", call_name)
             task.done.set()
 

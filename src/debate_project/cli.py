@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import multiprocessing
 from threading import Event, Thread
 
 from debate_project.menu import choose_option, choose_rounds
@@ -13,6 +14,7 @@ from debate_sdk.shared.config import load_logging_config
 
 def main() -> int:
     """Run the interactive CLI workflow."""
+    multiprocessing.set_start_method("spawn", force=True)
     console = ConsoleStream()
     action = choose_option("Debate Project", ["Start debate", "Quit"])
     if action == "Quit":

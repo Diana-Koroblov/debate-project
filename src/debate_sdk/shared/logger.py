@@ -39,7 +39,8 @@ def setup_logger(name: str = "debate_project") -> logging.Logger:
         log_dir=config["log_directory"],
         max_files=config["max_files"],
         max_lines=config["max_lines_per_file"],
-        encoding="utf-8"
+        encoding="utf-8",
+        process_name=name
     )
 
     formatter = logging.Formatter(
