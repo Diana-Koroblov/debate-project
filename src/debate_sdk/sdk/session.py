@@ -14,7 +14,7 @@ from debate_sdk.services.child_agent import ChildDebaterAgent
 from debate_sdk.services.con_agent import ConDebaterAgent
 from debate_sdk.services.judge_agent import ParentJudgeAgent
 from debate_sdk.services.pro_agent import ProDebaterAgent
-from debate_sdk.shared.config import load_logging_config, load_setup_config
+from debate_sdk.shared.config import load_setup_config
 
 EventHandler = Callable[[dict[str, Any]], None]
 IdleHandler = Callable[[], None]
