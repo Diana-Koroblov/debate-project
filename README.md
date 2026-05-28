@@ -123,6 +123,15 @@ Notes:
 
 ### CLI Entry Points
 
+From the folder that contains this repository, change into the project folder first:
+
+```powershell
+Set-Location .\debate-project
+uv run python -m debate_project
+```
+
+If your terminal is already in the `debate-project` folder, run either entrypoint directly:
+
 ```powershell
 uv run debate-cli
 ```
