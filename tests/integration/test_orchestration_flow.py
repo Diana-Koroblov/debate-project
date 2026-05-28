@@ -60,7 +60,7 @@ def _run_judge(judge_cls: type[ParentJudgeAgent], config: Dict[str, Any],
                pro_cls: type[ChildDebaterAgent], con_cls: type[ChildDebaterAgent]):
     """Worker to start debate and run judge event loop."""
     import os
-    os.environ["GOOGLE_API_KEY"] = "mock-key"
+    os.environ["GROQ_API_KEY"] = "mock-key"
 
     judge = judge_cls("judge_worker", config, inbound, outbound)
     judge.spawn_children(pro_cls=pro_cls, con_cls=con_cls)

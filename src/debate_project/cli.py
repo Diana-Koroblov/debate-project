@@ -38,7 +38,11 @@ def main() -> int:
     finally:
         stop_event.set()
         log_thread.join(timeout=1)
-    console.render_costs(result.cost_summary, str(result.artifact_path))
+    console.render_costs(
+        result.cost_summary,
+        str(result.artifact_path),
+        str(result.transcript_path),
+    )
     return 0
 
 

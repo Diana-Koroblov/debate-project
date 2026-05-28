@@ -14,6 +14,7 @@ class TrafficController:
     def __init__(
         self,
         requests_per_minute: int,
+        tokens_per_minute: float,
         concurrency_max: int,
         queue_max_size: int,
         time_fn: Callable[[], float],
@@ -21,10 +22,12 @@ class TrafficController:
         run_task: Callable[[Task], None],
     ) -> None:
         self._requests_per_minute = requests_per_minute
+        self._tokens_per_minute = float(tokens_per_minute)
         self._time_fn = time_fn
         self._sleeper = sleeper
         self._run_task = run_task
         self._timestamps: deque[float] = deque()
+        self._token_timestamps: deque[tuple[float, float]] = deque()
         self._rate_lock = threading.Lock()
         self._semaphore = threading.BoundedSemaphore(concurrency_max)
         self._queue: Queue[Task] = Queue(maxsize=queue_max_size)
@@ -44,25 +47,53 @@ class TrafficController:
         while self._timestamps and now - self._timestamps[0] >= 60.0:
             self._timestamps.popleft()
 
-    def retry_after_seconds(self) -> float:
-        with self._rate_lock:
-            now = self._time_fn()
-            self._prune_timestamps(now)
-            if len(self._timestamps) < self._requests_per_minute:
-                return 0.0
-            return max(0.0, 60.0 - (now - self._timestamps[0]))
+    def _prune_token_timestamps(self, now: float) -> None:
+        while self._token_timestamps and now - self._token_timestamps[0][0] >= 60.0:
+            self._token_timestamps.popleft()
 
-    def try_acquire_slot(self) -> tuple[bool, float]:
-        if not self._semaphore.acquire(blocking=False):
-            return False, max(0.01, self.retry_after_seconds())
+    def _token_usage(self) -> float:
+        return sum(tokens for _, tokens in self._token_timestamps)
+
+    def retry_after_seconds(self, projected_cost: float = 0.0) -> float:
         with self._rate_lock:
             now = self._time_fn()
             self._prune_timestamps(now)
-            if len(self._timestamps) < self._requests_per_minute:
+            self._prune_token_timestamps(now)
+            waits: list[float] = []
+            if len(self._timestamps) >= self._requests_per_minute:
+                waits.append(max(0.0, 60.0 - (now - self._timestamps[0])))
+            if self._tokens_per_minute > 0:
+                token_usage = self._token_usage()
+                if token_usage + projected_cost > self._tokens_per_minute:
+                    tokens_to_free = token_usage + projected_cost - self._tokens_per_minute
+                    released = 0.0
+                    for timestamp, tokens in self._token_timestamps:
+                        waits.append(max(0.0, 60.0 - (now - timestamp)))
+                        released += tokens
+                        if released >= tokens_to_free:
+                            break
+            if not waits:
+                return 0.0
+            return max(waits)
+
+    def try_acquire_slot(self, projected_cost: float = 0.0) -> tuple[bool, float]:
+        if not self._semaphore.acquire(blocking=False):
+            return False, max(0.01, self.retry_after_seconds(projected_cost))
+        with self._rate_lock:
+            now = self._time_fn()
+            self._prune_timestamps(now)
+            self._prune_token_timestamps(now)
+            token_usage = self._token_usage()
+            if (
+                len(self._timestamps) < self._requests_per_minute
+                and token_usage + projected_cost <= self._tokens_per_minute
+            ):
                 self._timestamps.append(now)
+                if projected_cost > 0:
+                    self._token_timestamps.append((now, projected_cost))
                 return True, 0.0
         self._semaphore.release()
-        return False, max(0.01, self.retry_after_seconds())
+        return False, max(0.01, self.retry_after_seconds(projected_cost))
 
     def release_slot(self) -> None:
         self._semaphore.release()
@@ -75,7 +106,7 @@ class TrafficController:
                 continue
             acquired = False
             while not self._shutdown.is_set():
-                acquired, wait_seconds = self.try_acquire_slot()
+                acquired, wait_seconds = self.try_acquire_slot(task.projected_cost)
                 if acquired:
                     break
                 self._sleeper(wait_seconds)

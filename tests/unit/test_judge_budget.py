@@ -24,14 +24,14 @@ def mock_config():
             "check_interval_seconds": 2
         },
         "debate": {
-            "model": "gemini-test",
+            "model": "llama-3.1-8b-instant",
         }
     }
 
 
 def test_judge_handles_budget_exception(mock_config):
     """Test that the judge catches BudgetExceededException and degrades gracefully."""
-    with patch("google.generativeai.GenerativeModel"):
+    with patch("debate_sdk.services.groq_mixin.httpx.Client"):
         inbound = multiprocessing.Queue()
         outbound = multiprocessing.Queue()
         judge = ParentJudgeAgent("judge_1", mock_config, inbound, outbound)

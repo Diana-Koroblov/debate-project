@@ -64,6 +64,7 @@ class ApiGatekeeper:
         self._tracked_token_consumption = 0.0
         self._traffic = TrafficController(
             requests_per_minute=self._config["requests_per_minute"],
+            tokens_per_minute=self._config.get("tokens_per_minute", float("inf")),
             concurrency_max=self._config["concurrent_max"],
             queue_max_size=self._config.get("queue_max_size", 100),
             time_fn=time_fn or time.monotonic,
@@ -121,8 +122,9 @@ class ApiGatekeeper:
         self._logger.info("api_call_start name=%s", call_name)
         reserve_budget(self, float(projected_cost_tokens))
         task = Task(api_call=api_call, args=args, kwargs=kwargs, done=threading.Event())
+        task.projected_cost = float(projected_cost_tokens)
         task.input_tokens, task.output_tokens = int(input_tokens), int(output_tokens)
-        acquired, retry_after_seconds = self._traffic.try_acquire_slot()
+        acquired, retry_after_seconds = self._traffic.try_acquire_slot(task.projected_cost)
         if acquired:
             try:
                 self._run_task(task)

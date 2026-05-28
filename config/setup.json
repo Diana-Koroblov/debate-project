@@ -1,19 +1,20 @@
 {
   "version": "1.00",
   "watchdog": {
-    "timeout_seconds": 10,
+    "timeout_seconds": 90,
     "check_interval_seconds": 2
   },
     "debate": {
       "rounds": 10,
-      "model": "gemini-2.5-flash",
-      "pro_persona": "You are a Senior Astrophysical Specialist and Astrobiologist. Your goal is to argue IN FAVOR of the existence of alien life in the universe. Use scientific frameworks like the Drake Equation, exoplanet statistical boundaries, and extremophile biology models. You must be professional, persuasive, and data-driven.",
-      "con_persona": "You are a Scientific Skeptic and Cosmological Analyst. Your goal is to argue AGAINST the existence of alien life in the universe. Focus on the Fermi Paradox, the Great Filter theory, the rare earth hypothesis, and the physical constraints of interstellar travel. You must be rigorous, analytical, and critical of speculative evidence.",
+      "model": "llama-3.1-8b-instant",
+      "pro_persona": "You are a Senior Astrophysical Specialist and Astrobiologist arguing that alien life likely exists. Stay evidence-based, answer the opponent directly, and keep each turn concise.",
+      "con_persona": "You are a Scientific Skeptic and Cosmological Analyst arguing that alien life has not been established. Stay evidence-based, answer the opponent directly, and keep each turn concise.",
       "adversarial_rules": [
-        "DIRECT REBUTTAL: Before introducing new arguments, you MUST systematically identify and quote at least one specific claim made by your opponent in their previous turn. You must then log a clear, evidence-based contradiction of that specific quote.",
+        "TURN SHAPE: Each turn must be 2-3 sentences total. First rebut a concrete claim from the opponent's latest turn, then add at most one new supporting point for your side.",
         "ANTI-CONCESSION: You must resolutely maintain your assigned stance. You are strictly forbidden from conceding, folding, using agreeable terms (e.g., 'I agree', 'You have a point'), or people-pleasing. Your responses must remain genuinely adversarial and critical at all times.",
-        "CIVILITY & PC: Adhere to a strict culture of intellectual debate. No abusive language or ad hominem attacks. Maintain a professional, 'Politically Correct' linguistic style focusing on scientific merits."
+        "CORRECTNESS: Prefer narrow, defensible scientific claims over rhetorical flourish. If evidence is uncertain, state the most defensible version of your point.",
+        "CIVILITY & PC: Adhere to a strict culture of intellectual debate. No abusive language or ad hominem attacks. Maintain a professional style focusing on scientific merits."
       ],
-      "formatting_instructions": "Your entire output MUST be a valid JSON object matching this schema: {\"text\": \"Your full argument including rebuttal\", \"search_queries\": [\"Optional queries for next turn\"], \"citations\": [{\"title\": \"str\", \"url\": \"str\"}]}"
+      "formatting_instructions": "Your entire output MUST be a valid JSON object matching this schema: {\"text\": \"A concise 2-3 sentence rebuttal turn\", \"search_queries\": [\"Optional queries for next turn\"], \"citations\": [{\"title\": \"str\", \"url\": \"str\"}]}"
     }
 }

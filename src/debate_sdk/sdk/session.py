@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from debate_sdk.sdk.pricing import build_cost_summary, write_cost_summary
+from debate_sdk.sdk.transcript import build_transcript_markdown, write_transcript
 from debate_sdk.services.child_agent import ChildDebaterAgent
 from debate_sdk.services.con_agent import ConDebaterAgent
 from debate_sdk.services.judge_agent import ParentJudgeAgent
@@ -35,6 +36,7 @@ class DebateSessionResult:
     final_judgment: dict[str, Any]
     cost_summary: dict[str, Any]
     artifact_path: Path
+    transcript_path: Path
 
 
 def session_round_limit() -> int:
@@ -90,6 +92,7 @@ def run_debate_session(
     )
     worker.start()
     final_judgment: dict[str, Any] | None = None
+    transcript_events: list[dict[str, Any]] = []
     token_usage = {"input_tokens": 0, "output_tokens": 0}
     total_chars = 0
     try:
@@ -105,6 +108,7 @@ def run_debate_session(
             if on_event:
                 on_event(event)
             if event.get("type") == "argument":
+                transcript_events.append(event)
                 payload = event.get("payload", {})
                 total_chars += len(payload.get("text", ""))
             if event.get("type") == "telemetry":
@@ -130,4 +134,10 @@ def run_debate_session(
 
     cost_summary = build_cost_summary(config["debate"]["model"], token_usage)
     artifact_path = write_cost_summary(cost_summary, "results", config["session_id"])
-    return DebateSessionResult(final_judgment, cost_summary, artifact_path)
+    transcript = build_transcript_markdown(
+        transcript_events,
+        final_judgment,
+        config["session_id"],
+    )
+    transcript_path = write_transcript(transcript, "results", config["session_id"])
+    return DebateSessionResult(final_judgment, cost_summary, artifact_path, transcript_path)

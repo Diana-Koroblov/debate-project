@@ -2,7 +2,7 @@
 
 Debate Project is a multi-process CLI application that stages a structured AI debate on the question of extraterrestrial life. A parent judge process orchestrates two child debaters, enforces turn order through IPC queues, persists session state, rotates logs, tracks API budget usage, and emits a final judgment plus cost summary.
 
-The current shipped runtime is configured for Gemini with `gemini-2.5-flash`, and the live debate path was validated in this repository on 2026-05-24 after fixing two runtime blockers: `.env` loading for Gemini API keys and Windows session-worker daemonization.
+The current shipped runtime is configured for Groq with `llama-3.1-8b-instant`, and the live debate path is designed around Groq's OpenAI-compatible chat completions API.
 
 ## Architecture
 
@@ -24,11 +24,11 @@ debate_project/
 +-- src/debate_sdk/services/      Agent service layer
 |   +-- base_agent.py             Shared process event loop
 |   +-- child_agent.py            Debater behavior wrapper
-|   +-- pro_agent.py              Pro-debate persona + Gemini
-|   +-- con_agent.py              Con-debate persona + Gemini
+|   +-- pro_agent.py              Pro-debate persona + Groq
+|   +-- con_agent.py              Con-debate persona + Groq
 |   +-- judge_agent.py            Parent judge orchestration
 |   +-- judge_*_mixin.py          Decomposed judging, routing, and process logic
-|   +-- gemini_mixin.py           Shared LLM interface
+|   +-- groq_mixin.py             Shared LLM interface
 |   +-- web_search_mixin.py       Tavily search capabilities
 |
 +-- src/debate_sdk/shared/        Infrastructure layer
@@ -74,7 +74,7 @@ debate_project/
 			   Parent inbound queue
 
 Cross-cutting services:
-- ApiGatekeeper wraps Gemini calls and token budget accounting.
+- ApiGatekeeper wraps Groq calls and token budget accounting.
 - Watchdog monitors child PIDs and heartbeats.
 - StateManager flushes ledger checkpoints to results/state/.
 - Logging rotates structured logs in results/logs/.
@@ -86,7 +86,7 @@ Cross-cutting services:
 
 - Windows or another OS with Python 3.10 available
 - `uv`
-- A valid Gemini API key
+- A valid Groq API key
 - Optional Tavily API key for search augmentation
 
 ### Install
@@ -109,14 +109,14 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 Create a local `.env` file from `.env-example` and fill in the keys:
 
 ```text
-GOOGLE_API_KEY="your_gemini_api_key"
+GROQ_API_KEY="your_groq_api_key"
 TAVILY_API_KEY="your_tavily_api_key"
 ```
 
 Notes:
 
-- `GOOGLE_API_KEY` is required for live debates.
-- If the key is missing, the Gemini layer now logs an explicit exception message during initialization.
+- `GROQ_API_KEY` is required for live debates.
+- If the key is missing, the Groq layer now logs an explicit exception message during initialization.
 - `TAVILY_API_KEY` is optional for the current runtime because the debate loop does not hard-fail when search is unavailable.
 
 ## Running The Debate
@@ -139,13 +139,14 @@ uv run python -m debate_project
 2. Select a number of rounds from the keyboard menu.
 3. Watch live argument events and watchdog log messages stream in the terminal.
 4. Review the final judgment and token cost table.
-5. Inspect the generated JSON cost artifact in `results/`.
+5. Inspect the generated transcript and JSON cost artifacts in `results/`.
 
 ### Runtime Outputs
 
 - `results/logs/agent_logs_*.log`: rotating structured runtime logs
 - `results/state/session_<session_id>.state`: checkpointed ledger state
 - `results/cost_summary_<session_id>.json`: cost breakdown artifact
+- `results/transcript_<session_id>.md`: per-run transcript artifact
 - `docs/PROMPT_BOOK.md`: runtime prompt appendix
 - `docs/DEBATE_TRANSCRIPT.md`: full generated 10-round transcript
 
@@ -156,7 +157,7 @@ uv run python -m debate_project
 - `watchdog.timeout_seconds`: heartbeat timeout before forced recovery
 - `watchdog.check_interval_seconds`: watchdog polling interval
 - `debate.rounds`: upper bound exposed by the CLI, capped at 10 by the session layer
-- `debate.model`: Gemini model used by pro, con, and judge agents
+- `debate.model`: Groq model used by pro, con, and judge agents
 - `debate.pro_persona`: system prompt seed for the pro debater
 - `debate.con_persona`: system prompt seed for the con debater
 - `debate.adversarial_rules`: shared anti-concession and rebuttal directives
@@ -164,7 +165,7 @@ uv run python -m debate_project
 
 ### `config/rate_limits.json`
 
-- `requests_per_minute`: global Gemini traffic cap
+- `requests_per_minute`: global Groq traffic cap
 - `concurrent_max`: simultaneous outbound API calls
 - `queue_max_size`: pending request buffer ceiling
 - `max_retries`: retry attempts for transient failures
@@ -189,18 +190,17 @@ uv run pytest tests/ --cov=src
 
 ### Runtime Validation Performed In This Repository
 
-- Focused unit tests for `GeminiMixin`, debater agents, judge agent, and session runner
+- Focused unit tests for the Groq transport mixin, debater agents, judge agent, and session runner
 - Live one-round SDK smoke test
-- Live debate validation after switching the default model to `gemini-2.5-flash`
-- Full 10-round live execution progressed to round 8 before hitting the current Gemini free-tier request quota in this environment
+- Live debate validation after switching the default model to `llama-3.1-8b-instant`
+- Full 10-round live execution now depends on available Groq quota and rate limits in the configured project
 - Deterministic offline 10-round transcript generation for the documentation artifact in `docs/DEBATE_TRANSCRIPT.md`
 
 ### Known Operational Notes
 
-- The `google.generativeai` SDK emits a deprecation warning; migrating to `google.genai` is the next technical cleanup.
 - Python 3.10 still works here but now emits an upstream support warning; Python 3.11 is the safer target going forward.
 - The session worker must not run as a daemon on Windows because the judge process owns a `multiprocessing.Manager` and child worker processes.
-- `run_with_retries` now respects provider-supplied `Please retry in ...s` guidance, but a full live 10-round debate still depends on available Gemini quota.
+- `run_with_retries` respects provider-supplied `Please retry in ...s` guidance, but a full live 10-round debate still depends on available Groq quota.
 
 ## Prompt Artifacts
 

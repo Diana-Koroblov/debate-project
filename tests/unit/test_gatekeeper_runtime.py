@@ -53,6 +53,72 @@ def test_run_with_retries_fails_immediately_on_quota_error() -> None:
     assert len(waits) == 0
 
 
+def test_run_with_retries_waits_for_quota_retry_hint() -> None:
+    attempts = {"count": 0}
+    waits: list[float] = []
+
+    def quota_then_succeeds() -> str:
+        attempts["count"] += 1
+        if attempts["count"] == 1:
+            raise RuntimeError("429 quota exceeded. Please retry in 30.5s.")
+        return "ok"
+
+    result = run_with_retries(
+        quota_then_succeeds,
+        logger=MagicMock(),
+        sleeper=waits.append,
+        max_retries=3,
+        backoff_base_seconds=0.25,
+    )
+
+    assert result == "ok"
+    assert waits == [30.5]
+
+
+def test_run_with_retries_waits_for_groq_try_again_hint() -> None:
+    attempts = {"count": 0}
+    waits: list[float] = []
+
+    def quota_then_succeeds() -> str:
+        attempts["count"] += 1
+        if attempts["count"] == 1:
+            raise RuntimeError("HTTP 429: Rate limit reached. Please try again in 5.99s.")
+        return "ok"
+
+    result = run_with_retries(
+        quota_then_succeeds,
+        logger=MagicMock(),
+        sleeper=waits.append,
+        max_retries=3,
+        backoff_base_seconds=0.25,
+    )
+
+    assert result == "ok"
+    assert waits == [5.99]
+
+
+def test_run_with_retries_waits_for_groq_millisecond_hint() -> None:
+    attempts = {"count": 0}
+    waits: list[float] = []
+
+    def quota_then_succeeds() -> str:
+        attempts["count"] += 1
+        if attempts["count"] == 1:
+            raise RuntimeError("HTTP 429: Rate limit reached. Please try again in 160ms.")
+        return "ok"
+
+    result = run_with_retries(
+        quota_then_succeeds,
+        logger=MagicMock(),
+        sleeper=waits.append,
+        max_retries=3,
+        backoff_base_seconds=0.1,
+    )
+
+    assert result == "ok"
+    assert waits == [0.16]
+
+
 def test_run_with_retries_uses_exponential_backoff_without_hint() -> None:
     waits: list[float] = []
 

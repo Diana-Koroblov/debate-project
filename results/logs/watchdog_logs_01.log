@@ -1,0 +1,4 @@
+2026-05-28 19:25:13,503 - watchdog - INFO - Registered agent 'pro_agent' with PID 16336
+2026-05-28 19:25:13,504 - watchdog - INFO - Registered agent 'con_agent' with PID 8284
+2026-05-28 19:25:13,504 - watchdog - INFO - Watchdog daemon started
+2026-05-28 19:29:17,569 - watchdog - INFO - Watchdog daemon stopped

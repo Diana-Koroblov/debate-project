@@ -18,7 +18,7 @@ def mock_config():
     return {
         "version": "1.00",
         "debate": {
-            "model": "gemini-test",
+            "model": "llama-3.1-8b-instant",
             "pro_persona": "Pro Persona",
             "con_persona": "Con Persona",
             "adversarial_rules": ["Rule 1"],
@@ -26,12 +26,22 @@ def mock_config():
         }
     }
 
+
+def _mock_groq_response(mock_client_cls, content: str) -> None:
+    mock_response = MagicMock()
+    mock_response.raise_for_status.return_value = None
+    mock_response.json.return_value = {
+        "choices": [{"message": {"content": content}}],
+        "usage": {"prompt_tokens": 11, "completion_tokens": 7},
+    }
+    mock_client_cls.return_value.post.return_value = mock_response
+
 def test_child_agent_search_mock(mock_config):
     """
     5.6.2: Write a test case utilizing a MockEngine to simulate a Search API response,
     asserting that the agent correctly parses the mock data payload.
     """
-    with patch("google.generativeai.GenerativeModel"):
+    with patch("debate_sdk.services.groq_mixin.httpx.Client"):
         agent = ProDebaterAgent("pro_1", mock_config, Queue(), Queue())
 
         mock_results = [
@@ -54,12 +64,11 @@ def test_pro_agent_contract_compliance(mock_config):
     asserting that its generated output complies with the ChildToParentMessage structural contract.
     """
     outbound = Queue()
-    with patch("google.generativeai.GenerativeModel") as mock_model_cls:
-        mock_chat = mock_model_cls.return_value.start_chat.return_value
-        mock_response = MagicMock()
-        # Valid JSON matching ArgumentPayload schema
-        mock_response.text = '{"text": "Rebuttal: No evidence for silence.", "citations": []}'
-        mock_chat.send_message.return_value = mock_response
+    with patch("debate_sdk.services.groq_mixin.httpx.Client") as mock_client_cls:
+        _mock_groq_response(
+            mock_client_cls,
+            '{"text": "Rebuttal: No evidence for silence.", "citations": []}',
+        )
 
         agent = ProDebaterAgent("pro_v1", mock_config, Queue(), outbound)
 
@@ -84,11 +93,11 @@ def test_con_agent_contract_compliance(mock_config):
     verifying character consistency and compliance.
     """
     outbound = Queue()
-    with patch("google.generativeai.GenerativeModel") as mock_model_cls:
-        mock_chat = mock_model_cls.return_value.start_chat.return_value
-        mock_response = MagicMock()
-        mock_response.text = '{"text": "Rebuttal: Drake equation is speculation.", "citations": []}'
-        mock_chat.send_message.return_value = mock_response
+    with patch("debate_sdk.services.groq_mixin.httpx.Client") as mock_client_cls:
+        _mock_groq_response(
+            mock_client_cls,
+            '{"text": "Rebuttal: Drake equation is speculation.", "citations": []}',
+        )
 
         agent = ConDebaterAgent("con_v1", mock_config, Queue(), outbound)
 
@@ -111,12 +120,8 @@ def test_schema_violation_graceful_handling(mock_config):
     """
     import queue
     outbound = Queue()
-    with patch("google.generativeai.GenerativeModel") as mock_model_cls:
-        mock_chat = mock_model_cls.return_value.start_chat.return_value
-        mock_response = MagicMock()
-        # Invalid JSON
-        mock_response.text = "NOT JSON AT ALL"
-        mock_chat.send_message.return_value = mock_response
+    with patch("debate_sdk.services.groq_mixin.httpx.Client") as mock_client_cls:
+        _mock_groq_response(mock_client_cls, "NOT JSON AT ALL")
 
         agent = ProDebaterAgent("pro_fail", mock_config, Queue(), outbound)
 

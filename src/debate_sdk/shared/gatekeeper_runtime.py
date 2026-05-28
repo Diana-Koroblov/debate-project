@@ -8,7 +8,10 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
 
-RETRY_DELAY_RE = re.compile(r"retry in (?P<seconds>\d+(?:\.\d+)?)s", re.IGNORECASE)
+RETRY_DELAY_RE = re.compile(
+    r"(?:retry|try again) in (?P<value>\d+(?:\.\d+)?)(?P<unit>ms|s)",
+    re.IGNORECASE,
+)
 
 
 @dataclass
@@ -37,7 +40,7 @@ def dispatch_telemetry(
         outbound_queue.put_nowait({
             "type": "telemetry",
             "agent_id": agent_id or "unknown",
-            "model": model_name or "gemini-2.5-flash",
+            "model": model_name or "llama-3.1-8b-instant",
             "usage": {
                 "input": int(task.input_tokens or 0),
                 "output": int(task.output_tokens or 0)
@@ -79,9 +82,8 @@ def is_transient_error(exc: Exception) -> bool:
     status = getattr(exc, "status", None) or getattr(exc, "status_code", None)
     message = str(exc).lower()
 
-    # 429/Quota errors are treated as fatal to prevent heartbeat stalls
     if (isinstance(status, int) and status == 429) or "quota" in message or "429" in message:
-        return False
+        return RETRY_DELAY_RE.search(str(exc)) is not None
 
     if isinstance(status, int) and (500 <= status < 600):
         return True
@@ -95,7 +97,10 @@ def retry_delay_seconds(exc: Exception, attempt: int, backoff_base_seconds: floa
     match = RETRY_DELAY_RE.search(str(exc))
     if not match:
         return delay
-    return max(delay, float(match.group("seconds")))
+    value = float(match.group("value"))
+    if match.group("unit").lower() == "ms":
+        value /= 1000.0
+    return max(delay, value)
 
 
 def run_with_retries(

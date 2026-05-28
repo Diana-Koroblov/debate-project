@@ -6,7 +6,7 @@ import multiprocessing
 from typing import Any, Dict
 
 from debate_sdk.services.base_agent import BaseAgent
-from debate_sdk.services.gemini_mixin import GeminiMixin
+from debate_sdk.services.groq_mixin import GroqMixin
 from debate_sdk.services.judge_decision_mixin import JudgeDecisionMixin
 from debate_sdk.services.judge_process_mixin import JudgeProcessMixin
 from debate_sdk.services.judge_routing_mixin import JudgeRoutingMixin
@@ -22,7 +22,7 @@ from debate_sdk.shared.watchdog import Watchdog
 
 
 class ParentJudgeAgent(
-    BaseAgent, GeminiMixin, JudgeProcessMixin, JudgeDecisionMixin, JudgeRoutingMixin
+    BaseAgent, GroqMixin, JudgeProcessMixin, JudgeDecisionMixin, JudgeRoutingMixin
 ):
     """Centralized authority process that orchestrates the debate."""
 
@@ -46,10 +46,13 @@ class ParentJudgeAgent(
         self.max_rounds = int(debate_cfg.get("rounds", 10))
         self.active_agent_id: str | None = None
         self.watchdog = Watchdog(config)
-        GeminiMixin.__init__(
-            self, model_name=debate_cfg.get("model", "gemini-2.5-flash"),
+        GroqMixin.__init__(
+            self, model_name=debate_cfg.get("model", "llama-3.1-8b-instant"),
             system_instruction="You are the Supreme Judge of the Scientific Debate.",
-            generation_config={"response_mime_type": "application/json"}
+            generation_config={
+                "response_mime_type": "application/json",
+                "max_completion_tokens": 768,
+            }
         )
         self.ledger = HistoryLedger()
         self.state_manager = StateManager(

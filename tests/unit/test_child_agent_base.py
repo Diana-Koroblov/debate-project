@@ -85,9 +85,66 @@ def test_child_agent_execute_turn_coverage(mock_config):
     inbound, outbound = Queue(), Queue()
     agent = ChildDebaterAgent("tester", mock_config, inbound, outbound)
     # Mock generate_argument which is usually provided by subclasses/mixins
-    agent.generate_argument = MagicMock(return_value='{"text": "ok"}')
-    agent._execute_turn(MagicMock())
+    agent.generate_argument = MagicMock(
+        return_value=(
+            '{"text": "Sentence one. Sentence two. Sentence three. Sentence four."}'
+        )
+    )
+    prompt = ParentToChildRouter(
+        recipient_id="tester",
+        history=["pro_agent: Earth may not be unique."],
+        game_status="ACTIVE",
+    )
+    agent._execute_turn(prompt)
     assert agent.generate_argument.called
+    called_prompt = agent.generate_argument.call_args[0][0]
+    assert "Latest opponent statement" in called_prompt
+    assert "2-3 concise sentences" in called_prompt
+
+    msg = outbound.get(timeout=1.0)
+    assert msg["payload"]["text"] == "Sentence one. Sentence two. Sentence three."
+
+
+def test_child_agent_clamps_word_count(mock_config):
+    """Test that long model outputs are shortened to a compact turn."""
+    inbound, outbound = Queue(), Queue()
+    agent = ChildDebaterAgent("tester", mock_config, inbound, outbound)
+    long_text = " ".join([f"word{i}" for i in range(70)]) + "."
+    agent.generate_argument = MagicMock(return_value=f'{{"text": "{long_text}"}}')
+
+    prompt = ParentToChildRouter(
+        recipient_id="tester",
+        history=["con_agent: Current evidence is insufficient."],
+        game_status="ACTIVE",
+    )
+    agent._execute_turn(prompt)
+
+    msg = outbound.get(timeout=1.0)
+    assert len(msg["payload"]["text"].split()) == 48
+
+
+def test_child_agent_preserves_sentence_boundaries_when_possible(mock_config):
+    """Test that sentence-boundary clamping prefers complete sentences."""
+    inbound, outbound = Queue(), Queue()
+    agent = ChildDebaterAgent("tester", mock_config, inbound, outbound)
+    very_long_tail = " ".join([f"overflow{i}" for i in range(60)])
+    agent.generate_argument = MagicMock(
+        return_value=(
+            '{"text": "Short first sentence. Short second sentence. This third sentence '
+            + very_long_tail
+            + '."}'
+        )
+    )
+
+    prompt = ParentToChildRouter(
+        recipient_id="tester",
+        history=["con_agent: Current evidence is insufficient."],
+        game_status="ACTIVE",
+    )
+    agent._execute_turn(prompt)
+
+    msg = outbound.get(timeout=1.0)
+    assert msg["payload"]["text"] == "Short first sentence. Short second sentence."
 
 
 def test_child_agent_ignores_other_messages(mock_config):

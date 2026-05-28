@@ -70,7 +70,12 @@ class ConsoleStream:
         if "STALL DETECTED" in line or "TERMINATION" in line:
             self.line(f"{COLORS['system']}[watchdog] {line}{COLORS['reset']}")
 
-    def render_costs(self, summary: dict[str, Any], artifact_path: str) -> None:
+    def render_costs(
+        self,
+        summary: dict[str, Any],
+        artifact_path: str,
+        transcript_path: str,
+    ) -> None:
         """Render a compact token and cost breakdown table."""
         usage = summary["usage"]
         costs = summary["costs"]
@@ -83,3 +88,4 @@ class ConsoleStream:
         self.line(f"Output cost (USD)| {costs['output_cost_usd']:.6f}")
         self.line(f"Total cost (USD) | {costs['total_cost_usd']:.6f}")
         self.line(f"Summary artifact | {artifact_path}")
+        self.line(f"Transcript       | {transcript_path}")

@@ -9,6 +9,7 @@ from unittest.mock import MagicMock
 import pytest
 
 from debate_sdk.sdk.session import DebateSessionOptions, build_session_config, run_debate_session
+from debate_sdk.sdk.transcript import write_transcript
 
 
 class StubJudge:
@@ -74,12 +75,12 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
         },
     )
     monkeypatch.setattr(
-        "debate_sdk.sdk.session.load_logging_config",
-        lambda config_path=None: {"log_directory": str(tmp_path)},
-    )
-    monkeypatch.setattr(
         "debate_sdk.sdk.session.write_cost_summary",
         lambda summary, results_dir, session_id: tmp_path / f"{session_id}.json",
+    )
+    monkeypatch.setattr(
+        "debate_sdk.sdk.session.write_transcript",
+        lambda transcript, results_dir, session_id: write_transcript(transcript, tmp_path, session_id),
     )
 
     events: list[str] = []
@@ -92,6 +93,10 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
     assert events == ["argument", "final_judgment"]
     assert result.final_judgment["winner_id"] == "pro_agent"
     assert result.artifact_path == tmp_path / "session-test.json"
+    assert result.transcript_path == tmp_path / "transcript_session-test.md"
+    assert result.transcript_path.read_text(encoding="utf-8").startswith(
+        "# Debate Transcript session-test"
+    )
 
 
 def test_run_debate_session_worker_is_not_daemon(monkeypatch) -> None:

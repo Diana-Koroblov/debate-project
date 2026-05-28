@@ -86,6 +86,7 @@ def test_load_rate_limits_valid_file(tmp_path):
 
     assert config["version"] == "1.00"
     assert config["requests_per_minute"] == 10
+    assert config["tokens_per_minute"] == 0.0
     assert config["concurrent_max"] == 2
 
 
@@ -123,4 +124,22 @@ def test_load_rate_limits_invalid_budget_raises_value_error(tmp_path):
     )
 
     with pytest.raises(ValueError, match="max_budget_tokens"):
+        load_rate_limits(cfg_path)
+
+
+def test_load_rate_limits_invalid_tokens_per_minute_raises_value_error(tmp_path):
+    cfg_path = tmp_path / "rate_limits.json"
+    cfg_path.write_text(
+        json.dumps(
+            {
+                "version": "1.00",
+                "requests_per_minute": 10,
+                "tokens_per_minute": -1,
+                "concurrent_max": 2,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="tokens_per_minute"):
         load_rate_limits(cfg_path)

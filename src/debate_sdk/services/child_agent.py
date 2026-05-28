@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from multiprocessing import Queue
 from typing import Any, Dict, List
 
@@ -46,13 +47,12 @@ class ChildDebaterAgent(BaseAgent, WebSearchMixin):
         """
         self.logger.info(f"Agent '{self.agent_id}' generating argument...")
 
-        # Subclasses must provide generate_argument (usually via GeminiMixin)
-        user_prompt = f"OPPONENT HISTORY:\n{prompt.history}\n\nGenerate your structured response."
+        user_prompt = self._build_turn_prompt(prompt)
         raw_output = getattr(self, "generate_argument")(user_prompt)
 
         try:
             data = json.loads(raw_output)
-            argument_text = data.get("text")
+            argument_text = self._condense_argument_text(str(data.get("text", "")))
             if not argument_text:
                 self.logger.warning("Empty text in agent response. Dropping.")
                 return
@@ -68,6 +68,73 @@ class ChildDebaterAgent(BaseAgent, WebSearchMixin):
         except json.JSONDecodeError:
             self.logger.error("RUNTIME SCHEMA VIOLATION: Dropping malformed emission.")
             # 5.6.5: Dropped without bringing down the process
+
+    def _build_turn_prompt(self, prompt: ParentToChildRouter) -> str:
+        """Construct a concise rebuttal-oriented turn prompt."""
+        transcript = "\n".join(prompt.history)
+        instructions = [
+            "Return valid JSON only.",
+            "Your text field must contain 2-3 concise sentences total.",
+            "Do not write markdown, bullets, or an essay.",
+        ]
+
+        if transcript:
+            instructions.extend(
+                [
+                    "Debate transcript so far:",
+                    transcript,
+                    "Latest opponent statement:",
+                    prompt.history[-1],
+                    (
+                        "Sentence 1 must directly rebut a concrete claim from the latest "
+                        "opponent statement."
+                    ),
+                    "Sentence 2 or 3 may add one new supporting point for your side.",
+                ]
+            )
+        else:
+            instructions.extend(
+                [
+                    "You are opening the debate.",
+                    "State your side's position in 2-3 concise sentences.",
+                    "Make one clear claim and one brief supporting reason.",
+                ]
+            )
+
+        if prompt.game_status == "ENDING":
+            instructions.append("This is the final turn, so end with your strongest concise point.")
+
+        return "\n\n".join(instructions)
+
+    def _condense_argument_text(self, text: str) -> str:
+        """Keep runtime turns short even if the model over-generates."""
+        normalized = " ".join(text.split())
+        if not normalized:
+            return ""
+
+        sentences = [
+            chunk.strip()
+            for chunk in re.findall(r"[^.!?]+(?:[.!?]+|$)", normalized)
+            if chunk.strip()
+        ]
+        if not sentences:
+            return normalized
+
+        selected: list[str] = []
+        for sentence in sentences[:3]:
+            candidate = " ".join(selected + [sentence]).strip()
+            if len(candidate.split()) <= 48:
+                selected.append(sentence)
+                continue
+            break
+
+        if selected:
+            return " ".join(selected).strip()
+
+        trimmed = " ".join(sentences[0].split()[:48]).rstrip(",;:")
+        if trimmed and trimmed[-1] not in ".!?":
+            trimmed += "."
+        return trimmed
 
     def emit_argument(self, text: str, round_num: int, citations: List[Any] = None) -> None:
         """

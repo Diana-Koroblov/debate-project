@@ -21,14 +21,14 @@ def mock_config():
             "check_interval_seconds": 2
         },
         "debate": {
-            "model": "gemini-test",
+            "model": "llama-3.1-8b-instant",
         }
     }
 
 
 def test_judge_initialization(mock_config):
-    """Test that the judge initializes with correct queues and Gemini mixin."""
-    with patch("google.generativeai.GenerativeModel"):
+    """Test that the judge initializes with correct queues and Groq mixin."""
+    with patch("debate_sdk.services.groq_mixin.httpx.Client"):
         inbound = multiprocessing.Queue()
         outbound = multiprocessing.Queue()
         judge = ParentJudgeAgent("judge_1", mock_config, inbound, outbound)
@@ -42,7 +42,7 @@ def test_judge_initialization(mock_config):
 def test_spawn_children(mock_config):
     """Test that spawn_children creates and starts child processes."""
     with (
-        patch("google.generativeai.GenerativeModel"),
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
         patch("multiprocessing.Process") as mock_process,
     ):
         mock_pro = MagicMock(pid=101)
@@ -63,7 +63,7 @@ def test_spawn_children(mock_config):
 def test_terminate_children(mock_config):
     """Test that terminate_children calls the termination utility."""
     with (
-        patch("google.generativeai.GenerativeModel"),
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
         patch("debate_sdk.services.judge_process_mixin.terminate_process_tree") as mock_term,
     ):
         inbound = multiprocessing.Queue()
@@ -83,7 +83,7 @@ def test_terminate_children(mock_config):
 def test_judge_records_argument(mock_config):
     """Test that the judge records incoming arguments and saves state."""
     with (
-        patch("google.generativeai.GenerativeModel"),
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
         patch("debate_sdk.shared.state_manager.StateManager.save_state") as mock_save,
     ):
         inbound = multiprocessing.Queue()

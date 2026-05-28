@@ -1,4 +1,4 @@
-"""Token usage parsing and Gemini cost reporting."""
+"""Token usage parsing and model cost reporting."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from typing import Any
 
 @dataclass(frozen=True)
 class PricingRate:
-    """Per-million-token pricing for a Gemini model."""
+    """Per-million-token pricing for a model."""
 
     input_per_million: float
     output_per_million: float
@@ -22,17 +22,19 @@ RATES = {
     "gemini-2.5-pro": PricingRate(1.25, 10.0, "Gemini pricing page 2026-05-19"),
     "gemini-2.5-flash": PricingRate(0.30, 2.50, "Gemini pricing page 2026-05-19"),
     "gemini-2.5-flash-lite": PricingRate(0.10, 0.40, "Gemini pricing page 2026-05-19"),
+    "llama-3.1-8b-instant": PricingRate(0.05, 0.08, "Groq pricing page 2026-05-26"),
+    "llama-3.3-70b-versatile": PricingRate(0.59, 0.79, "Groq pricing page 2026-05-26"),
 }
 
 
 def resolve_pricing(model_name: str) -> PricingRate:
-    """Resolve pricing metadata for a configured Gemini model."""
+    """Resolve pricing metadata for a configured model."""
     if model_name in RATES:
         return RATES[model_name]
     for name, rate in RATES.items():
         if model_name.startswith(name):
             return rate
-    return RATES["gemini-2.5-flash"]
+    return RATES["llama-3.1-8b-instant"]
 
 
 def build_cost_summary(
