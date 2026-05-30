@@ -19,7 +19,10 @@ def _config(rounds: int = 3) -> dict:
 
 
 def test_judge_uses_configured_round_limit() -> None:
-    with patch("debate_sdk.services.groq_mixin.httpx.Client"):
+    with (
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "_decide_topic", return_value="Generated topic"),
+    ):
         judge = ParentJudgeAgent(
             "judge",
             _config(rounds=4),
@@ -31,7 +34,10 @@ def test_judge_uses_configured_round_limit() -> None:
 
 
 def test_judge_forwards_argument_to_outbound_stream() -> None:
-    with patch("debate_sdk.services.groq_mixin.httpx.Client"):
+    with (
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "_decide_topic", return_value="Generated topic"),
+    ):
         outbound = multiprocessing.Queue()
         judge = ParentJudgeAgent("judge", _config(), multiprocessing.Queue(), outbound)
         judge.active_agent_id = "pro_agent"

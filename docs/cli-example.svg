@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1684" height="687" viewBox="0 0 1684 687" role="img" aria-labelledby="title desc">
+  <title id="title">CLI debate example</title>
+  <desc id="desc">Terminal screenshot reconstruction showing the debate length selector, a five-round debate about whether viruses are alive, the judge verdict, and the token cost breakdown.</desc>
+  <rect width="1684" height="687" fill="#0c0c0c"/>
+  <rect x="1676" y="0" width="4" height="8" fill="#2cb3ff"/>
+  <rect x="1676" y="87" width="4" height="8" fill="#2cb3ff"/>
+  <rect x="1676" y="647" width="4" height="8" fill="#2cb3ff"/>
+
+  <g font-family="Consolas, 'Cascadia Mono', 'Courier New', monospace" font-size="13" xml:space="preserve">
+    <text x="8" y="22" fill="#f0f0f0">Select debate length</text>
+    <text x="8" y="42" fill="#f0f0f0">Use arrow keys or W/S, Enter to confirm, Q to quit.</text>
+
+    <text x="28" y="64" fill="#f0f0f0">1 rounds</text>
+    <text x="28" y="82" fill="#f0f0f0">2 rounds</text>
+    <text x="28" y="100" fill="#f0f0f0">3 rounds</text>
+    <text x="28" y="118" fill="#f0f0f0">4 rounds</text>
+    <text x="8" y="136" fill="#f0f0f0">&gt; 5 rounds</text>
+    <text x="28" y="154" fill="#f0f0f0">6 rounds</text>
+    <text x="28" y="172" fill="#f0f0f0">7 rounds</text>
+    <text x="28" y="190" fill="#f0f0f0">8 rounds</text>
+    <text x="28" y="208" fill="#f0f0f0">9 rounds</text>
+    <text x="28" y="226" fill="#f0f0f0">10 rounds</text>
+
+    <text x="8" y="252" fill="#21e16b">[pro_agent] Round 1: Viruses are alive because they possess genetic material and can evolve over time. They contain DNA or RNA, which allows them to adapt to their environment and change their characteristics. This ability to evolve is a</text>
+    <text x="8" y="267" fill="#21e16b">fundamental trait of living organisms.</text>
+
+    <text x="8" y="282" fill="#ff5f56">[con_agent] Round 1: The claim that viruses are alive because they possess genetic material is misleading, as genetic material alone does not define life. Viruses lack the ability to replicate and metabolize without a host cell, which are</text>
+    <text x="8" y="297" fill="#ff5f56">essential characteristics of living organisms.</text>
+
+    <text x="8" y="312" fill="#21e16b">[pro_agent] Round 2: The assertion that viruses lack the ability to replicate and metabolize without a host cell oversimplifies the complex interactions between viruses and their hosts, as some viruses can manipulate host cell machinery t</text>
+    <text x="8" y="327" fill="#21e16b">o replicate and even influence host metabolism.</text>
+
+    <text x="8" y="342" fill="#ff5f56">[con_agent] Round 2: The claim that viruses can manipulate host cell machinery to replicate and influence host metabolism does not negate the fact that they still require a host cell to perform these functions, which is a fundamental diff</text>
+    <text x="8" y="357" fill="#ff5f56">erence between viruses and living organisms.</text>
+
+    <text x="8" y="372" fill="#21e16b">[pro_agent] Round 3: The notion that requiring a host cell to perform functions is a fundamental difference between viruses and living organisms is not entirely accurate, as some living organisms like parasites also rely on hosts to survi</text>
+    <text x="8" y="387" fill="#21e16b">ve.</text>
+
+    <text x="8" y="402" fill="#ff5f56">[con_agent] Round 3: The comparison between viruses and parasites is flawed, as parasites are complex organisms with cellular structures that can carry out various biological processes, whereas viruses are merely genetic material encapsul</text>
+    <text x="8" y="417" fill="#ff5f56">ated in a protein coat.</text>
+
+    <text x="8" y="432" fill="#21e16b">[pro_agent] Round 4: The claim that viruses are merely genetic material encapsulated in a protein coat underestimates their complexity, as they have evolved sophisticated mechanisms to interact with and manipulate host cells. Viruses can</text>
+    <text x="8" y="447" fill="#21e16b">also exhibit genetic variability and evolve rapidly, allowing them to adapt to changing environments.</text>
+
+    <text x="8" y="462" fill="#ff5f56">[con_agent] Round 4: The assertion that viruses have evolved sophisticated mechanisms to interact with host cells does not imply that they are alive, as these mechanisms are still dependent on the host cell's machinery to function.</text>
+
+    <text x="8" y="477" fill="#21e16b">[pro_agent] Round 5: The claim that viruses' mechanisms are dependent on the host cell's machinery to function overlooks the fact that viruses can encode proteins that manipulate host cell processes, demonstrating a level of autonomy.</text>
+
+    <text x="8" y="492" fill="#ff5f56">[con_agent] Round 5: The claim that viruses demonstrate autonomy by encoding proteins that manipulate host cell processes is overstated, as these proteins still rely on the host cell's machinery to be expressed and function.</text>
+
+    <text x="8" y="507" fill="#56d4ff">[judge] Winner: con_agent | Differential score: 7.0</text>
+  </g>
+
+  <g transform="translate(8,526)">
+    <rect x="0" y="0" width="540" height="168" fill="#0c0c0c"/>
+    <g font-family="Consolas, 'Cascadia Mono', 'Courier New', monospace" font-size="13" fill="#f0f0f0" xml:space="preserve">
+      <text x="0" y="14">Token Cost Breakdown</text>
+      <text x="0" y="30">Metric           | Value</text>
+      <text x="0" y="46">-----------------|----------------</text>
+      <text x="0" y="62">Input tokens     | 306</text>
+      <text x="0" y="78">Output tokens    | 306</text>
+      <text x="0" y="94">Input cost (USD) | 0.000181</text>
+      <text x="0" y="110">Output cost (USD)| 0.000242</text>
+      <text x="0" y="126">Total cost (USD) | 0.000422</text>
+      <text x="0" y="142">Summary artifact | results\cost_summary_cli-91f4b173.json</text>
+      <text x="0" y="158">Transcript       | results\transcript_cli-91f4b173.md</text>
+    </g>
+  </g>
+</svg>

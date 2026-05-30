@@ -28,7 +28,10 @@ def mock_config():
 
 def test_judge_initialization(mock_config):
     """Test that the judge initializes with correct queues and Groq mixin."""
-    with patch("debate_sdk.services.groq_mixin.httpx.Client"):
+    with (
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "_decide_topic", return_value="Generated topic"),
+    ):
         inbound = multiprocessing.Queue()
         outbound = multiprocessing.Queue()
         judge = ParentJudgeAgent("judge_1", mock_config, inbound, outbound)
@@ -43,6 +46,7 @@ def test_spawn_children(mock_config):
     """Test that spawn_children creates and starts child processes."""
     with (
         patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "_decide_topic", return_value="Generated topic"),
         patch("multiprocessing.Process") as mock_process,
     ):
         mock_pro = MagicMock(pid=101)
@@ -64,6 +68,7 @@ def test_terminate_children(mock_config):
     """Test that terminate_children calls the termination utility."""
     with (
         patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "_decide_topic", return_value="Generated topic"),
         patch("debate_sdk.services.judge_process_mixin.terminate_process_tree") as mock_term,
     ):
         inbound = multiprocessing.Queue()
@@ -84,6 +89,7 @@ def test_judge_records_argument(mock_config):
     """Test that the judge records incoming arguments and saves state."""
     with (
         patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "_decide_topic", return_value="Generated topic"),
         patch("debate_sdk.shared.state_manager.StateManager.save_state") as mock_save,
     ):
         inbound = multiprocessing.Queue()
@@ -106,3 +112,50 @@ def test_judge_records_argument(mock_config):
         assert mock_save.called
         saved_state = mock_save.call_args[0][0]
         assert len(saved_state["ledger"]) == 1
+
+
+def test_judge_ai_generated_topic_populates_personas(mock_config):
+    """Parent should generate topic and inject it into both debater personas."""
+    captured_prompt: dict[str, str] = {}
+
+    def _mock_generate(prompt: str) -> str:
+        if prompt.startswith("Generate one scientific debate topic"):
+            captured_prompt["value"] = prompt
+            return (
+                '{"topic": "Whether CRISPR therapies should be first-line for inherited disease", '
+                '"balance_rationale": "Both sides can cite credible clinical evidence and policy tradeoffs."}'
+            )
+        return '{"accepted": true, "reason": "Mixed clinical evidence and policy tradeoffs make this actively contested."}'
+
+    with (
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(
+            ParentJudgeAgent,
+            "generate_argument",
+            side_effect=_mock_generate,
+        ),
+    ):
+        inbound = multiprocessing.Queue()
+        outbound = multiprocessing.Queue()
+        judge = ParentJudgeAgent("judge_1", mock_config, inbound, outbound)
+
+        assert "genuinely unresolved or actively contested scientific question" in captured_prompt["value"]
+        assert "credible evidence or expert arguments available for both pro and con sides" in captured_prompt["value"]
+        assert judge.topic == "Whether CRISPR therapies should be first-line for inherited disease?"
+        assert mock_config["debate"]["pro_persona"].startswith(judge.topic)
+        assert mock_config["debate"]["con_persona"].startswith(judge.topic)
+
+
+def test_judge_topic_generation_raises_when_ai_cannot_produce_contested_topic(mock_config):
+    """Invalid or rejected AI output should fail startup instead of falling back to canned topics."""
+    config = {
+        **mock_config,
+        "session_id": "session-topic-fallback",
+        "debate": {**mock_config["debate"]},
+    }
+    with (
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "generate_argument", return_value="not-json"),
+    ):
+        with pytest.raises(RuntimeError, match="actively contested scientific topic"):
+            ParentJudgeAgent("judge_1", config, multiprocessing.Queue(), multiprocessing.Queue())

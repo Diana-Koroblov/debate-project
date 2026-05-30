@@ -29,13 +29,16 @@ class ProDebaterAgent(ChildDebaterAgent, GroqMixin):
 
         # Load model name and persona from setup config
         debate_cfg = config.get("debate", {})
-        model_name = debate_cfg.get("model", "llama-3.1-8b-instant")
+        model_name = debate_cfg.get("model", "openai/gpt-oss-20b")
 
         # Build comprehensive system instruction (Sub-task 5.5)
         base_persona = debate_cfg.get("pro_persona", "You are a pro-alien scientist.")
         rules = "\n".join(debate_cfg.get("adversarial_rules", []))
         fmt = debate_cfg.get("formatting_instructions", "")
-        system_prompt = f"{base_persona}\n\nDEBATE PROTOCOLS:\n{rules}\n\n{fmt}"
+        role_instruction = "You are the pro debater. You must argue in favor of the topic."
+        system_prompt = (
+            f"{role_instruction}\n{base_persona}\n\nDEBATE PROTOCOLS:\n{rules}\n\n{fmt}"
+        )
 
         GroqMixin.__init__(
             self,

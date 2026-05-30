@@ -1,0 +1,18 @@
+{
+  "model": "llama-3.1-8b-instant",
+  "pricing": {
+    "input_per_million": 0.05,
+    "output_per_million": 0.08,
+    "source": "Groq pricing page 2026-05-26"
+  },
+  "usage": {
+    "input_tokens": 267,
+    "output_tokens": 267,
+    "tracked_consumption": 0.0
+  },
+  "costs": {
+    "input_cost_usd": 1.3e-05,
+    "output_cost_usd": 2.1e-05,
+    "total_cost_usd": 3.5e-05
+  }
+}

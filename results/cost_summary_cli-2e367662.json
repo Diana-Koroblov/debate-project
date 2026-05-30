@@ -6,13 +6,13 @@
     "source": "Groq pricing page 2026-05-26"
   },
   "usage": {
-    "input_tokens": 569,
-    "output_tokens": 569,
+    "input_tokens": 422,
+    "output_tokens": 422,
     "tracked_consumption": 0.0
   },
   "costs": {
-    "input_cost_usd": 2.8e-05,
-    "output_cost_usd": 4.6e-05,
-    "total_cost_usd": 7.4e-05
+    "input_cost_usd": 2.1e-05,
+    "output_cost_usd": 3.4e-05,
+    "total_cost_usd": 5.5e-05
   }
 }

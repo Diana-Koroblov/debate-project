@@ -10,10 +10,14 @@ def build_transcript_markdown(
     events: list[dict[str, Any]],
     final_judgment: dict[str, Any],
     session_id: str,
+    topic: str = "",
 ) -> str:
     """Render a readable per-session transcript artifact."""
+    topic_line = str(topic).strip() or "Topic not provided"
     lines = [
         f"# Debate Transcript {session_id}",
+        "",
+        f"Topic: {topic_line}",
         "",
         "```text",
     ]

@@ -1,4 +1,49 @@
-2026-05-28 19:25:13,503 - watchdog - INFO - Registered agent 'pro_agent' with PID 16336
-2026-05-28 19:25:13,504 - watchdog - INFO - Registered agent 'con_agent' with PID 8284
-2026-05-28 19:25:13,504 - watchdog - INFO - Watchdog daemon started
-2026-05-28 19:29:17,569 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 16:34:15,068 - watchdog - INFO - Registered agent 'pro_agent' with PID 14052
+2026-05-30 16:34:15,068 - watchdog - INFO - Registered agent 'con_agent' with PID 16864
+2026-05-30 16:34:15,068 - watchdog - INFO - Watchdog daemon started
+2026-05-30 16:36:17,111 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 16:44:40,405 - watchdog - INFO - Registered agent 'pro_agent' with PID 101
+2026-05-30 16:44:40,405 - watchdog - INFO - Registered agent 'con_agent' with PID 102
+2026-05-30 16:44:40,405 - watchdog - INFO - Watchdog daemon started
+2026-05-30 16:44:50,410 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 101) failed heartbeat! Forcing termination sequence.
+2026-05-30 16:44:50,411 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 101) killed.
+2026-05-30 16:44:50,411 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-30 16:44:50,411 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 102) killed.
+2026-05-30 16:45:40,329 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 16:46:40,421 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 16:51:28,327 - watchdog - INFO - Registered agent 'pro_agent' with PID 16596
+2026-05-30 16:51:28,328 - watchdog - INFO - Registered agent 'con_agent' with PID 4256
+2026-05-30 16:51:28,328 - watchdog - INFO - Watchdog daemon started
+2026-05-30 16:54:30,377 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 16:56:55,899 - watchdog - INFO - Registered agent 'pro_agent' with PID 1872
+2026-05-30 16:56:55,899 - watchdog - INFO - Registered agent 'con_agent' with PID 15796
+2026-05-30 16:56:55,899 - watchdog - INFO - Watchdog daemon started
+2026-05-30 17:00:36,875 - watchdog - INFO - Registered agent 'pro_agent' with PID 101
+2026-05-30 17:00:36,875 - watchdog - INFO - Registered agent 'con_agent' with PID 102
+2026-05-30 17:00:36,875 - watchdog - INFO - Watchdog daemon started
+2026-05-30 17:00:36,949 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 17:00:37,246 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 17:00:46,879 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 101) failed heartbeat! Forcing termination sequence.
+2026-05-30 17:00:46,880 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 101) killed.
+2026-05-30 17:00:46,880 - watchdog - ERROR - STALL DETECTED: Agent 'con_agent' (PID 102) failed heartbeat! Forcing termination sequence.
+2026-05-30 17:00:46,881 - watchdog - INFO - TERMINATION SUCCESS: Agent 'con_agent' (PID 102) killed.
+2026-05-30 17:01:37,331 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 17:01:37,409 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 17:03:04,919 - watchdog - INFO - Registered agent 'pro_agent' with PID 24000
+2026-05-30 17:03:04,920 - watchdog - INFO - Registered agent 'con_agent' with PID 14344
+2026-05-30 17:03:04,920 - watchdog - INFO - Watchdog daemon started
+2026-05-30 17:05:08,959 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 17:09:32,404 - watchdog - INFO - Registered agent 'pro_agent' with PID 101
+2026-05-30 17:09:32,404 - watchdog - INFO - Registered agent 'con_agent' with PID 102
+2026-05-30 17:09:32,404 - watchdog - INFO - Watchdog daemon started
+2026-05-30 17:09:32,473 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 17:09:32,830 - watchdog - INFO - Watchdog daemon stopped
+2026-05-30 17:15:37,731 - watchdog - INFO - Registered agent 'pro_agent' with PID 22448
+2026-05-30 17:15:37,731 - watchdog - INFO - Registered agent 'con_agent' with PID 24116
+2026-05-30 17:15:37,731 - watchdog - INFO - Watchdog daemon started
+2026-05-30 17:17:09,754 - watchdog - ERROR - STALL DETECTED: Agent 'pro_agent' (PID 22448) failed heartbeat! Forcing termination sequence.
+2026-05-30 17:17:09,755 - watchdog - INFO - TERMINATION SUCCESS: Agent 'pro_agent' (PID 22448) killed.
+2026-05-30 17:21:25,947 - watchdog - INFO - Registered agent 'pro_agent' with PID 10640
+2026-05-30 17:21:25,947 - watchdog - INFO - Registered agent 'con_agent' with PID 23976
+2026-05-30 17:21:25,948 - watchdog - INFO - Watchdog daemon started
+2026-05-30 17:23:27,984 - watchdog - INFO - Watchdog daemon stopped

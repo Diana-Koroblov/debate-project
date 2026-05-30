@@ -26,6 +26,9 @@ class MockDebater(ChildDebaterAgent):
 class MockJudge(ParentJudgeAgent):
     """Mock judge that avoids Gemini calls for integration tests."""
 
+    def _decide_topic(self, debate_cfg: Dict[str, Any]) -> str:
+        return "Whether current evidence supports life beyond Earth"
+
     def evaluate_debate(self, history: list[str]) -> FinalJudgmentSchema:
         return FinalJudgmentSchema(
             winner_id='pro_agent',

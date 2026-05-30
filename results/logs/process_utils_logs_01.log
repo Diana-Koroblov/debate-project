@@ -1,2 +1,23 @@
-2026-05-28 19:29:16,066 - process_utils - INFO - Terminating process tree for PID 16336 (0 children).
-2026-05-28 19:29:16,074 - process_utils - INFO - Terminating process tree for PID 8284 (0 children).
+2026-05-30 16:36:16,206 - process_utils - INFO - Terminating process tree for PID 14052 (0 children).
+2026-05-30 16:36:16,215 - process_utils - INFO - Terminating process tree for PID 16864 (0 children).
+2026-05-30 16:44:50,410 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-30 16:44:50,411 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-30 16:46:40,415 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-30 16:46:40,416 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-30 16:54:30,035 - process_utils - INFO - Terminating process tree for PID 16596 (0 children).
+2026-05-30 16:54:30,043 - process_utils - INFO - Terminating process tree for PID 4256 (0 children).
+2026-05-30 17:00:37,239 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-30 17:00:37,240 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-30 17:00:46,879 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-30 17:00:46,880 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-30 17:01:37,325 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-30 17:01:37,326 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-30 17:01:37,402 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-30 17:01:37,403 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-30 17:05:07,684 - process_utils - INFO - Terminating process tree for PID 24000 (0 children).
+2026-05-30 17:05:07,692 - process_utils - INFO - Terminating process tree for PID 14344 (0 children).
+2026-05-30 17:09:32,824 - process_utils - WARNING - Process PID 101 not found for termination.
+2026-05-30 17:09:32,825 - process_utils - WARNING - Process PID 102 not found for termination.
+2026-05-30 17:17:09,755 - process_utils - WARNING - Process PID 22448 not found for termination.
+2026-05-30 17:23:27,947 - process_utils - INFO - Terminating process tree for PID 10640 (0 children).
+2026-05-30 17:23:27,957 - process_utils - INFO - Terminating process tree for PID 23976 (0 children).

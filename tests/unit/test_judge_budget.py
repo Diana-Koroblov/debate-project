@@ -31,7 +31,10 @@ def mock_config():
 
 def test_judge_handles_budget_exception(mock_config):
     """Test that the judge catches BudgetExceededException and degrades gracefully."""
-    with patch("debate_sdk.services.groq_mixin.httpx.Client"):
+    with (
+        patch("debate_sdk.services.groq_mixin.httpx.Client"),
+        patch.object(ParentJudgeAgent, "_decide_topic", return_value="Generated topic"),
+    ):
         inbound = multiprocessing.Queue()
         outbound = multiprocessing.Queue()
         judge = ParentJudgeAgent("judge_1", mock_config, inbound, outbound)

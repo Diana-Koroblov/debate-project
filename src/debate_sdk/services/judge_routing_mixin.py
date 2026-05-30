@@ -14,6 +14,12 @@ class JudgeRoutingMixin:
 
     def start_debate(self) -> None:
         """Initiate the first round by prompting the Pro agent."""
+        topic = str(getattr(self, "topic", "")).strip() or str(
+            self.config.get("debate", {}).get("topic", "")
+        ).strip()
+        if topic:
+            self.send_message({"type": "topic_selected", "topic": topic})
+
         self.logger.info("DEBATE START: Round 1, Pro agent.")
         self.current_round = 1
         self._send_turn_prompt("pro_agent")

@@ -40,7 +40,7 @@ def dispatch_telemetry(
         outbound_queue.put_nowait({
             "type": "telemetry",
             "agent_id": agent_id or "unknown",
-            "model": model_name or "llama-3.1-8b-instant",
+            "model": model_name or "openai/gpt-oss-20b",
             "usage": {
                 "input": int(task.input_tokens or 0),
                 "output": int(task.output_tokens or 0)

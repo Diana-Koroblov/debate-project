@@ -22,6 +22,8 @@ RATES = {
     "gemini-2.5-pro": PricingRate(1.25, 10.0, "Gemini pricing page 2026-05-19"),
     "gemini-2.5-flash": PricingRate(0.30, 2.50, "Gemini pricing page 2026-05-19"),
     "gemini-2.5-flash-lite": PricingRate(0.10, 0.40, "Gemini pricing page 2026-05-19"),
+    "openai/gpt-oss-20b": PricingRate(0.075, 0.30, "Groq pricing page 2026-05-30"),
+    "openai/gpt-oss-120b": PricingRate(0.15, 0.60, "Groq pricing page 2026-05-30"),
     "llama-3.1-8b-instant": PricingRate(0.05, 0.08, "Groq pricing page 2026-05-26"),
     "llama-3.3-70b-versatile": PricingRate(0.59, 0.79, "Groq pricing page 2026-05-26"),
 }
@@ -34,7 +36,7 @@ def resolve_pricing(model_name: str) -> PricingRate:
     for name, rate in RATES.items():
         if model_name.startswith(name):
             return rate
-    return RATES["llama-3.1-8b-instant"]
+    return RATES["openai/gpt-oss-20b"]
 
 
 def build_cost_summary(

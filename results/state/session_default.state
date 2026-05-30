@@ -1,0 +1,12 @@
+{
+  "ledger": [
+    {
+      "timestamp": "2026-05-30T14:09:32.822540",
+      "agent_id": "con_agent",
+      "round": 10,
+      "text": "Final word",
+      "citations": []
+    }
+  ],
+  "round": 10
+}

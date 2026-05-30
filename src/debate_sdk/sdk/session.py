@@ -92,6 +92,7 @@ def run_debate_session(
     )
     worker.start()
     final_judgment: dict[str, Any] | None = None
+    debate_topic = str(config.get("debate", {}).get("topic", "")).strip()
     transcript_events: list[dict[str, Any]] = []
     token_usage = {"input_tokens": 0, "output_tokens": 0}
     total_chars = 0
@@ -107,6 +108,10 @@ def run_debate_session(
                 continue
             if on_event:
                 on_event(event)
+            if event.get("type") == "topic_selected":
+                selected_topic = str(event.get("topic", "")).strip()
+                if selected_topic:
+                    debate_topic = selected_topic
             if event.get("type") == "argument":
                 transcript_events.append(event)
                 payload = event.get("payload", {})
@@ -138,6 +143,7 @@ def run_debate_session(
         transcript_events,
         final_judgment,
         config["session_id"],
+        topic=debate_topic,
     )
     transcript_path = write_transcript(transcript, "results", config["session_id"])
     return DebateSessionResult(final_judgment, cost_summary, artifact_path, transcript_path)

@@ -1,6 +1,6 @@
 {
   "version": "1.00",
-  "requests_per_minute": 25,
+  "requests_per_minute": 30,
   "tokens_per_minute": 5000,
   "concurrent_max": 1,
   "queue_max_size": 100,

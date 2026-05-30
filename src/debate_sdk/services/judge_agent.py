@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import multiprocessing
 from typing import Any, Dict
 
@@ -41,19 +42,21 @@ class ParentJudgeAgent(
         self.pro_inbound: multiprocessing.Queue = multiprocessing.Queue()
         self.con_inbound: multiprocessing.Queue = multiprocessing.Queue()
 
-        debate_cfg = config.get("debate", {})
-        self.current_round = 0
-        self.max_rounds = int(debate_cfg.get("rounds", 10))
-        self.active_agent_id: str | None = None
-        self.watchdog = Watchdog(config)
+        debate_cfg = config.setdefault("debate", {})
         GroqMixin.__init__(
-            self, model_name=debate_cfg.get("model", "llama-3.1-8b-instant"),
+            self, model_name=debate_cfg.get("model", "openai/gpt-oss-20b"),
             system_instruction="You are the Supreme Judge of the Scientific Debate.",
             generation_config={
                 "response_mime_type": "application/json",
                 "max_completion_tokens": 768,
             }
         )
+        self.topic = self._decide_topic(debate_cfg)
+        self._apply_topic_personas(debate_cfg, self.topic)
+        self.current_round = 0
+        self.max_rounds = int(debate_cfg.get("rounds", 10))
+        self.active_agent_id: str | None = None
+        self.watchdog = Watchdog(config)
         self.ledger = HistoryLedger()
         self.state_manager = StateManager(
             config.get("storage_dir", "results/state"),
@@ -110,3 +113,84 @@ class ParentJudgeAgent(
         self.send_message(judgment.model_dump())
         self.logger.info(f"TRUNCATED WINNER DECLARED: {judgment.winner_id}")
         self.terminate()
+
+    def _decide_topic(self, debate_cfg: Dict[str, Any]) -> str:
+        """Generate a fresh topic for the session using the parent model."""
+        topic_prompt = (
+            "Generate one scientific debate topic for two agents.\n"
+            "Requirements:\n"
+            "1. Topic must be a genuinely unresolved or actively contested scientific question.\n"
+            "2. There must be credible evidence or expert arguments available for both pro and con sides.\n"
+            "3. Avoid questions where current mainstream evidence overwhelmingly settles the answer in one direction.\n"
+            "4. Phrase the topic neutrally as a question beginning with Whether, Does, Should, Can, Is, or Are.\n"
+            "5. Keep it to one sentence, 8-18 words.\n"
+            "6. No markdown and no quotes.\n"
+            "Return valid JSON only: {\"topic\": \"...\", \"balance_rationale\": \"one short sentence\"}"
+        )
+
+        last_error: Exception | None = None
+        for attempt in range(3):
+            try:
+                raw_output = getattr(self, "generate_argument")(topic_prompt)
+                parsed = json.loads(raw_output)
+                topic = self._normalize_generated_topic(str(parsed.get("topic", "")).strip())
+                balance_rationale = str(parsed.get("balance_rationale", "")).strip()
+                if not topic or not balance_rationale:
+                    raise ValueError("Topic generator did not return a valid balanced topic payload")
+
+                if self._is_actively_contested_topic(topic, balance_rationale):
+                    return topic
+                raise ValueError("Topic validator rejected candidate as insufficiently contested")
+            except Exception as exc:
+                last_error = exc
+                self.logger.warning(
+                    "Topic generation attempt %s failed: %s",
+                    attempt + 1,
+                    exc,
+                )
+
+        raise RuntimeError(
+            "Judge failed to generate an actively contested scientific topic"
+        ) from last_error
+
+    def _normalize_generated_topic(self, topic: str) -> str:
+        """Accept only neutral question-shaped generated topics."""
+        cleaned = topic.strip().strip('"').rstrip(". ")
+        if not cleaned:
+            return ""
+
+        allowed_starts = ("whether", "does", "should", "can", "is", "are")
+        if not cleaned.lower().startswith(allowed_starts):
+            return ""
+
+        if not cleaned.endswith("?"):
+            cleaned += "?"
+        return cleaned
+
+    def _is_actively_contested_topic(self, topic: str, balance_rationale: str) -> bool:
+        """Ask the judge model to verify that a candidate topic is genuinely contested."""
+        validation_prompt = (
+            "Evaluate whether this scientific debate topic is actively contested.\n"
+            f"Topic: {topic}\n"
+            f"Balance rationale: {balance_rationale}\n"
+            "Accept only if both sides have credible evidence or expert arguments and the answer is not overwhelmingly settled by mainstream evidence.\n"
+            "Return valid JSON only: {\"accepted\": true or false, \"reason\": \"one short sentence\"}"
+        )
+        raw_output = getattr(self, "generate_argument")(validation_prompt)
+        parsed = json.loads(raw_output)
+        if bool(parsed.get("accepted")):
+            return True
+
+        reason = str(parsed.get("reason", "validator rejected topic")).strip()
+        self.logger.info("Topic validator rejected candidate: %s", reason)
+        return False
+
+    def _apply_topic_personas(self, debate_cfg: Dict[str, Any], topic: str) -> None:
+        """Bind the selected topic into child-agent personas for this run."""
+        persona = (
+            f"{topic}. Stay evidence-based, answer the opponent directly, "
+            "and keep each turn concise."
+        )
+        debate_cfg["topic"] = topic
+        debate_cfg["pro_persona"] = persona
+        debate_cfg["con_persona"] = persona

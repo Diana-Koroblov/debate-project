@@ -23,6 +23,9 @@ class StubJudge:
         return None
 
     def start_debate(self) -> None:
+        topic = self.config.get("debate", {}).get("topic", "")
+        if topic:
+            self.outbound.put({"type": "topic_selected", "topic": topic})
         return None
 
     def run(self) -> None:
@@ -71,7 +74,11 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
         lambda config_path=None: {
             "version": "1.00",
             "watchdog": {"timeout_seconds": 1, "check_interval_seconds": 1},
-            "debate": {"rounds": 3, "model": "gemini-2.5-flash"},
+            "debate": {
+                "rounds": 3,
+                "model": "gemini-2.5-flash",
+                "topic": "Whether microbial life likely exists beyond Earth",
+            },
         },
     )
     monkeypatch.setattr(
@@ -90,13 +97,13 @@ def test_run_debate_session_streams_events(monkeypatch, tmp_path: Path) -> None:
         judge_cls=StubJudge,
     )
 
-    assert events == ["argument", "final_judgment"]
+    assert events == ["topic_selected", "argument", "final_judgment"]
     assert result.final_judgment["winner_id"] == "pro_agent"
     assert result.artifact_path == tmp_path / "session-test.json"
     assert result.transcript_path == tmp_path / "transcript_session-test.md"
-    assert result.transcript_path.read_text(encoding="utf-8").startswith(
-        "# Debate Transcript session-test"
-    )
+    transcript_text = result.transcript_path.read_text(encoding="utf-8")
+    assert transcript_text.startswith("# Debate Transcript session-test")
+    assert "Topic: Whether microbial life likely exists beyond Earth" in transcript_text
 
 
 def test_run_debate_session_worker_is_not_daemon(monkeypatch) -> None:

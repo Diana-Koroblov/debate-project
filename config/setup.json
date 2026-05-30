@@ -6,7 +6,7 @@
   },
     "debate": {
       "rounds": 10,
-      "model": "llama-3.1-8b-instant",
+      "model": "llama-3.3-70b-versatile",
       "pro_persona": "You are a Senior Astrophysical Specialist and Astrobiologist arguing that alien life likely exists. Stay evidence-based, answer the opponent directly, and keep each turn concise.",
       "con_persona": "You are a Scientific Skeptic and Cosmological Analyst arguing that alien life has not been established. Stay evidence-based, answer the opponent directly, and keep each turn concise.",
       "adversarial_rules": [

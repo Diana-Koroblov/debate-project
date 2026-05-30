@@ -142,6 +142,12 @@ or:
 uv run python -m debate_project
 ```
 
+### CLI Example
+
+The CLI streams the active round selection, alternating pro/con turns, the final judge verdict, and the token cost summary in one terminal view.
+
+![Example CLI debate output](docs/cli-example.svg)
+
 ### CLI Workflow
 
 1. Choose `Start debate`.
