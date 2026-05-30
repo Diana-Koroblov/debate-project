@@ -1,0 +1,12 @@
+2026-05-30 18:31:17,565 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
+2026-05-30 18:31:17,566 - agent.test_con - INFO - Argument emitted for round 1
+2026-05-30 18:32:57,156 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
+2026-05-30 18:32:57,157 - agent.test_con - INFO - Argument emitted for round 1
+2026-05-30 18:36:00,251 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
+2026-05-30 18:36:00,252 - agent.test_con - INFO - Argument emitted for round 1
+2026-05-30 19:09:33,420 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
+2026-05-30 19:09:33,420 - agent.test_con - INFO - Argument emitted for round 1
+2026-05-30 19:11:26,017 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
+2026-05-30 19:11:26,018 - agent.test_con - INFO - Argument emitted for round 1
+2026-05-30 19:21:38,087 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
+2026-05-30 19:21:38,088 - agent.test_con - INFO - Argument emitted for round 1

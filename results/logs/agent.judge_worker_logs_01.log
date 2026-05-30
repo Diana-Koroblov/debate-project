@@ -1,0 +1,78 @@
+2026-05-30 18:31:05,219 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 18:31:05,386 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 18:31:05,387 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 18:31:05,664 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-30 18:31:05,666 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-30 18:31:05,668 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-30 18:31:05,668 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-30 18:31:05,670 - agent.judge_worker - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-30 18:31:10,395 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-30 18:31:10,675 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 18:31:10,804 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 18:31:10,805 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 18:31:11,062 - agent.judge_worker - INFO - Event loop terminated for agent 'judge_worker'
+2026-05-30 18:32:44,751 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 18:32:44,899 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 18:32:44,899 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 18:32:45,191 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-30 18:32:45,193 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-30 18:32:45,194 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-30 18:32:45,196 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-30 18:32:45,197 - agent.judge_worker - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-30 18:32:49,907 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-30 18:32:50,209 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 18:32:50,348 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 18:32:50,349 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 18:32:50,622 - agent.judge_worker - INFO - Event loop terminated for agent 'judge_worker'
+2026-05-30 18:35:47,825 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 18:35:47,978 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 18:35:47,978 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 18:35:48,288 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-30 18:35:48,290 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-30 18:35:48,291 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-30 18:35:48,292 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-30 18:35:48,293 - agent.judge_worker - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-30 18:35:52,986 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-30 18:35:53,299 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 18:35:53,440 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 18:35:53,440 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 18:35:53,728 - agent.judge_worker - INFO - Event loop terminated for agent 'judge_worker'
+2026-05-30 19:09:21,081 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 19:09:21,247 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 19:09:21,247 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 19:09:21,518 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-30 19:09:21,520 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-30 19:09:21,521 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-30 19:09:21,522 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-30 19:09:21,523 - agent.judge_worker - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-30 19:09:26,254 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-30 19:09:26,548 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 19:09:26,685 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 19:09:26,686 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 19:09:26,955 - agent.judge_worker - INFO - Event loop terminated for agent 'judge_worker'
+2026-05-30 19:11:13,685 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 19:11:13,843 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 19:11:13,845 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 19:11:14,113 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-30 19:11:14,114 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-30 19:11:14,116 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-30 19:11:14,117 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-30 19:11:14,117 - agent.judge_worker - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-30 19:11:18,853 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-30 19:11:19,144 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 19:11:19,281 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 19:11:19,282 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 19:11:19,543 - agent.judge_worker - INFO - Event loop terminated for agent 'judge_worker'
+2026-05-30 19:21:25,829 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 19:21:25,963 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 19:21:25,964 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 19:21:26,247 - agent.judge_worker - INFO - Argument received: pro_agent | Round 1
+2026-05-30 19:21:26,249 - agent.judge_worker - INFO - Argument received: con_agent | Round 1
+2026-05-30 19:21:26,250 - agent.judge_worker - INFO - Argument received: pro_agent | Round 2
+2026-05-30 19:21:26,252 - agent.judge_worker - INFO - Argument received: con_agent | Round 2
+2026-05-30 19:21:26,252 - agent.judge_worker - INFO - Debate concluded after 2 rounds. Finalizing judgment...
+2026-05-30 19:21:30,971 - agent.judge_worker - INFO - WINNER DECLARED: pro_agent
+2026-05-30 19:21:31,244 - agent.judge_worker - INFO - Initialized BaseAgent for 'judge_worker'
+2026-05-30 19:21:31,367 - agent.judge_worker - INFO - DEBATE START: Round 1, Pro agent.
+2026-05-30 19:21:31,367 - agent.judge_worker - INFO - Event loop started for agent 'judge_worker'
+2026-05-30 19:21:31,605 - agent.judge_worker - INFO - Event loop terminated for agent 'judge_worker'

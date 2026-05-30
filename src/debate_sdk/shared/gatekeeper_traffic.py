@@ -84,12 +84,16 @@ class TrafficController:
             self._prune_timestamps(now)
             self._prune_token_timestamps(now)
             token_usage = self._token_usage()
+            tokens_allowed = (
+                self._tokens_per_minute <= 0
+                or token_usage + projected_cost <= self._tokens_per_minute
+            )
             if (
                 len(self._timestamps) < self._requests_per_minute
-                and token_usage + projected_cost <= self._tokens_per_minute
+                and tokens_allowed
             ):
                 self._timestamps.append(now)
-                if projected_cost > 0:
+                if projected_cost > 0 and self._tokens_per_minute > 0:
                     self._token_timestamps.append((now, projected_cost))
                 return True, 0.0
         self._semaphore.release()

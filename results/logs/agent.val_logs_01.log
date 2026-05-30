@@ -1,0 +1,396 @@
+2026-05-30 18:31:17,545 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 18:31:17,547 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 18:31:17,548 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 20 validation errors for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+ChildToParentMessage.type
+  Input should be <MessageType.ARGUMENT: 'argument'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ChildToParentMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.round_number
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.payload
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.type
+  Input should be <MessageType.TURN_PROMPT: 'turn_prompt'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ParentToChildRouter.recipient_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.game_status
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.type
+  Input should be <MessageType.FINAL_JUDGMENT: 'final_judgment'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+FinalJudgmentSchema.winner_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.differential_score
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.justification
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.type
+  Input should be <MessageType.TELEMETRY: 'telemetry'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+TokenTelemetry.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.model
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.usage
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.latency_ms
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.type
+  Input should be <MessageType.HEARTBEAT: 'heartbeat'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+HeartbeatMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-30 18:31:17,548 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 1 validation error for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+  Invalid JSON: expected ident at line 1 column 2 [type=json_invalid, input_value='not-even-json', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid
+2026-05-30 18:32:57,119 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 18:32:57,121 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 18:32:57,122 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 20 validation errors for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+ChildToParentMessage.type
+  Input should be <MessageType.ARGUMENT: 'argument'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ChildToParentMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.round_number
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.payload
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.type
+  Input should be <MessageType.TURN_PROMPT: 'turn_prompt'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ParentToChildRouter.recipient_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.game_status
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.type
+  Input should be <MessageType.FINAL_JUDGMENT: 'final_judgment'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+FinalJudgmentSchema.winner_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.differential_score
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.justification
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.type
+  Input should be <MessageType.TELEMETRY: 'telemetry'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+TokenTelemetry.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.model
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.usage
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.latency_ms
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.type
+  Input should be <MessageType.HEARTBEAT: 'heartbeat'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+HeartbeatMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-30 18:32:57,122 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 1 validation error for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+  Invalid JSON: expected ident at line 1 column 2 [type=json_invalid, input_value='not-even-json', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid
+2026-05-30 18:36:00,205 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 18:36:00,208 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 18:36:00,208 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 20 validation errors for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+ChildToParentMessage.type
+  Input should be <MessageType.ARGUMENT: 'argument'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ChildToParentMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.round_number
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.payload
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.type
+  Input should be <MessageType.TURN_PROMPT: 'turn_prompt'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ParentToChildRouter.recipient_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.game_status
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.type
+  Input should be <MessageType.FINAL_JUDGMENT: 'final_judgment'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+FinalJudgmentSchema.winner_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.differential_score
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.justification
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.type
+  Input should be <MessageType.TELEMETRY: 'telemetry'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+TokenTelemetry.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.model
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.usage
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.latency_ms
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.type
+  Input should be <MessageType.HEARTBEAT: 'heartbeat'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+HeartbeatMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-30 18:36:00,208 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 1 validation error for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+  Invalid JSON: expected ident at line 1 column 2 [type=json_invalid, input_value='not-even-json', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid
+2026-05-30 19:09:33,404 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 19:09:33,405 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 19:09:33,406 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 20 validation errors for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+ChildToParentMessage.type
+  Input should be <MessageType.ARGUMENT: 'argument'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ChildToParentMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.round_number
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.payload
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.type
+  Input should be <MessageType.TURN_PROMPT: 'turn_prompt'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ParentToChildRouter.recipient_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.game_status
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.type
+  Input should be <MessageType.FINAL_JUDGMENT: 'final_judgment'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+FinalJudgmentSchema.winner_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.differential_score
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.justification
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.type
+  Input should be <MessageType.TELEMETRY: 'telemetry'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+TokenTelemetry.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.model
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.usage
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.latency_ms
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.type
+  Input should be <MessageType.HEARTBEAT: 'heartbeat'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+HeartbeatMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-30 19:09:33,406 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 1 validation error for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+  Invalid JSON: expected ident at line 1 column 2 [type=json_invalid, input_value='not-even-json', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid
+2026-05-30 19:11:26,000 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 19:11:26,002 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 19:11:26,002 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 20 validation errors for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+ChildToParentMessage.type
+  Input should be <MessageType.ARGUMENT: 'argument'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ChildToParentMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.round_number
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.payload
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.type
+  Input should be <MessageType.TURN_PROMPT: 'turn_prompt'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ParentToChildRouter.recipient_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.game_status
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.type
+  Input should be <MessageType.FINAL_JUDGMENT: 'final_judgment'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+FinalJudgmentSchema.winner_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.differential_score
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.justification
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.type
+  Input should be <MessageType.TELEMETRY: 'telemetry'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+TokenTelemetry.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.model
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.usage
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.latency_ms
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.type
+  Input should be <MessageType.HEARTBEAT: 'heartbeat'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+HeartbeatMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-30 19:11:26,003 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 1 validation error for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+  Invalid JSON: expected ident at line 1 column 2 [type=json_invalid, input_value='not-even-json', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid
+2026-05-30 19:21:38,073 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 19:21:38,074 - agent.val - INFO - Initialized BaseAgent for 'val'
+2026-05-30 19:21:38,074 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 20 validation errors for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+ChildToParentMessage.type
+  Input should be <MessageType.ARGUMENT: 'argument'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ChildToParentMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.round_number
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ChildToParentMessage.payload
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.type
+  Input should be <MessageType.TURN_PROMPT: 'turn_prompt'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+ParentToChildRouter.recipient_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+ParentToChildRouter.game_status
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.type
+  Input should be <MessageType.FINAL_JUDGMENT: 'final_judgment'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+FinalJudgmentSchema.winner_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.differential_score
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+FinalJudgmentSchema.justification
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.type
+  Input should be <MessageType.TELEMETRY: 'telemetry'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+TokenTelemetry.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.model
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.usage
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.latency_ms
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+TokenTelemetry.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.type
+  Input should be <MessageType.HEARTBEAT: 'heartbeat'> [type=literal_error, input_value='unknown', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+HeartbeatMessage.agent_id
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+HeartbeatMessage.timestamp
+  Field required [type=missing, input_value={'type': 'unknown'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-05-30 19:21:38,074 - agent.val - ERROR - DROPPED MALICIOUS PACKET: 1 validation error for union[ChildToParentMessage,ParentToChildRouter,FinalJudgmentSchema,TokenTelemetry,HeartbeatMessage]
+  Invalid JSON: expected ident at line 1 column 2 [type=json_invalid, input_value='not-even-json', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid

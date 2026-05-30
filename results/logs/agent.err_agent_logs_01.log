@@ -1,0 +1,30 @@
+2026-05-30 18:31:17,533 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-05-30 18:31:17,534 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-05-30 18:31:17,534 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-05-30 18:31:17,534 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-05-30 18:31:17,534 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
+2026-05-30 18:32:57,092 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-05-30 18:32:57,093 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-05-30 18:32:57,094 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-05-30 18:32:57,094 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-05-30 18:32:57,094 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
+2026-05-30 18:36:00,178 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-05-30 18:36:00,178 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-05-30 18:36:00,178 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-05-30 18:36:00,179 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-05-30 18:36:00,179 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
+2026-05-30 19:09:33,394 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-05-30 19:09:33,394 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-05-30 19:09:33,395 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-05-30 19:09:33,395 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-05-30 19:09:33,395 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
+2026-05-30 19:11:25,991 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-05-30 19:11:25,991 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-05-30 19:11:25,991 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-05-30 19:11:25,992 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-05-30 19:11:25,992 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
+2026-05-30 19:21:38,063 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-05-30 19:21:38,063 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-05-30 19:21:38,064 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-05-30 19:21:38,064 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-05-30 19:21:38,064 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
