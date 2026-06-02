@@ -222,6 +222,8 @@ Focused validation that has been exercised in this repository includes:
 - Windows runs use the multiprocessing `spawn` start method from the CLI entrypoint.
 - The judge starts the watchdog and updates child heartbeats during routing. A separate recovery abstraction exists in `src/debate_sdk/shared/recovery.py`, but the current end-to-end judge flow does not wire a recovery callback into the watchdog.
 - If no live token usage is returned, the session layer falls back to a simple character-based token estimate before generating the cost summary.
+- Although agentic AI coverage is currently limited, the system still supports full 10-round debate sessions.
+- Debate runs may feel slow; average end-to-end runtime is typically about 2-3 minutes due to external API latency.
 
 ## ISO/IEC 25010 Mapping
 
