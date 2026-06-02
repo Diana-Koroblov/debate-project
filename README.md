@@ -46,7 +46,7 @@ debate-project/
 |   +-- state_manager.py          Session checkpoint persistence
 |   +-- watchdog.py               Child-process heartbeat monitoring
 |   +-- recovery.py               Recovery manager abstraction
-|   +-- search_client.py          Tavily search client
+|   +-- search_client.py          External search client abstraction
 |   +-- process_utils.py          Process termination helpers
 |   +-- version.py                Package/runtime version marker
 |
@@ -97,7 +97,6 @@ Cross-cutting infrastructure:
 - Python 3.10. The project metadata currently requires `>=3.10,<3.11`.
 - `uv`
 - A valid Groq API key for live debate runs
-- Optional Tavily API key for search augmentation
 
 ### Install
 
@@ -120,13 +119,11 @@ Create a local `.env` file from `.env-example` and fill in the provider keys:
 
 ```text
 GROQ_API_KEY="your_groq_api_key"
-TAVILY_API_KEY="your_tavily_api_key"
 ```
 
 Notes:
 
 - `GROQ_API_KEY` is required for live Groq calls.
-- `TAVILY_API_KEY` is optional. The search layer logs missing-key conditions and returns no results instead of crashing the debate loop.
 - `GROQ_BASE_URL` and `GROQ_TIMEOUT_SECONDS` can also be supplied through the environment if you need to override the Groq transport defaults.
 
 ## Running The Debate
