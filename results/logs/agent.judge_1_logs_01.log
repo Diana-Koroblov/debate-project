@@ -308,3 +308,50 @@
 2026-05-30 19:22:40,715 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
 2026-05-30 19:22:40,775 - agent.judge_1 - INFO - Event loop started for agent 'judge_1'
 2026-05-30 19:22:40,775 - agent.judge_1 - INFO - Event loop terminated for agent 'judge_1'
+2026-06-02 19:08:41,163 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,238 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,318 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,395 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,459 - agent.judge_1 - INFO - Argument received: pro_agent | Round 0
+2026-06-02 19:08:41,469 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,541 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,542 - agent.judge_1 - WARNING - Topic generation attempt 1 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:41,542 - agent.judge_1 - WARNING - Topic generation attempt 2 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:41,542 - agent.judge_1 - WARNING - Topic generation attempt 3 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:41,544 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,611 - agent.judge_1 - INFO - DEBATE START: Round 1, Pro agent.
+2026-06-02 19:08:41,611 - agent.judge_1 - INFO - Argument received: pro_agent | Round 1
+2026-06-02 19:08:41,613 - agent.judge_1 - INFO - Argument received: con_agent | Round 1
+2026-06-02 19:08:41,623 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,689 - agent.judge_1 - INFO - Argument received: con_agent | Round 10
+2026-06-02 19:08:41,691 - agent.judge_1 - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-06-02 19:08:41,700 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-06-02 19:08:41,704 - agent.judge_1 - WARNING - Judging attempt 1 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:41,705 - agent.judge_1 - WARNING - Judging attempt 2 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:41,705 - agent.judge_1 - WARNING - Judging attempt 3 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:41,706 - agent.judge_1 - ERROR - Judging failure after retries; using neutral fallback winner pro_agent
+2026-06-02 19:08:41,706 - agent.judge_1 - INFO - WINNER DECLARED: pro_agent
+2026-06-02 19:08:41,708 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,773 - agent.judge_1 - INFO - Argument received: con_agent | Round 10
+2026-06-02 19:08:41,774 - agent.judge_1 - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-06-02 19:08:41,782 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-06-02 19:08:41,782 - agent.judge_1 - INFO - WINNER DECLARED: pro_agent
+2026-06-02 19:08:41,785 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,850 - agent.judge_1 - INFO - Argument received: con_agent | Round 10
+2026-06-02 19:08:41,851 - agent.judge_1 - INFO - Debate concluded after 10 rounds. Finalizing judgment...
+2026-06-02 19:08:41,858 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-06-02 19:08:41,858 - agent.judge_1 - INFO - WINNER DECLARED: con_agent
+2026-06-02 19:08:41,861 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,924 - agent.judge_1 - INFO - Argument received: pro_agent | Round 0
+2026-06-02 19:08:41,934 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:41,997 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-06-02 19:08:41,997 - agent.judge_1 - WARNING - Judging attempt 1 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:42,000 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:42,070 - agent.judge_1 - INFO - Supreme Judge is evaluating the final arguments...
+2026-06-02 19:08:42,070 - agent.judge_1 - WARNING - Judging attempt 1 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:42,070 - agent.judge_1 - WARNING - Judging attempt 2 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:42,070 - agent.judge_1 - WARNING - Judging attempt 3 failed: Expecting value: line 1 column 1 (char 0)
+2026-06-02 19:08:42,070 - agent.judge_1 - ERROR - Judging failure after retries; using neutral fallback winner con_agent
+2026-06-02 19:08:42,080 - agent.judge_1 - INFO - Initialized BaseAgent for 'judge_1'
+2026-06-02 19:08:42,143 - agent.judge_1 - INFO - Event loop started for agent 'judge_1'
+2026-06-02 19:08:42,144 - agent.judge_1 - INFO - Event loop terminated for agent 'judge_1'

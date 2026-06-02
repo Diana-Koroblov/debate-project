@@ -110,3 +110,27 @@ def test_10001_lines_rotation(temp_log_dir: Path):
 
     handler.close()
     logger.removeHandler(handler)
+
+
+def test_multiline_messages_respect_physical_line_limit(temp_log_dir: Path):
+    """Multiline records should rotate by physical output lines, not record count."""
+    handler = FIFORotatingHandler(temp_log_dir, max_files=3, max_lines=5)
+    handler.setFormatter(logging.Formatter("%(message)s"))
+    logger = logging.getLogger("test_multiline_rotation")
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
+
+    logger.info("A1\nA2\nA3")
+    logger.info("B1\nB2\nB3")
+
+    log_files = sorted(temp_log_dir.glob("agent_logs_*.log"))
+    assert len(log_files) == 2
+
+    with open(log_files[0], "r", encoding="utf-8") as stream:
+        assert [line.strip() for line in stream.readlines()] == ["A1", "A2", "A3", "B1", "B2"]
+
+    with open(log_files[1], "r", encoding="utf-8") as stream:
+        assert [line.strip() for line in stream.readlines()] == ["B3"]
+
+    handler.close()
+    logger.removeHandler(handler)

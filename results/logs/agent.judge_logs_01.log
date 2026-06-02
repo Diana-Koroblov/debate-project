@@ -13,3 +13,6 @@
 2026-05-30 19:22:40,791 - agent.judge - INFO - Initialized BaseAgent for 'judge'
 2026-05-30 19:22:40,859 - agent.judge - INFO - Initialized BaseAgent for 'judge'
 2026-05-30 19:22:40,920 - agent.judge - INFO - Argument received: pro_agent | Round 0
+2026-06-02 19:08:42,163 - agent.judge - INFO - Initialized BaseAgent for 'judge'
+2026-06-02 19:08:42,232 - agent.judge - INFO - Initialized BaseAgent for 'judge'
+2026-06-02 19:08:42,292 - agent.judge - INFO - Argument received: pro_agent | Round 0

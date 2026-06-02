@@ -51,3 +51,10 @@
 2026-05-30 19:21:37,020 - process_utils - INFO - Terminating process tree for PID 22748 (0 children).
 2026-05-30 19:21:37,533 - process_utils - WARNING - Process PID 4044 not found for termination.
 2026-05-30 19:21:38,046 - process_utils - WARNING - Process PID 18332 not found for termination.
+2026-06-02 19:07:27,063 - process_utils - INFO - Terminating process tree for PID 22356 (0 children).
+2026-06-02 19:07:27,072 - process_utils - INFO - Terminating process tree for PID 18520 (0 children).
+2026-06-02 19:07:37,884 - process_utils - INFO - Terminating process tree for PID 15476 (0 children).
+2026-06-02 19:07:38,403 - process_utils - WARNING - Process PID 7240 not found for termination.
+2026-06-02 19:07:38,917 - process_utils - WARNING - Process PID 22892 not found for termination.
+2026-06-02 19:13:04,453 - process_utils - INFO - Terminating process tree for PID 8684 (0 children).
+2026-06-02 19:13:04,462 - process_utils - INFO - Terminating process tree for PID 25612 (0 children).

@@ -22,3 +22,7 @@
 2026-05-30 19:21:38,069 - agent.timeout_agent - INFO - Event loop started for agent 'timeout_agent'
 2026-05-30 19:21:38,069 - agent.timeout_agent - INFO - Termination signal received for agent 'timeout_agent'
 2026-05-30 19:21:38,069 - agent.timeout_agent - INFO - Event loop terminated for agent 'timeout_agent'
+2026-06-02 19:07:38,971 - agent.timeout_agent - INFO - Initialized BaseAgent for 'timeout_agent'
+2026-06-02 19:07:38,972 - agent.timeout_agent - INFO - Event loop started for agent 'timeout_agent'
+2026-06-02 19:07:38,972 - agent.timeout_agent - INFO - Termination signal received for agent 'timeout_agent'
+2026-06-02 19:07:38,972 - agent.timeout_agent - INFO - Event loop terminated for agent 'timeout_agent'

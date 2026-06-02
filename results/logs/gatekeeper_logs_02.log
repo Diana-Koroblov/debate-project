@@ -391,3 +391,110 @@ RuntimeError: API call 'always_fails' failed: 503 service unavailable
 2026-05-30 19:22:40,368 - gatekeeper - INFO - api_call_success name=_send_chat_completion
 2026-05-30 19:22:40,368 - gatekeeper - INFO - token_usage_update input_tokens=3 output_tokens=3 tracked_consumption=6000.0
 2026-05-30 19:22:40,368 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:07:16,797 - gatekeeper - INFO - api_call_start name=fake_call
+2026-06-02 19:07:16,797 - gatekeeper - INFO - api_call_success name=fake_call
+2026-06-02 19:07:16,797 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:07:16,797 - gatekeeper - INFO - api_call_complete name=fake_call
+2026-06-02 19:07:16,906 - gatekeeper - INFO - api_call_start name=fake_call_error
+2026-06-02 19:07:16,906 - gatekeeper - ERROR - api_call_failure name=fake_call_error
+Traceback (most recent call last):
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper.py", line 91, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper_runtime.py", line 122, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'fake_call_error' failed: boom
+2026-06-02 19:07:16,907 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:07:16,907 - gatekeeper - INFO - api_call_complete name=fake_call_error
+2026-06-02 19:07:17,020 - gatekeeper - INFO - api_call_start name=flaky_call
+2026-06-02 19:07:17,021 - gatekeeper - WARNING - api_call_retry name=flaky_call attempt=1 delay=0.500
+2026-06-02 19:07:17,021 - gatekeeper - WARNING - api_call_retry name=flaky_call attempt=2 delay=1.000
+2026-06-02 19:07:17,021 - gatekeeper - INFO - api_call_success name=flaky_call
+2026-06-02 19:07:17,021 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:07:17,021 - gatekeeper - INFO - api_call_complete name=flaky_call
+2026-06-02 19:07:17,128 - gatekeeper - INFO - api_call_start name=always_fails
+2026-06-02 19:07:17,128 - gatekeeper - WARNING - api_call_retry name=always_fails attempt=1 delay=0.250
+2026-06-02 19:07:17,129 - gatekeeper - WARNING - api_call_retry name=always_fails attempt=2 delay=0.500
+2026-06-02 19:07:17,129 - gatekeeper - ERROR - api_call_failure name=always_fails
+Traceback (most recent call last):
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper.py", line 91, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper_runtime.py", line 122, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'always_fails' failed: 503 service unavailable
+2026-06-02 19:07:17,129 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:07:17,129 - gatekeeper - INFO - api_call_complete name=always_fails
+2026-06-02 19:07:17,235 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,235 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,235 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:07:17,235 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,349 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,350 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,350 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:07:17,350 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,350 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,350 - gatekeeper - INFO - api_call_queued name=<lambda> retry_after_seconds=60.000
+2026-06-02 19:07:17,350 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,350 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:07:17,350 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=4000.0
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=6000.0
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_queued name=<lambda> retry_after_seconds=60.000
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,458 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=8000.0
+2026-06-02 19:07:17,458 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,566 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,673 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,673 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,673 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=3.0
+2026-06-02 19:07:17,673 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,673 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,786 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:07:17,786 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:07:17,786 - gatekeeper - INFO - token_usage_update input_tokens=9 output_tokens=4 tracked_consumption=0.0
+2026-06-02 19:07:17,786 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:07:17,893 - gatekeeper - WARNING - rate_limit_config_version_mismatch expected=1.00 found=9.99
+2026-06-02 19:07:39,058 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:07:39,058 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:07:39,058 - gatekeeper - INFO - token_usage_update input_tokens=11 output_tokens=7 tracked_consumption=2000.0
+2026-06-02 19:07:39,059 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:07:39,068 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:07:39,068 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:07:39,068 - gatekeeper - INFO - token_usage_update input_tokens=22 output_tokens=14 tracked_consumption=4000.0
+2026-06-02 19:07:39,068 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:07:39,077 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:07:39,077 - gatekeeper - INFO - api_call_queued name=_send_chat_completion retry_after_seconds=59.985
+2026-06-02 19:08:39,064 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:08:39,064 - gatekeeper - INFO - token_usage_update input_tokens=33 output_tokens=21 tracked_consumption=6000.0
+2026-06-02 19:08:39,064 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:08:39,504 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:08:39,504 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:08:39,504 - gatekeeper - INFO - token_usage_update input_tokens=41 output_tokens=25 tracked_consumption=8000.0
+2026-06-02 19:08:39,504 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:08:39,718 - gatekeeper - INFO - api_call_start name=fake_call
+2026-06-02 19:08:39,718 - gatekeeper - INFO - api_call_success name=fake_call
+2026-06-02 19:08:39,718 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:08:39,718 - gatekeeper - INFO - api_call_complete name=fake_call
+2026-06-02 19:08:39,827 - gatekeeper - INFO - api_call_start name=fake_call_error
+2026-06-02 19:08:39,827 - gatekeeper - ERROR - api_call_failure name=fake_call_error
+Traceback (most recent call last):
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper.py", line 91, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper_runtime.py", line 122, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'fake_call_error' failed: boom
+2026-06-02 19:08:39,829 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:08:39,829 - gatekeeper - INFO - api_call_complete name=fake_call_error
+2026-06-02 19:08:39,936 - gatekeeper - INFO - api_call_start name=flaky_call
+2026-06-02 19:08:39,936 - gatekeeper - WARNING - api_call_retry name=flaky_call attempt=1 delay=0.500
+2026-06-02 19:08:39,936 - gatekeeper - WARNING - api_call_retry name=flaky_call attempt=2 delay=1.000

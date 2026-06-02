@@ -86,17 +86,24 @@ class FIFORotatingHandler(logging.Handler):
                 dst = self.log_dir / f"{self.process_name}_logs_{i-1:02d}.log"
                 src.rename(dst)
 
+    def _write_line(self, line: str) -> None:
+        """Write one physical line, rotating first when the file is full."""
+        if self._current_line_count >= self.max_lines:
+            self._rotate()
+
+        if not self._stream:
+            return
+
+        self._stream.write(line + "\n")
+        self._stream.flush()
+        self._current_line_count += 1
+
     def emit(self, record: logging.LogRecord) -> None:
         """Emit a record, rotating if necessary."""
         try:
             msg = self.format(record)
-            if self._current_line_count >= self.max_lines:
-                self._rotate()
-
-            if self._stream:
-                self._stream.write(msg + "\n")
-                self._stream.flush()
-                self._current_line_count += 1
+            for line in msg.splitlines() or [""]:
+                self._write_line(line)
         except Exception:
             self.handleError(record)
 

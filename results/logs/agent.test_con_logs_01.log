@@ -10,3 +10,5 @@
 2026-05-30 19:11:26,018 - agent.test_con - INFO - Argument emitted for round 1
 2026-05-30 19:21:38,087 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
 2026-05-30 19:21:38,088 - agent.test_con - INFO - Argument emitted for round 1
+2026-06-02 19:07:39,023 - agent.test_con - INFO - Initialized BaseAgent for 'test_con'
+2026-06-02 19:07:39,024 - agent.test_con - INFO - Argument emitted for round 1

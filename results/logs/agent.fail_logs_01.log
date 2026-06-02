@@ -10,3 +10,5 @@
 2026-05-30 19:11:26,011 - agent.fail - ERROR - Failed to push message to OS pipeline: Queue full
 2026-05-30 19:21:38,081 - agent.fail - INFO - Initialized BaseAgent for 'fail'
 2026-05-30 19:21:38,082 - agent.fail - ERROR - Failed to push message to OS pipeline: Queue full
+2026-06-02 19:07:39,007 - agent.fail - INFO - Initialized BaseAgent for 'fail'
+2026-06-02 19:07:39,007 - agent.fail - ERROR - Failed to push message to OS pipeline: Queue full

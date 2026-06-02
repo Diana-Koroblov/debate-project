@@ -85,3 +85,19 @@
 2026-05-30 17:23:27,942 - agent.judge_cli - INFO - Debate concluded after 5 rounds. Finalizing judgment...
 2026-05-30 17:23:27,984 - agent.judge_cli - INFO - Supreme Judge is evaluating the final arguments...
 2026-05-30 17:23:28,634 - agent.judge_cli - INFO - WINNER DECLARED: con_agent
+2026-06-02 19:11:00,851 - agent.judge_cli - INFO - Initialized BaseAgent for 'judge_cli'
+2026-06-02 19:11:01,844 - agent.judge_cli - INFO - DEBATE START: Round 1, Pro agent.
+2026-06-02 19:11:01,845 - agent.judge_cli - INFO - Event loop started for agent 'judge_cli'
+2026-06-02 19:11:02,664 - agent.judge_cli - INFO - Argument received: pro_agent | Round 1
+2026-06-02 19:11:03,478 - agent.judge_cli - INFO - Argument received: con_agent | Round 1
+2026-06-02 19:11:04,108 - agent.judge_cli - INFO - Argument received: pro_agent | Round 2
+2026-06-02 19:11:04,640 - agent.judge_cli - INFO - Argument received: con_agent | Round 2
+2026-06-02 19:12:03,625 - agent.judge_cli - INFO - Argument received: pro_agent | Round 3
+2026-06-02 19:12:05,320 - agent.judge_cli - INFO - Argument received: con_agent | Round 3
+2026-06-02 19:12:06,384 - agent.judge_cli - INFO - Argument received: pro_agent | Round 4
+2026-06-02 19:12:07,217 - agent.judge_cli - INFO - Argument received: con_agent | Round 4
+2026-06-02 19:13:03,162 - agent.judge_cli - INFO - Argument received: pro_agent | Round 5
+2026-06-02 19:13:04,447 - agent.judge_cli - INFO - Argument received: con_agent | Round 5
+2026-06-02 19:13:04,448 - agent.judge_cli - INFO - Debate concluded after 5 rounds. Finalizing judgment...
+2026-06-02 19:13:05,881 - agent.judge_cli - INFO - Supreme Judge is evaluating the final arguments...
+2026-06-02 19:13:06,512 - agent.judge_cli - INFO - WINNER DECLARED: con_agent

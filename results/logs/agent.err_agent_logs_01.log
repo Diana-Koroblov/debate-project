@@ -28,3 +28,8 @@
 2026-05-30 19:21:38,064 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
 2026-05-30 19:21:38,064 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
 2026-05-30 19:21:38,064 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'
+2026-06-02 19:07:38,955 - agent.err_agent - INFO - Initialized BaseAgent for 'err_agent'
+2026-06-02 19:07:38,956 - agent.err_agent - INFO - Event loop started for agent 'err_agent'
+2026-06-02 19:07:38,957 - agent.err_agent - ERROR - Critical error in agent event loop: BOOM
+2026-06-02 19:07:38,957 - agent.err_agent - INFO - Termination signal received for agent 'err_agent'
+2026-06-02 19:07:38,957 - agent.err_agent - INFO - Event loop terminated for agent 'err_agent'

@@ -22,3 +22,7 @@
 2026-05-30 19:21:38,059 - agent.loop_agent - INFO - Event loop started for agent 'loop_agent'
 2026-05-30 19:21:38,059 - agent.loop_agent - INFO - Termination signal received for agent 'loop_agent'
 2026-05-30 19:21:38,060 - agent.loop_agent - INFO - Event loop terminated for agent 'loop_agent'
+2026-06-02 19:07:38,946 - agent.loop_agent - INFO - Initialized BaseAgent for 'loop_agent'
+2026-06-02 19:07:38,947 - agent.loop_agent - INFO - Event loop started for agent 'loop_agent'
+2026-06-02 19:07:38,947 - agent.loop_agent - INFO - Termination signal received for agent 'loop_agent'
+2026-06-02 19:07:38,948 - agent.loop_agent - INFO - Event loop terminated for agent 'loop_agent'

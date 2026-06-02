@@ -1,0 +1,123 @@
+2026-06-02 19:08:39,936 - gatekeeper - INFO - api_call_success name=flaky_call
+2026-06-02 19:08:39,937 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:08:39,937 - gatekeeper - INFO - api_call_complete name=flaky_call
+2026-06-02 19:08:40,046 - gatekeeper - INFO - api_call_start name=always_fails
+2026-06-02 19:08:40,046 - gatekeeper - WARNING - api_call_retry name=always_fails attempt=1 delay=0.250
+2026-06-02 19:08:40,046 - gatekeeper - WARNING - api_call_retry name=always_fails attempt=2 delay=0.500
+2026-06-02 19:08:40,047 - gatekeeper - ERROR - api_call_failure name=always_fails
+Traceback (most recent call last):
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper.py", line 91, in _run_task
+    task.result = run_with_retries(
+  File "C:\Users\itaym\Documents\archestration-hw2-debate\debate-project\src\debate_sdk\shared\gatekeeper_runtime.py", line 122, in run_with_retries
+    raise RuntimeError(f"API call '{name}' failed: {exc}") from None
+RuntimeError: API call 'always_fails' failed: 503 service unavailable
+2026-06-02 19:08:40,047 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:08:40,047 - gatekeeper - INFO - api_call_complete name=always_fails
+2026-06-02 19:08:40,155 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,156 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,156 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=3.0
+2026-06-02 19:08:40,156 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,156 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,266 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,266 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,266 - gatekeeper - INFO - token_usage_update input_tokens=9 output_tokens=4 tracked_consumption=0.0
+2026-06-02 19:08:40,267 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,380 - gatekeeper - WARNING - rate_limit_config_version_mismatch expected=1.00 found=9.99
+2026-06-02 19:08:40,483 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,484 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,484 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:08:40,484 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,594 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,594 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,594 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:08:40,594 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,594 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,594 - gatekeeper - INFO - api_call_queued name=<lambda> retry_after_seconds=60.000
+2026-06-02 19:08:40,594 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,594 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=0.0
+2026-06-02 19:08:40,594 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=2000.0
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=4000.0
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=6000.0
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:40,705 - gatekeeper - INFO - api_call_queued name=<lambda> retry_after_seconds=60.000
+2026-06-02 19:08:40,706 - gatekeeper - INFO - api_call_success name=<lambda>
+2026-06-02 19:08:40,706 - gatekeeper - INFO - token_usage_update input_tokens=0 output_tokens=0 tracked_consumption=8000.0
+2026-06-02 19:08:40,706 - gatekeeper - INFO - api_call_complete name=<lambda>
+2026-06-02 19:08:40,809 - gatekeeper - INFO - api_call_start name=<lambda>
+2026-06-02 19:08:41,701 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:08:41,703 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:08:41,704 - gatekeeper - INFO - token_usage_update input_tokens=1 output_tokens=1 tracked_consumption=2000.0
+2026-06-02 19:08:41,704 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:08:41,704 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:08:41,705 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:08:41,705 - gatekeeper - INFO - token_usage_update input_tokens=2 output_tokens=2 tracked_consumption=4000.0
+2026-06-02 19:08:41,705 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:08:41,705 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:08:41,705 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:08:41,705 - gatekeeper - INFO - token_usage_update input_tokens=3 output_tokens=3 tracked_consumption=6000.0
+2026-06-02 19:08:41,705 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:11:00,898 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:11:01,547 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:11:01,547 - gatekeeper - INFO - token_usage_update input_tokens=187 output_tokens=26 tracked_consumption=2000.0
+2026-06-02 19:11:01,547 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:11:01,547 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:11:01,768 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:11:01,768 - gatekeeper - INFO - token_usage_update input_tokens=316 output_tokens=50 tracked_consumption=4000.0
+2026-06-02 19:11:01,768 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:11:02,076 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:11:02,664 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:11:02,664 - gatekeeper - INFO - token_usage_update input_tokens=372 output_tokens=101 tracked_consumption=2000.0
+2026-06-02 19:11:02,664 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:11:02,667 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:11:03,477 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:11:03,477 - gatekeeper - INFO - token_usage_update input_tokens=478 output_tokens=124 tracked_consumption=2000.0
+2026-06-02 19:11:03,477 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:11:03,479 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:11:04,107 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:11:04,107 - gatekeeper - INFO - token_usage_update input_tokens=908 output_tokens=227 tracked_consumption=4000.0
+2026-06-02 19:11:04,107 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:11:04,109 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:11:04,639 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:11:04,639 - gatekeeper - INFO - token_usage_update input_tokens=1062 output_tokens=245 tracked_consumption=4000.0
+2026-06-02 19:11:04,639 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:11:04,641 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:11:04,641 - gatekeeper - INFO - api_call_queued name=_send_chat_completion retry_after_seconds=57.437
+2026-06-02 19:12:03,624 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:12:03,624 - gatekeeper - INFO - token_usage_update input_tokens=1523 output_tokens=358 tracked_consumption=6000.0
+2026-06-02 19:12:03,624 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:12:03,626 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:12:05,319 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:12:05,319 - gatekeeper - INFO - token_usage_update input_tokens=1751 output_tokens=380 tracked_consumption=6000.0
+2026-06-02 19:12:05,319 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:12:05,321 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:12:06,384 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:12:06,384 - gatekeeper - INFO - token_usage_update input_tokens=2274 output_tokens=488 tracked_consumption=8000.0
+2026-06-02 19:12:06,384 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:12:06,386 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:12:07,216 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:12:07,216 - gatekeeper - INFO - token_usage_update input_tokens=2549 output_tokens=510 tracked_consumption=8000.0
+2026-06-02 19:12:07,216 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:12:07,218 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:12:07,219 - gatekeeper - INFO - api_call_queued name=_send_chat_completion retry_after_seconds=54.859
+2026-06-02 19:13:03,162 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:13:03,162 - gatekeeper - INFO - token_usage_update input_tokens=3136 output_tokens=624 tracked_consumption=10000.0
+2026-06-02 19:13:03,162 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:13:03,164 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:13:03,164 - gatekeeper - INFO - api_call_queued name=_send_chat_completion retry_after_seconds=0.468
+2026-06-02 19:13:04,446 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:13:04,446 - gatekeeper - INFO - token_usage_update input_tokens=3453 output_tokens=648 tracked_consumption=10000.0
+2026-06-02 19:13:04,446 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
+2026-06-02 19:13:05,881 - gatekeeper - INFO - api_call_start name=_send_chat_completion
+2026-06-02 19:13:06,512 - gatekeeper - INFO - api_call_success name=_send_chat_completion
+2026-06-02 19:13:06,512 - gatekeeper - INFO - token_usage_update input_tokens=1054 output_tokens=179 tracked_consumption=6000.0
+2026-06-02 19:13:06,512 - gatekeeper - INFO - api_call_complete name=_send_chat_completion
